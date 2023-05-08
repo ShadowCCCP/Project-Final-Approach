@@ -73,7 +73,7 @@ public class Level1 : Level
             myGame.AddBlocker(new Vec2(1637.5f + (i * 75), 962.5f - (i * 75)), 3, true);
         }
 
-        for(int i = 0; i < 20; i++)
+        for(int i = 0; i < 20; i++) //static balls
         {
             Ball ping = new Ball(25, new Vec2(Utils.Random(0, 10) * 150 + 250, Utils.Random(0, 3) * 150 + 400), new Vec2(0, 0), false);
             myGame._movers.Add(ping);

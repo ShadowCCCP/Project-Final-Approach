@@ -16,7 +16,7 @@ namespace GXPEngine
         float boundaryLeft;
         float boundaryRight;
 
-        bool followTarget;
+        bool followTarget = true;
         float rotationSpeed = 5;
         ShootingBall sB;
 
@@ -175,7 +175,7 @@ namespace GXPEngine
 
             Vec2 midpoint = new Vec2((start.x + end.x) / 2, (start.y + end.y) / 2);
             Vec2 cPos = mousePos - midpoint;
-            float targetRotation = cPos.GetAngleDegrees() - (GetRotation());
+            float targetRotation = cPos.GetAngleDegrees() - (GetRotation() + 90);
 
             // 1. Get the difference between the two rotations
             // 2. + 540 to make it always positive

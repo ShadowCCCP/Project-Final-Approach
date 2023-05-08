@@ -3,39 +3,80 @@ using GXPEngine;
 using System.Drawing;
 using System.Collections.Generic;
 using System.Runtime;
+using System.Reflection.Emit;
 
 public class MyGame : Game
-{	
-	bool _stepped = false;
+{
+    private string nextLevel;
+    bool _stepped = false;
 	bool _paused = false;
 	int _stepIndex = 0;
 
 	Canvas _lineContainer = null;
 
 	public List<Ball> _balls;
-	List<LineSegment> _lines;
+    List<LineSegment> _lines;
     List<Block> _blocks;
 
 	public float boundaryLeft;
 	public float boundaryRight;
 
-	public MyGame () : base(800, 600, false, false)
-	{
-		OperationCheck check = new OperationCheck();
+    public MyGame() : base(800, 600, false, false)
+    {
+        // Tiled loading
+        LoadLevel("MainMenu.tmx");
+        OnAfterStep += CheckLoadLevel;
 
-		_lineContainer = new Canvas(width, height);
-		AddChild(_lineContainer);
 
-		targetFps = 60;
 
-		_balls = new List<Ball>();
-		_lines = new List<LineSegment>();
-		_blocks = new List<Block>();
+        _lineContainer = new Canvas(width, height);
+        AddChild(_lineContainer);
 
-		LoadScene();
+        targetFps = 60;
 
-		PrintInfo();
-	}
+        _balls = new List<Ball>();
+        _lines = new List<LineSegment>();
+        _blocks = new List<Block>();
+
+        LoadScene();
+
+        PrintInfo();
+    }
+
+
+
+
+    // Tiled loading
+    private void DestroyAll()
+    {
+        List<GameObject> children = GetChildren();
+        foreach (GameObject child in children)
+        {
+            child.Destroy();
+        }
+    }
+
+    public void LoadLevel(string filename)
+    {
+        nextLevel = filename;
+    }
+
+    private void CheckLoadLevel()
+    {
+        if (nextLevel != null)
+        {
+            DestroyAll();
+            AddChild(new Level(nextLevel));
+            nextLevel = null;
+        }
+    }
+
+
+
+
+
+
+
 
     void LoadScene()
     {

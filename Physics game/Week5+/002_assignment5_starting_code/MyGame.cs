@@ -78,7 +78,7 @@ public class MyGame : Game
         // Angled linesegment
         AddLine(new Vec2(290, 250), new Vec2(455, 350));
         // Moving Line (Player)
-        AddMovingLine(new Vec2(550, 550), new Vec2(650, 550));
+        AddMovingLine(new Vec2(550, 450), new Vec2(550, 550));
 
         foreach (Ball b in _balls)
         {

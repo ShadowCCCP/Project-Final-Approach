@@ -17,7 +17,7 @@ namespace GXPEngine
         float boundaryRight;
 
         bool followTarget;
-        float rotationSpeed = 2;
+        float rotationSpeed = 5;
         ShootingBall sB;
 
         Vec2 velocity = new Vec2(0, 0);
@@ -32,7 +32,7 @@ namespace GXPEngine
 
             // Shooting ball
             Vec2 line = end - start;
-            sB = new ShootingBall(15, new Vec2(end.x + line.x / 2 + line.Normal().x * 20, end.y + line.y / 2 + line.Normal().y * 20), new Vec2(0, 0), false);
+            sB = new ShootingBall(15,start /*new Vec2(end.x + line.x / 2 + line.Normal().x * 20, end.y + line.y / 2 + line.Normal().y * 20)*/, new Vec2(0, 0), false);
             myGame._balls.Add(sB);
 
             start = pStart;
@@ -104,28 +104,29 @@ namespace GXPEngine
 
         private void Movement()
         {
-            ToggleFollowTarget();
+           // ToggleFollowTarget();
             MovingInput();
             CheckBoundaries();
-            if(followTarget)
+            FollowTarget();
+            /*if (followTarget)
             {
                 FollowTarget();
             }
             else
             {
                 RotationInput();
-            }
+            }*/
         }
 
-        private void ToggleFollowTarget()
+        /*private void ToggleFollowTarget()
         {
             if(Input.GetKeyDown(Key.ZERO))
             {
                 followTarget = !followTarget;
             }
-        }
+        }*/
 
-        private void RotationInput()
+        /*private void RotationInput()
         {
             if (Input.GetKey(Key.D))
             {
@@ -135,7 +136,7 @@ namespace GXPEngine
             {
                 Rotate(-rotationSpeed);
             }
-        }
+        }*/
 
         private void MovingInput()
         {
@@ -174,7 +175,7 @@ namespace GXPEngine
 
             Vec2 midpoint = new Vec2((start.x + end.x) / 2, (start.y + end.y) / 2);
             Vec2 cPos = mousePos - midpoint;
-            float targetRotation = cPos.GetAngleDegrees() - (GetRotation() + 90);
+            float targetRotation = cPos.GetAngleDegrees() - (GetRotation());
 
             // 1. Get the difference between the two rotations
             // 2. + 540 to make it always positive

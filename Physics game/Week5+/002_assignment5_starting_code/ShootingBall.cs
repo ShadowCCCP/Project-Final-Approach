@@ -12,6 +12,7 @@ namespace GXPEngine
     {
         private MyGame myGame;
         private Vec2 lineEnd;
+        private Vec2 lineStart;
         private Vec2 line;
         private float lineRotation;
 
@@ -29,16 +30,17 @@ namespace GXPEngine
             {
                 UpdateGizmo();
                 UpdateBallOnLine();
-                if (Input.GetKeyDown(Key.ENTER))
+               /* if (Input.GetKeyDown(Key.ENTER))
                 {
                     shot = true;
-                }
+                }*/
             }
             else if(shot && !doOnce)
             {
-                velocity = line.Normal() * 8;
+                velocity = line.Normalized() * 8;
                 doOnce = true;
             }
+           
 
             CheckBoundaries();
         }
@@ -51,12 +53,15 @@ namespace GXPEngine
         public void UpdateNormal(Vec2 start, Vec2 end)
         {
             lineEnd = end;
+            lineStart = start;
+
             line = start - end;
         }
 
         private void UpdateBallOnLine()
         {
-            position = new Vec2(lineEnd.x + line.x / 2 + line.Normal().x * 20, lineEnd.y + line.y / 2 + line.Normal().y * 20);
+            //position = new Vec2(lineEnd.x + line.x / 2 + line.Normal().x * 20, lineEnd.y + line.y / 2 + line.Normal().y * 20);
+            position = lineStart;
             rotation = lineRotation;
         }
 

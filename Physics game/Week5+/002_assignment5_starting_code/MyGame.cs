@@ -29,7 +29,7 @@ public class MyGame : Game
         OnAfterStep += CheckLoadLevel;
         */
 
-
+        
         _lineContainer = new Canvas(width, height);
         AddChild(_lineContainer);
 
@@ -42,6 +42,7 @@ public class MyGame : Game
         LoadScene();
 
         PrintInfo();
+        
     }
 
 

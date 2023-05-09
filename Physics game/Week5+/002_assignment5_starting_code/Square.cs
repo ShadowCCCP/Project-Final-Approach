@@ -7,7 +7,7 @@ using TiledMapParser;
 
 namespace GXPEngine
 {
-    class Rectangle : AnimationSprite
+    class Square : AnimationSprite
     {
         public Vec2 topEdge;
         public Vec2 bottomEdge;
@@ -29,7 +29,7 @@ namespace GXPEngine
 
         Vec2 _position;
 
-        public Rectangle(string filename = "", int cols = 0, int rows = 0, TiledObject obj = null) : base(filename, cols, rows, -1, false, false)
+        public Square(string filename = "", int cols = 0, int rows = 0, TiledObject obj = null) : base(filename, cols, rows, -1, false, false)
         {
             UpdateScreenPosition();
 

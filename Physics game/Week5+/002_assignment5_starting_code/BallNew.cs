@@ -190,7 +190,7 @@ namespace GXPEngine
 
         private void BlockCollision()
         {
-            Rectangle[] rectangles = FindObjectsOfType<Rectangle>();
+            Square[] rectangles = FindObjectsOfType<Square>();
             for (int i = 0; i < rectangles.Length; i++)
             {
                 Vec2 check = new Vec2(x, y);

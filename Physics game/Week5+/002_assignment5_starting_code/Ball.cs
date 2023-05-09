@@ -26,7 +26,7 @@ public class Ball : EasyDraw
 
     protected bool collided;
 
-    // int pRadius, Vec2 pPosition, Vec2 pVelocity=new Vec2(), bool moving=true
+
     public Ball (int pRadius, Vec2 pPosition, Vec2 pVelocity=new Vec2(), bool moving=true) : base (pRadius*2 + 1, pRadius*2 + 1)
 	{
         myGame = (MyGame)game;

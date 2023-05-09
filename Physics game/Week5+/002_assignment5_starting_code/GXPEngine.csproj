@@ -40,8 +40,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BallNew.cs" />
     <Compile Include="Ball.cs" />
+    <Compile Include="BallNew.cs" />
     <Compile Include="BallTarget.cs" />
     <Compile Include="Block.cs" />
     <Compile Include="CollisionInfo.cs" />
@@ -51,8 +51,8 @@
     <Compile Include="MovingLine.cs" />
     <Compile Include="MyGame.cs" />
     <Compile Include="OperationCheck.cs" />
-    <Compile Include="Rectangle.cs" />
     <Compile Include="ShootingBall.cs" />
+    <Compile Include="Square.cs" />
     <Compile Include="Vec2.cs" />
     <Compile Include="..\..\GXPEngine2023b\GXPEngine\AddOns\Gizmos.cs">
       <Link>GXPEngine\AddOns\Gizmos.cs</Link>

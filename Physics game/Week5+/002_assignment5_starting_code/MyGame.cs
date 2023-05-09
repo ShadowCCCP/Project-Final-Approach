@@ -9,24 +9,25 @@ public class MyGame : Game
 {
     private string nextLevel;
     bool _stepped = false;
-	bool _paused = false;
-	int _stepIndex = 0;
+    bool _paused = false;
+    int _stepIndex = 0;
 
-	Canvas _lineContainer = null;
+    Canvas _lineContainer = null;
 
-	public List<Ball> _balls;
+    public List<Ball> _balls;
     List<LineSegment> _lines;
     List<Block> _blocks;
 
-	public float boundaryLeft;
-	public float boundaryRight;
+    public float boundaryLeft;
+    public float boundaryRight;
 
     public MyGame() : base(800, 600, false, false)
     {
         // Tiled loading
+        /*
         LoadLevel("MainMenu.tmx");
         OnAfterStep += CheckLoadLevel;
-
+        */
 
 
         _lineContainer = new Canvas(width, height);
@@ -78,6 +79,11 @@ public class MyGame : Game
 
 
 
+
+
+
+
+
     void LoadScene()
     {
         // remove previous scene:
@@ -119,7 +125,7 @@ public class MyGame : Game
         // Angled linesegment
         AddLine(new Vec2(290, 250), new Vec2(455, 350));
         // Moving Line (Player)
-        AddMovingLine(new Vec2(550, 450), new Vec2(550, 550));
+        AddMovingLine(new Vec2(550, 550), new Vec2(650, 550));
 
         foreach (Ball b in _balls)
         {

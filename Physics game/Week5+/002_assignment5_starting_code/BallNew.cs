@@ -23,9 +23,9 @@ namespace GXPEngine
 
         protected List<CollisionInfo> collisions;
 
-        public BallNew(string filename = "", int cols = 0, int rows = 0, TiledObject obj = null) : base(filename, cols, rows, -1, false, false)
+        public BallNew(string filename = "", int cols = 1, int rows = 1, TiledObject obj = null) : base(filename, cols, rows, -1, false, false)
         {
-
+            velocity = new Vec2(0, 1);
         }
 
         private CollisionInfo FindEarliestCollision()

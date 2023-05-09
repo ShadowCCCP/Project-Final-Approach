@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AngledLine.cs" />
     <Compile Include="Ball.cs" />
     <Compile Include="BallNew.cs" />
     <Compile Include="BallTarget.cs" />

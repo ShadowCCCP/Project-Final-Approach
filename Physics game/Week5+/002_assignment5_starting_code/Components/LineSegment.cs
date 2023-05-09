@@ -28,8 +28,8 @@ namespace GXPEngine
 		{
             MyGame myGame = (MyGame)game;
 
-            startBall = new Ball(0, new Vec2(pStart.x, pStart.y), moving: true);
-            endBall = new Ball(0, new Vec2(pEnd.x, pEnd.y), moving: true);
+            startBall = new Ball(0, new Vec2(pStart.x, pStart.y), default, true, moving: true);
+            endBall = new Ball(0, new Vec2(pEnd.x, pEnd.y), default, true, moving: true);
             myGame._balls.Add(startBall);
             myGame._balls.Add(endBall);
 

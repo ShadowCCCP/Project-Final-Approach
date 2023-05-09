@@ -10,9 +10,18 @@ namespace GXPEngine
 {
     class BallNew : AnimationSprite
     {
-
         public Vec2 velocity;
         public Vec2 position;
+
+        public float _density = 1;
+
+        public float Mass
+        {
+            get
+            {
+                return radius * radius * _density;
+            }
+        }
 
         public readonly int radius;
         public readonly bool moving;
@@ -57,7 +66,24 @@ namespace GXPEngine
         private void ResolveCollision(CollisionInfo col)
         {
             position = _oldPosition + col.timeOfImpact * velocity;
-            velocity.Reflect(col.normal);
+            if (col.other != null)
+            {
+                Ball other = col.other as Ball;
+                Console.WriteLine(other.lineBall);
+                if (other.lineBall)
+                {
+                    velocity.Reflect(col.normal);
+                }
+                else
+                {
+                    velocity.Reflect(col.normal, col.velCOM);
+                    other.velocity.Reflect(col.normal, col.velCOM);
+                }
+            }
+            else
+            {
+                velocity.Reflect(col.normal);
+            }
         }
 
         private void UpdateScreenPosition()
@@ -84,7 +110,8 @@ namespace GXPEngine
                     {
                         if (b < 0)
                         {
-                            collisions.Add(new CollisionInfo(u.Normalized(), mover, 0));
+                            Vec2 velCOM = (Mass * velocity + mover.Mass * mover.velocity) / (Mass + mover.Mass);
+                            collisions.Add(new CollisionInfo(u.Normalized(), mover, 0, velCOM));
                         }
                     }
 
@@ -97,7 +124,8 @@ namespace GXPEngine
                             float toi = (-b - Mathf.Sqrt(D)) / (2 * a);
                             if (0 <= toi && toi < 1)
                             {
-                                collisions.Add(new CollisionInfo(u.Normalized(), mover, toi));
+                                Vec2 velCOM = (Mass * velocity + mover.Mass * mover.velocity) / (Mass + mover.Mass);
+                                collisions.Add(new CollisionInfo(u.Normalized(), mover, toi, velCOM));
                             }
                         }
                     }

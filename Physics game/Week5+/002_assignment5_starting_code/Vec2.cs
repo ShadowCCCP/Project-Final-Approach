@@ -194,6 +194,10 @@ public struct Vec2
         this = this - (1 + pBounciness) * Dot(pNormal) * pNormal;
     }
 
+    public void Reflect(Vec2 pNormal, Vec2 velCOM, float pBounciness = 1)
+    {
+        this = this - (1 + pBounciness) * (this - velCOM).Dot(pNormal) * pNormal;
+    }
 
     // For comparing floats...
     public bool Approximate(Vec2 right, float precision = 0.00001f)

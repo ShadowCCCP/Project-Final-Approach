@@ -12,10 +12,22 @@ public class Ball : EasyDraw
 	// These four public static fields are changed from MyGame, based on key input (see Console):
 	public static bool drawDebugLine = false;
 
+    public bool lineBall;
+
 	public Vec2 velocity;
 	public Vec2 position;
 
-	public readonly int radius;
+    public float _density = 1;
+
+    public float Mass
+    {
+        get
+        {
+            return radius * radius * _density;
+        }
+    }
+
+    public readonly int radius;
 	public readonly bool moving;
 
     MyGame myGame;
@@ -27,9 +39,11 @@ public class Ball : EasyDraw
     protected bool collided;
 
 
-    public Ball (int pRadius, Vec2 pPosition, Vec2 pVelocity=new Vec2(), bool moving=true) : base (pRadius*2 + 1, pRadius*2 + 1)
+    public Ball (int pRadius, Vec2 pPosition, Vec2 pVelocity=new Vec2(), bool pLineBall = false, bool moving=true) : base (pRadius*2 + 1, pRadius*2 + 1)
 	{
         myGame = (MyGame)game;
+
+        lineBall = pLineBall;
 
         radius = pRadius;
 		position = pPosition;
@@ -75,7 +89,7 @@ public class Ball : EasyDraw
 
     }
 
-    private CollisionInfo FindEarliestCollision()
+    protected CollisionInfo FindEarliestCollision()
     {
         collisions = new List<CollisionInfo>();
 
@@ -87,10 +101,26 @@ public class Ball : EasyDraw
 
     }
 
-    private void ResolveCollision(CollisionInfo col)
+    protected void ResolveCollision(CollisionInfo col)
     {
         position = _oldPosition + col.timeOfImpact * velocity;
-        velocity.Reflect(col.normal);
+        if(col.other != null)
+        {
+            Ball other = col.other as Ball;
+            if(other.lineBall)
+            {
+                velocity.Reflect(col.normal);
+            }
+            else
+            {
+                velocity.Reflect(col.normal, col.velCOM);
+                other.velocity.Reflect(col.normal, col.velCOM);
+            }
+        }
+        else
+        {
+            velocity.Reflect(col.normal);
+        }
         // Discrete Ball/Ball collision
         /**
         Ball other = (Ball)col.other;
@@ -107,7 +137,7 @@ public class Ball : EasyDraw
         y = position.y;
     }
 
-    private void BallCollision()
+    protected void BallCollision()
     {
         for (int i = 0; i < myGame.GetNumberOfBalls(); i++)
         {
@@ -124,7 +154,8 @@ public class Ball : EasyDraw
                     if (b < 0)
                     {
                         mover.SetCollisionTrue();
-                        collisions.Add(new CollisionInfo(u.Normalized(), mover, 0));
+                        Vec2 velCOM = (Mass * velocity + mover.Mass * mover.velocity) / (Mass + mover.Mass);
+                        collisions.Add(new CollisionInfo(u.Normalized(), mover, 0, velCOM));
                     }
                 }
 
@@ -138,7 +169,8 @@ public class Ball : EasyDraw
                         if (0 <= toi && toi < 1)
                         {
                             mover.SetCollisionTrue();
-                            collisions.Add(new CollisionInfo(u.Normalized(), mover, toi));
+                            Vec2 velCOM = (Mass * velocity + mover.Mass * mover.velocity) / (Mass + mover.Mass);
+                            collisions.Add(new CollisionInfo(u.Normalized(), mover, toi, velCOM));
                         }
                     }
                 }

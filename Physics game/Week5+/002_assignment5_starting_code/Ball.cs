@@ -34,6 +34,8 @@ public class Ball : EasyDraw
     Vec2 _oldPosition;
 	Arrow _velocityIndicator;
 
+    private float bouncyPlatformVelocity= 1.5f;
+
     protected List<CollisionInfo> collisions;
 
     protected bool collided;
@@ -269,6 +271,17 @@ public class Ball : EasyDraw
             if (lineDistance >= 0 && lineDistance <= bottomOrTop.Length())
             {
                 collisions.Add(new CollisionInfo(bottomOrTop.Normal(), null, toi));
+                
+               
+                if(myGame.GetLine(i) is BouncyPlatform)
+                {
+          
+                    velocity = velocity * bouncyPlatformVelocity;
+                }
+                if(myGame.GetLine(i) is ButtonPlatform)
+                {
+                    //button
+                }
             }
         }
     }

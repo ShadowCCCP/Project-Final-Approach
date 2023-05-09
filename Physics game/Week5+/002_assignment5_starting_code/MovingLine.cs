@@ -64,15 +64,15 @@ namespace GXPEngine
         private void Update()
         {
             //sB.position = new Vec2(Input.mouseX, Input.mouseY);
-            if (Input.GetMouseButton(1) && !sB.shot) //left click
+            if (Input.GetMouseButton(0) && !sB.shot) //left click
             {
                 MyGame myGame = (MyGame)game;
-               // sB.position = new Vec2(200,200);
-                myGame._balls.Add(sB);
+                // sB.position = new Vec2(200,200);
+                //myGame._balls.Add(sB);
+                myGame.SpawnSB(sB);
                 sB.shot = true;
             }
             Movement();
-           // ApplyVelocity();
             UpdateBalls();
         }
 
@@ -127,12 +127,6 @@ namespace GXPEngine
             sB.UpdateNormal(start, end);
             sB.UpdateRotation(GetRotation()+90);
         }
-
-      /*  private void ApplyVelocity()
-        {
-            start += velocity;
-            end += velocity;
-        }*/
 
         private void FollowTarget()
         {

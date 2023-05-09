@@ -267,6 +267,12 @@ public class MyGame : Game
 		}
 	}
 
+    public void SpawnSB(GameObject ball)
+    {
+        AddChild(ball);
+    }
+
+
 	void Update () {
 		HandleInput();
 		if (!_paused) {

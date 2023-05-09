@@ -14,40 +14,33 @@ public class MyGame : Game
 
     Canvas _lineContainer = null;
 
-    public List<Ball> _balls;
+    public List<Ball> _ballsOld;
     List<LineSegment> _lines;
     List<Block> _blocks;
 
     public float boundaryLeft;
     public float boundaryRight;
 
-    public MyGame() : base(800, 600, false, false)
-    {
-        // Tiled loading
-        /*
-        LoadLevel("MainMenu.tmx");
-        OnAfterStep += CheckLoadLevel;
-        */
-
-
-        _lineContainer = new Canvas(width, height);
-        AddChild(_lineContainer);
-
-        targetFps = 60;
-
-        _balls = new List<Ball>();
-        _lines = new List<LineSegment>();
-        _blocks = new List<Block>();
-
-        LoadScene();
-
-        PrintInfo();
-    }
-
 
 
 
     // Tiled loading
+    List<Square> _squares;
+    List<BallNew> _balls;
+    List<AngledLine> _angles;
+
+    /**
+    public MyGame() : base(6144, 4096, false, false, 1536, 1024)
+    {
+        // Tiled loading
+        LoadLevel("Level1.tmx");
+        OnAfterStep += CheckLoadLevel;
+        _balls = new List<BallNew>();
+        _squares = new List<Square>();
+        _angles = new List<AngledLine>();
+    }
+    //*/
+
     private void DestroyAll()
     {
         List<GameObject> children = GetChildren();
@@ -72,6 +65,62 @@ public class MyGame : Game
         }
     }
 
+    public void AddSquare(Square square)
+    {
+        _squares.Add(square);
+    }
+
+    public int NumberOfSquares()
+    {
+        return _squares.Count;
+    }
+
+    public Square GetSquare(int index)
+    {
+        if (index >= 0 && index < _squares.Count)
+        {
+            return _squares[index];
+        }
+        return null;
+    }
+
+    public void AddBall(BallNew ball)
+    {
+        _balls.Add(ball);
+    }
+
+    public int NumberOfBalls()
+    {
+        return _balls.Count;
+    }
+
+    public BallNew GetBall(int index)
+    {
+        if (index >= 0 && index < _balls.Count)
+        {
+            return _balls[index];
+        }
+        return null;
+    }
+
+    public void AddAngle(AngledLine angle)
+    {
+        _angles.Add(angle);
+    }
+
+    public int NumberOfAngles()
+    {
+        return _angles.Count;
+    }
+
+    public AngledLine GetAngle(int index)
+    {
+        if (index >= 0 && index < _angles.Count)
+        {
+            return _angles[index];
+        }
+        return null;
+    }
 
 
 
@@ -83,15 +132,35 @@ public class MyGame : Game
 
 
 
+
+
+
+
+    /**/
+    public MyGame() : base(800, 600, false, false)
+    {
+
+        _lineContainer = new Canvas(width, height);
+        AddChild(_lineContainer);
+
+        targetFps = 60;
+
+        _ballsOld = new List<Ball>();
+        _lines = new List<LineSegment>();
+        _blocks = new List<Block>();
+
+        LoadScene();
+    }
+    //*/
 
     void LoadScene()
     {
         // remove previous scene:
-        foreach (Ball mover in _balls)
+        foreach (Ball mover in _ballsOld)
         {
             mover.Destroy();
         }
-        _balls.Clear();
+        _ballsOld.Clear();
         foreach (LineSegment line in _lines)
         {
             line.Destroy();
@@ -131,7 +200,7 @@ public class MyGame : Game
         //bouncy platform test
         AddBouncyPlatform(new Vec2(500,300),new Vec2(600,300));
 
-        foreach (Ball b in _balls)
+        foreach (Ball b in _ballsOld)
         {
             AddChild(b);
         }
@@ -158,12 +227,17 @@ public class MyGame : Game
 
 	public void RemoveBall(Ball ball)
 	{
-		_balls.Remove(ball);
+		_ballsOld.Remove(ball);
 	}
 
     public int GetNumberOfLines()
     {
-        return _lines.Count;
+        if(_lines != null)
+        {
+            return _lines.Count;
+        }
+
+        return 0;
     }
 
     public LineSegment GetLine(int index)
@@ -177,14 +251,14 @@ public class MyGame : Game
 
     public int GetNumberOfBalls()
     {
-        return _balls.Count;
+        return _ballsOld.Count;
     }
 
     public Ball GetBalls(int index)
     {
-        if (index >= 0 && index < _balls.Count)
+        if (index >= 0 && index < _ballsOld.Count)
         {
-            return _balls[index];
+            return _ballsOld[index];
         }
         return null;
     }
@@ -205,7 +279,7 @@ public class MyGame : Game
     {
         BallTarget ball = new BallTarget(radius, new Vec2(x, y), live);
         AddChild(ball);
-        _balls.Add(ball);
+        _ballsOld.Add(ball);
     }
 
     void AddLine (Vec2 start, Vec2 end) {
@@ -229,7 +303,6 @@ public class MyGame : Game
     }
 
 	/****************************************************************************************/
-
 	void PrintInfo() {
 		Console.WriteLine("Hold spacebar to slow down the frame rate.");
 		Console.WriteLine("Press S to toggle stepped mode.");
@@ -259,18 +332,18 @@ public class MyGame : Game
 			LoadScene();
 		}
 	}
-
+    
 	void StepThroughMovers() {
 		if (_stepped) { // move everything step-by-step: in one frame, only one mover moves
 			_stepIndex++;
-			if (_stepIndex >= _balls.Count) {
+			if (_stepIndex >= _ballsOld.Count) {
 				_stepIndex = 0;
 			}
-			if (_balls [_stepIndex].moving) {
-				_balls [_stepIndex].Step ();
+			if (_ballsOld [_stepIndex].moving) {
+				_ballsOld [_stepIndex].Step ();
 			}
 		} else { // move all movers every frame
-			foreach (Ball mover in _balls) {
+			foreach (Ball mover in _ballsOld) {
 				if (mover.moving) {
 					mover.Step ();
 				}
@@ -291,7 +364,7 @@ public class MyGame : Game
 			StepThroughMovers ();
 		}
     }
-
+    
 	static void Main() {
 		new MyGame().Start();
 	}

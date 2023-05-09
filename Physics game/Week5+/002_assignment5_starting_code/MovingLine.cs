@@ -12,6 +12,9 @@ namespace GXPEngine
     /// </summary>
     public class MovingLine : LineSegment
     {
+        bool doOnce;
+
+        MyGame myGame;
         float lineCurrentDistance;
         float boundaryLeft;
         float boundaryRight;
@@ -25,19 +28,12 @@ namespace GXPEngine
 
         public MovingLine(Vec2 pStart, Vec2 pEnd, uint pColor = 0xffffffff, uint pLineWidth = 1) : base(pStart, pEnd, pColor = 0xffffffff, pLineWidth = 1)
         {
-            MyGame myGame = (MyGame)game;
+            myGame = (MyGame)game;
             boundaryRight = myGame.boundaryRight;
             boundaryLeft = myGame.boundaryLeft;
 
             start = pStart;
             end = pEnd;
-
-            // Shooting ball //new Vec2(end.x + line.x / 2 + line.Normal().x * 20, end.y + line.y / 2 + line.Normal().y * 20)
-           // Vec2 line = end - start;
-            sB = new ShootingBall(15, start, new Vec2(0, 0), false);
-            myGame._balls.Add(sB);
-           // myGame.SpawnSB(sB);
-
 
             color = pColor;
             lineWidth = pLineWidth;
@@ -64,17 +60,31 @@ namespace GXPEngine
 
         private void Update()
         {
-            //sB.position = new Vec2(Input.mouseX, Input.mouseY);
-            if (Input.GetMouseButton(0) && !sB.shot) //left click
-            {
-               // MyGame myGame = (MyGame)game;
-                // sB.position = new Vec2(200,200);
-                //myGame._balls.Add(sB);
-               // myGame.SpawnSB(sB);
-                sB.shot = true;
-            }
+            Shoot();
             Movement();
             UpdateBalls();
+        }
+
+        private void Shoot()
+        {
+            if (Input.GetMouseButton(0) && !doOnce) //left click
+            {
+                sB = new ShootingBall(15, start + (start - end).Normalized() * 25, (start - end).Normalized() * 8, false);
+                myGame._ballsOld.Add(sB);
+                myGame.AddChild(sB);
+                sB.shot = true;
+                sB.rotation = GetRotation() + 90;
+                doOnce = true;
+            }
+
+            if (sB != null)
+            {
+                if (sB.y > myGame.height + sB.radius + 50)
+                {
+                    doOnce = false;
+                    sB.LateDestroy();
+                }
+            }
         }
 
         private void CheckBoundaries()
@@ -125,8 +135,8 @@ namespace GXPEngine
             endBall.position = end;
 
             // shooting ball
-            sB.UpdateNormal(start, end);
-            sB.UpdateRotation(GetRotation()+90);
+            //sB.UpdateNormal(start, end);
+            //sB.UpdateRotation(GetRotation()+90);
         }
 
         private void FollowTarget()

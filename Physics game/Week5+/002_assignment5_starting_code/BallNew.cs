@@ -8,8 +8,10 @@ using TiledMapParser;
 
 namespace GXPEngine
 {
-    class BallNew : AnimationSprite
+    public class BallNew : AnimationSprite
     {
+        public bool lineBall;
+
         public Vec2 velocity;
         public Vec2 position;
 
@@ -26,6 +28,7 @@ namespace GXPEngine
         public readonly int radius;
         public readonly bool moving;
 
+        bool posFix;
         MyGame myGame;
         Vec2 _oldPosition;
         Arrow _velocityIndicator;
@@ -34,7 +37,19 @@ namespace GXPEngine
 
         public BallNew(string filename = "", int cols = 1, int rows = 1, TiledObject obj = null) : base(filename, cols, rows, -1, false, false)
         {
-            velocity = new Vec2(0, 1);
+            myGame = (MyGame)game;
+            myGame.AddBall(this);
+
+            radius = 128;
+
+            velocity = new Vec2(-10, -10);
+        }
+
+        public BallNew(int pRadius, Vec2 pPosition, Vec2 pVelocity = new Vec2(), bool pLineBall = false, bool moving = true) : base("DebugBall.png", 1, 1, -1, false, false)
+        {
+            myGame = (MyGame)game;
+            lineBall = true;
+            myGame.AddBall(this);
         }
 
         private CollisionInfo FindEarliestCollision()
@@ -49,8 +64,9 @@ namespace GXPEngine
 
         }
 
-        public void Step()
+        public void Update()
         {
+            PositionFix();
             _oldPosition = position;
             position += velocity;
 
@@ -68,7 +84,7 @@ namespace GXPEngine
             position = _oldPosition + col.timeOfImpact * velocity;
             if (col.other != null)
             {
-                Ball other = col.other as Ball;
+                BallNew other = col.other as BallNew;
                 Console.WriteLine(other.lineBall);
                 if (other.lineBall)
                 {
@@ -86,6 +102,17 @@ namespace GXPEngine
             }
         }
 
+        private void PositionFix()
+        {
+            if(!posFix)
+            {
+                position.x = x;
+                position.y = y;
+
+                posFix = true;
+            }
+        }
+
         private void UpdateScreenPosition()
         {
             x = position.x;
@@ -94,11 +121,9 @@ namespace GXPEngine
 
         private void BallCollision()
         {
-            BallNew[] moverList = FindObjectsOfType<BallNew>();
-
-            for (int i = 0; i < moverList.Length; i++)
+            for (int i = 0; i < myGame.NumberOfBalls(); i++)
             {
-                BallNew mover = moverList[i];
+                BallNew mover = myGame.GetBall(i);
                 if (mover != this)
                 {
                     Vec2 u = _oldPosition - mover.position;
@@ -159,9 +184,9 @@ namespace GXPEngine
 
         private void LineSegmentCollision()
         {
-            for (int i = 0; i < myGame.GetNumberOfLines(); i++)
+            for (int i = 0; i < myGame.NumberOfAngles(); i++)
             {
-                Vec2 difference = position - myGame.GetLine(i).end;
+                Vec2 difference = position - myGame.GetAngle(i).end;
 
                 // Bottom
                 LineSegmentTopOrBottom(true, difference, i);
@@ -176,11 +201,11 @@ namespace GXPEngine
 
             if (bottom)
             {
-                bottomOrTop = myGame.GetLine(i).end - myGame.GetLine(i).start;
+                bottomOrTop = myGame.GetAngle(i).end - myGame.GetAngle(i).start;
             }
             else
             {
-                bottomOrTop = myGame.GetLine(i).start - myGame.GetLine(i).end;
+                bottomOrTop = myGame.GetAngle(i).start - myGame.GetAngle(i).end;
             }
 
             float toi = 2;
@@ -202,11 +227,11 @@ namespace GXPEngine
                 Vec2 poiDifference;
                 if (bottom)
                 {
-                    poiDifference = poi - myGame.GetLine(i).start;
+                    poiDifference = poi - myGame.GetAngle(i).start;
                 }
                 else
                 {
-                    poiDifference = poi - myGame.GetLine(i).end;
+                    poiDifference = poi - myGame.GetAngle(i).end;
                 }
                 float lineDistance = poiDifference.Dot(bottomOrTop.Normalized());
                 if (lineDistance >= 0 && lineDistance <= bottomOrTop.Length())
@@ -218,40 +243,39 @@ namespace GXPEngine
 
         private void BlockCollision()
         {
-            Square[] rectangles = FindObjectsOfType<Square>();
-            for (int i = 0; i < rectangles.Length; i++)
+            for (int i = 0; i < myGame.NumberOfSquares(); i++)
             {
                 Vec2 check = new Vec2(x, y);
 
                 // left edge
-                if (x < rectangles[i].x)
+                if (x < myGame.GetSquare(i).x - myGame.GetSquare(i).width / 2)
                 {
-                    check.x = rectangles[i].x;
+                    check.x = myGame.GetSquare(i).x - myGame.GetSquare(i).width / 2;
                 }
                 // right edge
-                else if (x > rectangles[i].x + rectangles[i].width)
+                else if (x > myGame.GetSquare(i).x + myGame.GetSquare(i).width/2)
                 {
-                    check.x = rectangles[i].x + rectangles[i].width;
+                    check.x = myGame.GetSquare(i).x + myGame.GetSquare(i).width / 2;
                 }
 
                 // top edge
-                if (y < rectangles[i].y)
+                if (y < myGame.GetSquare(i).y - myGame.GetSquare(i).height / 2)
                 {
-                    check.y = rectangles[i].y;
+                    check.y = myGame.GetSquare(i).y - myGame.GetSquare(i).height / 2;
                 }
                 // bottom edge
-                else if (y > rectangles[i].y + rectangles[i].height)
+                else if (y > myGame.GetSquare(i).y + myGame.GetSquare(i).height/2)
                 {
-                    check.y = rectangles[i].y + rectangles[i].height;
+                    check.y = myGame.GetSquare(i).y + myGame.GetSquare(i).height / 2;
                 }
 
                 Vec2 dist = new Vec2(position.x - check.x, position.y - check.y);
                 float distance = dist.Length();
-                if (distance <= radius) // This is the correct discrete collision check 
+                if (distance <= radius)
                 {
                     // Check whether the calculated point is on a corner or not
-                    if (check.Approximate(rectangles[i].topLeftCorner) || check.Approximate(rectangles[i].topRightCorner) ||
-                        check.Approximate(rectangles[i].bottomLeftCorner) || check.Approximate(rectangles[i].bottomRightCorner))
+                    if (check.Approximate(myGame.GetSquare(i).topLeftCorner) || check.Approximate(myGame.GetSquare(i).topRightCorner) ||
+                        check.Approximate(myGame.GetSquare(i).bottomLeftCorner) || check.Approximate(myGame.GetSquare(i).bottomRightCorner))
                     {
                         Vec2 normal = (position - check).Normalized();
                         float overlap = radius - distance;
@@ -262,18 +286,21 @@ namespace GXPEngine
                     {
                         if (Math.Abs(dist.x) < Math.Abs(dist.y))
                         {
-                            if (y < rectangles[i].y)
+                            if (y < myGame.GetSquare(i).y)
                             {
+                                Console.WriteLine("top");
+                                Console.WriteLine(myGame.GetSquare(i).height / 2);
                                 //top
-                                float impactY = rectangles[i].y - radius;
+                                float impactY = myGame.GetSquare(i).y - (myGame.GetSquare(i).height / 2 + radius + 1);
 
                                 position.y = impactY;
                                 velocity.y *= -1;
                             }
                             else
                             {
+                                Console.WriteLine("bottom");
                                 // bottom
-                                float impactY = rectangles[i].y + rectangles[i].height + radius;
+                                float impactY = myGame.GetSquare(i).y + (myGame.GetSquare(i).height/2 + radius + 1);
 
                                 position.y = impactY;
                                 velocity.y *= -1;
@@ -281,18 +308,20 @@ namespace GXPEngine
                         }
                         else
                         {
-                            if (x < rectangles[i].x)
+                            if (x < myGame.GetSquare(i).x)
                             {
+                                Console.WriteLine("left");
                                 // left
-                                float impactX = rectangles[i].x - radius;
+                                float impactX = myGame.GetSquare(i).x - (myGame.GetSquare(i).width / 2 + radius + 1);
 
                                 position.x = impactX;
                                 velocity.x *= -1;
                             }
                             else
                             {
+                                Console.WriteLine("right");
                                 // right
-                                float impactX = rectangles[i].x + rectangles[i].width + radius;
+                                float impactX = myGame.GetSquare(i).x + (myGame.GetSquare(i).width / 2 + radius + 1);
 
                                 position.x = impactX;
                                 velocity.x *= -1;

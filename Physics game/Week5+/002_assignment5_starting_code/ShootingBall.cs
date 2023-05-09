@@ -26,53 +26,7 @@ namespace GXPEngine
 
         private void Update()
         {
-            if (!shot)
-            {
-                UpdateGizmo();
-                UpdateBallOnLine();
-               /* if (Input.GetKeyDown(Key.ENTER))
-                {
-                    shot = true;
-                }*/
-            }
-            else if(shot && !doOnce)
-            {
-                velocity = line.Normalized() * 8;
-                doOnce = true;
-            }
-           
-
-            CheckBoundaries();
-        }
-
-        public void UpdateRotation(float degrees)
-        {
-            lineRotation = degrees;
-        }
-
-        public void UpdateNormal(Vec2 start, Vec2 end)
-        {
-            lineEnd = end;
-            lineStart = start;
-
-            line = start - end;
-        }
-
-        private void UpdateBallOnLine()
-        {
-            //position = new Vec2(lineEnd.x + line.x / 2 + line.Normal().x * 20, lineEnd.y + line.y / 2 + line.Normal().y * 20);
-            position = lineStart;
-            rotation = lineRotation;
-        }
-
-        private void CheckBoundaries()
-        {
-            if(y > myGame.height + radius + 50)
-            {
-                shot = false;
-                doOnce = false;
-                velocity = new Vec2(0, 0);
-            }
+            UpdateGizmo();
         }
 
         private void UpdateGizmo()

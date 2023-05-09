@@ -30,8 +30,8 @@ namespace GXPEngine
 
             startBall = new Ball(0, new Vec2(pStart.x, pStart.y), default, true, moving: true);
             endBall = new Ball(0, new Vec2(pEnd.x, pEnd.y), default, true, moving: true);
-            myGame._balls.Add(startBall);
-            myGame._balls.Add(endBall);
+            myGame._ballsOld.Add(startBall);
+            myGame._ballsOld.Add(endBall);
 
             start = pStart;
 			end = pEnd;

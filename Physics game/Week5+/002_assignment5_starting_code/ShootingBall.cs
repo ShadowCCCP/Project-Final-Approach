@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace GXPEngine
 {
-    class ShootingBall : Ball
+    public class ShootingBall : Ball
     {
         private MyGame myGame;
         private Vec2 lineEnd;

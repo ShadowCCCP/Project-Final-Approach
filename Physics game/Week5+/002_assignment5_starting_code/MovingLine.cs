@@ -35,8 +35,8 @@ namespace GXPEngine
             // Shooting ball //new Vec2(end.x + line.x / 2 + line.Normal().x * 20, end.y + line.y / 2 + line.Normal().y * 20)
             Vec2 line = end - start;
             sB = new ShootingBall(15, start, new Vec2(0, 0), false);
-           // myGame._balls.Add(sB);
-            myGame.SpawnSB(sB);
+            myGame._balls.Add(sB);
+           // myGame.SpawnSB(sB);
 
 
             color = pColor;
@@ -67,7 +67,7 @@ namespace GXPEngine
             //sB.position = new Vec2(Input.mouseX, Input.mouseY);
             if (Input.GetMouseButton(0) && !sB.shot) //left click
             {
-                MyGame myGame = (MyGame)game;
+               // MyGame myGame = (MyGame)game;
                 // sB.position = new Vec2(200,200);
                 //myGame._balls.Add(sB);
                // myGame.SpawnSB(sB);

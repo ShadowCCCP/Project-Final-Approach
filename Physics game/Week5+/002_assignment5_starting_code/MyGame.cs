@@ -267,9 +267,10 @@ public class MyGame : Game
 		}
 	}
 
-    public void SpawnSB(GameObject ball)
+    public void SpawnSB(ShootingBall sb)
     {
-        AddChild(ball);
+       // Add(sb);
+        AddChild(sb);
     }
 
 

@@ -7,16 +7,18 @@ using GXPEngine.Core;
 
 namespace GXPEngine
 {
-    class BouncyPlatform : LineSegment
+     class ButtonPlatform :LineSegment
     {
-        public BouncyPlatform(Vec2 pStart, Vec2 pEnd, uint pColor = 0xffffffff, uint pLineWidth = 1) : base(pStart, pEnd, pColor = 0xffffffff, pLineWidth = 1)
+        public ButtonPlatform (Vec2 pStart, Vec2 pEnd, uint pColor = 0xffffffff, uint pLineWidth = 1) : base(pStart, pEnd, pColor = 0xffffffff, pLineWidth = 1)
         {
             start = pStart;
             end = pEnd;
         }
 
 
-        
+
+
+
 
 
 

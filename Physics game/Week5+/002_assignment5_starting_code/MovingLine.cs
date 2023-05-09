@@ -36,6 +36,7 @@ namespace GXPEngine
             Vec2 line = end - start;
             sB = new ShootingBall(15, start, new Vec2(0, 0), false);
            // myGame._balls.Add(sB);
+            myGame.SpawnSB(sB);
 
 
             color = pColor;
@@ -69,7 +70,7 @@ namespace GXPEngine
                 MyGame myGame = (MyGame)game;
                 // sB.position = new Vec2(200,200);
                 //myGame._balls.Add(sB);
-                myGame.SpawnSB(sB);
+               // myGame.SpawnSB(sB);
                 sB.shot = true;
             }
             Movement();

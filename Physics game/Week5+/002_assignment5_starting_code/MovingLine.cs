@@ -29,10 +29,12 @@ namespace GXPEngine
             boundaryRight = myGame.boundaryRight;
             boundaryLeft = myGame.boundaryLeft;
 
-            // Shooting ball
+            // Shooting ball //new Vec2(end.x + line.x / 2 + line.Normal().x * 20, end.y + line.y / 2 + line.Normal().y * 20)
             Vec2 line = end - start;
-            sB = new ShootingBall(15, start, new Vec2(0, 0), false);
+            sB = new ShootingBall(15, new Vec2(end.x + line.x / 2 + line.Normal().x * 20, end.y + line.y / 2 + line.Normal().y * 20), new Vec2(0, 0), false);
             myGame._balls.Add(sB);
+
+            
 
             start = pStart;
             end = pEnd;

@@ -30,16 +30,17 @@ namespace GXPEngine
             {
                 UpdateGizmo();
                 UpdateBallOnLine();
-                if (Input.GetKeyDown(Key.ENTER))
+               /* if (Input.GetKeyDown(Key.ENTER))
                 {
                     shot = true;
-                }
+                }*/
             }
             else if(shot && !doOnce)
             {
-                velocity = line.Normal() * 8;
+                velocity = line.Normalized() * 8;
                 doOnce = true;
             }
+           
 
             CheckBoundaries();
         }

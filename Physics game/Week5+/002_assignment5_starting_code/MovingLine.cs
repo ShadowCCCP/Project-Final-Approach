@@ -29,15 +29,15 @@ namespace GXPEngine
             boundaryRight = myGame.boundaryRight;
             boundaryLeft = myGame.boundaryLeft;
 
-            // Shooting ball //new Vec2(end.x + line.x / 2 + line.Normal().x * 20, end.y + line.y / 2 + line.Normal().y * 20)
-            Vec2 line = end - start;
-            sB = new ShootingBall(15, new Vec2(end.x + line.x / 2 + line.Normal().x * 20, end.y + line.y / 2 + line.Normal().y * 20), new Vec2(0, 0), false);
-            myGame._balls.Add(sB);
-
-            
-
             start = pStart;
             end = pEnd;
+
+            // Shooting ball //new Vec2(end.x + line.x / 2 + line.Normal().x * 20, end.y + line.y / 2 + line.Normal().y * 20)
+            Vec2 line = end - start;
+            sB = new ShootingBall(15, start, new Vec2(0, 0), false);
+           // myGame._balls.Add(sB);
+
+
             color = pColor;
             lineWidth = pLineWidth;
         }
@@ -63,8 +63,16 @@ namespace GXPEngine
 
         private void Update()
         {
+            //sB.position = new Vec2(Input.mouseX, Input.mouseY);
+            if (Input.GetMouseButton(1) && !sB.shot) //left click
+            {
+                MyGame myGame = (MyGame)game;
+               // sB.position = new Vec2(200,200);
+                myGame._balls.Add(sB);
+                sB.shot = true;
+            }
             Movement();
-            ApplyVelocity();
+           // ApplyVelocity();
             UpdateBalls();
         }
 
@@ -120,11 +128,11 @@ namespace GXPEngine
             sB.UpdateRotation(GetRotation()+90);
         }
 
-        private void ApplyVelocity()
+      /*  private void ApplyVelocity()
         {
             start += velocity;
             end += velocity;
-        }
+        }*/
 
         private void FollowTarget()
         {

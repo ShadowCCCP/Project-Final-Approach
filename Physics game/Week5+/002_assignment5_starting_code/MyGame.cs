@@ -127,6 +127,10 @@ public class MyGame : Game
         // Moving Line (Player)
         AddMovingLine(new Vec2(550, 550), new Vec2(650, 550));
 
+
+        //bouncy platform test
+        AddBouncyPlatform(new Vec2(500,300),new Vec2(600,300));
+
         foreach (Ball b in _balls)
         {
             AddChild(b);
@@ -213,6 +217,13 @@ public class MyGame : Game
 	void AddMovingLine(Vec2 start, Vec2 end)
     {
         MovingLine line = new MovingLine(start, end, 0xff00ff00, 4);
+        AddChild(line);
+        _lines.Add(line);
+    }
+
+    void AddBouncyPlatform(Vec2 start, Vec2 end)
+    {
+        BouncyPlatform line = new BouncyPlatform(start, end, 0xff00ff00, 4);
         AddChild(line);
         _lines.Add(line);
     }

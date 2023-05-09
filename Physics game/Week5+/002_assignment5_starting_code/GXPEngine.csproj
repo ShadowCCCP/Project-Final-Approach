@@ -45,6 +45,7 @@
     <Compile Include="BallNew.cs" />
     <Compile Include="BallTarget.cs" />
     <Compile Include="Block.cs" />
+    <Compile Include="BouncyPlatform.cs" />
     <Compile Include="CollisionInfo.cs" />
     <Compile Include="Components\Arrow.cs" />
     <Compile Include="Components\LineSegment.cs" />

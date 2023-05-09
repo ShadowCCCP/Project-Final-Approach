@@ -20,8 +20,8 @@ namespace GXPEngine
         ShootingBall sB;
 
         Vec2 velocity = new Vec2(0, 0);
-        float acceleration = 0.8f;
-        float friction = 0.1f;
+        //float acceleration = 0.8f;
+        //float friction = 0.1f;
 
         public MovingLine(Vec2 pStart, Vec2 pEnd, uint pColor = 0xffffffff, uint pLineWidth = 1) : base(pStart, pEnd, pColor = 0xffffffff, pLineWidth = 1)
         {
@@ -33,7 +33,7 @@ namespace GXPEngine
             end = pEnd;
 
             // Shooting ball //new Vec2(end.x + line.x / 2 + line.Normal().x * 20, end.y + line.y / 2 + line.Normal().y * 20)
-            Vec2 line = end - start;
+           // Vec2 line = end - start;
             sB = new ShootingBall(15, start, new Vec2(0, 0), false);
             myGame._balls.Add(sB);
            // myGame.SpawnSB(sB);

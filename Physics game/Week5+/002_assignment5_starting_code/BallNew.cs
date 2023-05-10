@@ -11,11 +11,14 @@ namespace GXPEngine
     public class BallNew : AnimationSprite
     {
         public bool lineBall;
+        public bool IsBullet = false;
 
         public Vec2 velocity;
         public Vec2 position;
 
         public float _density = 1;
+
+        private float bouncyPlatformVelocity = 1.5f;
 
         public float Mass
         {
@@ -321,6 +324,20 @@ namespace GXPEngine
                                 velocity.x *= -1;
                             }
                         }
+                        if (myGame.GetSquare(i) is BouncyPlatform)
+                        {
+                            myGame.BouncyPlatformAnim = true;
+                            velocity = velocity * bouncyPlatformVelocity;
+                        }
+                        if (myGame.GetSquare(i) is ButtonPlatform)
+                        {
+                            myGame.ButtonPressed = true;
+                        }
+                        else
+                        {
+                            myGame.ButtonPressed = false;
+                        }
+
                     }
                 }
             }

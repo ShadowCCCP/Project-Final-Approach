@@ -3,34 +3,53 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using GXPEngine.Core;
+using TiledMapParser;
 
 namespace GXPEngine
 {
-    class BouncyPlatform : LineSegment
+    class BouncyPlatform : Square
     {
-        public BouncyPlatform(Vec2 pStart, Vec2 pEnd, uint pColor = 0xffffffff, uint pLineWidth = 1) : base(pStart, pEnd, pColor = 0xffffffff, pLineWidth = 1)
+        MyGame myGame;
+        bool animFinished = true;
+        int counter = 0;
+        int frame = 0;
+        public BouncyPlatform(string filename = "", int cols = 1, int rows = 1, TiledObject obj = null) : base("JumpyPlatformS.png", 4, 1)
         {
-            start = pStart;
-            end = pEnd;
+            
         }
 
 
         
-
-
-
-
-
-        //------------------------------------------------------------------------------------------------------------------------
-        //														RenderSelf()
-        //------------------------------------------------------------------------------------------------------------------------
-        override protected void RenderSelf(GLContext glContext)
+        void Update()
         {
-            if (game != null)
+            myGame = (MyGame)game;
+            if (myGame.BouncyPlatformAnim)
             {
-                Gizmos.RenderLine(start.x, start.y, end.x, end.y, color, lineWidth);
+                animFinished = false;
             }
+
+            if (!animFinished && myGame.BouncyPlatformAnim)
+            {
+                counter++;
+
+                if (counter > 10) // animation
+                {
+                    counter = 0;
+                    frame++;
+                    if (frame == 5)
+                    {
+                        animFinished = true;
+
+                        frame = 0;
+                    }
+                }
+            }
+            SetFrame(frame);
         }
+
+
+
+
+      
     }
 }

@@ -9,6 +9,8 @@ namespace GXPEngine
 {
     public class Square : AnimationSprite
     {
+        bool posFix;
+
         public Vec2 topEdge;
         public Vec2 bottomEdge;
         public Vec2 rightEdge;
@@ -27,7 +29,7 @@ namespace GXPEngine
             }
         }
 
-        Vec2 _position;
+        protected Vec2 _position;
 
         public Square(string filename = "", int cols = 1, int rows = 1, TiledObject obj = null) : base(filename, cols, rows, -1, false, false)
         {
@@ -55,6 +57,26 @@ namespace GXPEngine
             bottomEdge = bottomRightCorner - bottomLeftCorner;
             rightEdge = topRightCorner - bottomRightCorner;
             leftEdge = bottomLeftCorner - topLeftCorner;
+        }
+
+        protected virtual void Update()
+        {
+            if(this is ShootingTale)
+            {
+                Console.WriteLine(x);
+            }
+            //PositionFix();
+        }
+
+        protected void PositionFix()
+        {
+            if (!posFix)
+            {
+                _position.x = x;
+                _position.y = y;
+
+                posFix = true;
+            }
         }
 
         void UpdateScreenPosition()

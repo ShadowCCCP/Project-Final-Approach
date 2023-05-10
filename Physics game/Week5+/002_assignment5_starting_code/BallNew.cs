@@ -88,7 +88,6 @@ namespace GXPEngine
             if (col.other != null)
             {
                 BallNew other = col.other as BallNew;
-                Console.WriteLine(other.lineBall);
                 if (other.lineBall)
                 {
                     velocity.Reflect(col.normal);
@@ -291,8 +290,6 @@ namespace GXPEngine
                         {
                             if (y < myGame.GetSquare(i).y)
                             {
-                                Console.WriteLine("top");
-                                Console.WriteLine(myGame.GetSquare(i).height / 2);
                                 //top
                                 float impactY = myGame.GetSquare(i).y - (myGame.GetSquare(i).height / 2 + radius + 1);
 
@@ -301,7 +298,6 @@ namespace GXPEngine
                             }
                             else
                             {
-                                Console.WriteLine("bottom");
                                 // bottom
                                 float impactY = myGame.GetSquare(i).y + (myGame.GetSquare(i).height/2 + radius + 1);
 
@@ -313,7 +309,6 @@ namespace GXPEngine
                         {
                             if (x < myGame.GetSquare(i).x)
                             {
-                                Console.WriteLine("left");
                                 // left
                                 float impactX = myGame.GetSquare(i).x - (myGame.GetSquare(i).width / 2 + radius + 1);
 
@@ -322,7 +317,6 @@ namespace GXPEngine
                             }
                             else
                             {
-                                Console.WriteLine("right");
                                 // right
                                 float impactX = myGame.GetSquare(i).x + (myGame.GetSquare(i).width / 2 + radius + 1);
 

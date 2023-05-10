@@ -11,6 +11,7 @@ namespace GXPEngine
     public class BallNew : AnimationSprite
     {
         public bool lineBall;
+        public bool IsBullet = false;
 
         public Vec2 velocity;
         public Vec2 position;

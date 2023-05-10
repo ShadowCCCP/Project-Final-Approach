@@ -75,6 +75,11 @@ public class MyGame : Game
         return _squares.Count;
     }
 
+    public void RemoveSquare(Square square)
+    {
+        _squares.Remove(square);
+    }
+
     public Square GetSquare(int index)
     {
         if (index >= 0 && index < _squares.Count)
@@ -201,8 +206,8 @@ public class MyGame : Game
         AddBouncyPlatform(new Vec2(500,300),new Vec2(600,300));
 
         //gates
-        AddGate(new Vec2(700, 350), new Vec2(700, 400), true);
-        AddGate(new Vec2(700, 400), new Vec2(700, 450), false);
+        //AddGate(new Vec2(700, 350), new Vec2(700, 400), true);
+        //AddGate(new Vec2(700, 400), new Vec2(700, 450), false);
 
         foreach (Ball b in _ballsOld)
         {
@@ -306,12 +311,12 @@ public class MyGame : Game
         _lines.Add(line);
     }
 
-    void AddGate(Vec2 start, Vec2 end, bool trueIfTopGate)
+    /*void AddGate(Vec2 start, Vec2 end, bool trueIfTopGate)
     {
         Gate line = new Gate(start, end, trueIfTopGate, 0xff00ff00, 4);
         AddChild(line);
         _lines.Add(line);
-    }
+    }*/
 
     /****************************************************************************************/
     void PrintInfo() {

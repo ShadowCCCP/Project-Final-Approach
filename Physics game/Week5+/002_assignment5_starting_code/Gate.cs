@@ -4,18 +4,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using GXPEngine.Core;
+using TiledMapParser;
 
 namespace GXPEngine
 {
-    class Gate : LineSegment
+    class Gate : Square
     {
-        bool trueIfTop;
+        int counter = 0;
+        int frame = 1;
+
+        bool animFinished = false;
         bool opening = true;
-        public Gate(Vec2 pStart, Vec2 pEnd, bool _trueIfTop, uint pColor = 0xffffffff, uint pLineWidth = 1) : base(pStart, pEnd, pColor = 0xffffffff, pLineWidth = 1)
+
+        MyGame myGame;
+        public Gate(string filename = "", int cols =1 ,int rows =1, TiledObject obj = null) : base("gate.png",6,1)
         {
-            start = pStart;
-            end = pEnd;
-            trueIfTop = _trueIfTop;
+           
         }
 
         public void OpenGate()
@@ -25,19 +29,25 @@ namespace GXPEngine
 
         void Update()
         {
-            if (opening && start.y != end.y)
+            if (opening && !animFinished)
             {
-                if (trueIfTop)
+                counter++;
+                
+                if (counter > 10 ) // animation
                 {
-                    end.y--;
-                }
-                else
-                {
-                    start.y++;
-                }
+                    counter = 0;
+                    frame++;
+                    if (frame == 6)
+                    {
+                        animFinished = true;
 
+                        myGame = (MyGame)game;
+                        myGame.RemoveSquare(this);
+                    }
+                }
             }
-
+            SetFrame(frame);
+            
         }
 
 
@@ -48,15 +58,6 @@ namespace GXPEngine
 
 
 
-        //------------------------------------------------------------------------------------------------------------------------
-        //                                                        RenderSelf()
-        //------------------------------------------------------------------------------------------------------------------------
-        override protected void RenderSelf(GLContext glContext)
-        {
-            if (game != null)
-            {
-                Gizmos.RenderLine(start.x, start.y, end.x, end.y, color, lineWidth);
-            }
-        }
+        
     }
 }

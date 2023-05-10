@@ -23,6 +23,20 @@ namespace GXPEngine
             CreateLevel();
         }
 
+        private void Update()
+        {
+            RestartLevelCheck();
+        }
+
+        private void RestartLevelCheck()
+        {
+            if(Input.GetKeyDown(Key.R))
+            {
+                MyGame myGame = (MyGame)game;
+                myGame.LoadLevel(currentLevelName);
+            }
+        }
+
         private void CreateLevel(bool includeImageLayer = true)
         {
             try

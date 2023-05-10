@@ -49,6 +49,9 @@ public class MyGame : Game
         {
             child.Destroy();
         }
+        _balls.Clear();
+        _squares.Clear();
+        _angles.Clear();
     }
 
     public void LoadLevel(string filename)

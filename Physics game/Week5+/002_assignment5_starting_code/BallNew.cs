@@ -17,6 +17,8 @@ namespace GXPEngine
 
         public float _density = 1;
 
+        private float bouncyPlatformVelocity = 1.5f;
+
         public float Mass
         {
             get
@@ -327,6 +329,20 @@ namespace GXPEngine
                                 velocity.x *= -1;
                             }
                         }
+                        if (myGame.GetSquare(i) is BouncyPlatform)
+                        {
+                            myGame.BouncyPlatformAnim = true;
+                            velocity = velocity * bouncyPlatformVelocity;
+                        }
+                        if (myGame.GetSquare(i) is ButtonPlatform)
+                        {
+                            myGame.ButtonPressed = true;
+                        }
+                        else
+                        {
+                            myGame.ButtonPressed = false;
+                        }
+
                     }
                 }
             }

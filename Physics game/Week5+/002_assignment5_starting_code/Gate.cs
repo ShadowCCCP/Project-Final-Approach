@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using GXPEngine.Core;
 using TiledMapParser;
 
 namespace GXPEngine
@@ -11,10 +10,9 @@ namespace GXPEngine
     class Gate : Square
     {
         int counter = 0;
-        int frame = 1;
+        int frame = 0;
 
-        bool animFinished = false;
-        bool opening = true;
+        bool animFinished = true;
 
         MyGame myGame;
         public Gate(string filename = "", int cols =1 ,int rows =1, TiledObject obj = null) : base("gate.png",6,1)
@@ -22,14 +20,15 @@ namespace GXPEngine
            
         }
 
-        public void OpenGate()
-        {
-            opening = true;
-        }
-
         void Update()
         {
-            if (opening && !animFinished)
+            myGame = (MyGame)game;
+            if (myGame.ButtonPressed)
+            {
+                animFinished = false;
+            }
+
+            if (!animFinished && myGame.ButtonPressed)
             {
                 counter++;
                 
@@ -37,11 +36,10 @@ namespace GXPEngine
                 {
                     counter = 0;
                     frame++;
-                    if (frame == 6)
+                    if (frame == 5)
                     {
                         animFinished = true;
 
-                        myGame = (MyGame)game;
                         myGame.RemoveSquare(this);
                     }
                 }

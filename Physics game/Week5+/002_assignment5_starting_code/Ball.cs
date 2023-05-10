@@ -275,12 +275,17 @@ public class Ball : EasyDraw
                
                 if(myGame.GetLine(i) is BouncyPlatform)
                 {
-          
+                    myGame.BouncyPlatformAnim = true;
                     velocity = velocity * bouncyPlatformVelocity;
                 }
                 if(myGame.GetLine(i) is ButtonPlatform)
                 {
                     //button
+                    myGame.ButtonPressed = true;
+                }
+                else
+                {
+                    myGame.ButtonPressed = false;
                 }
             }
         }

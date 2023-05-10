@@ -11,28 +11,31 @@ namespace GXPEngine
     public class ShootingTale : Square
     {
         float rotationSpeed = 5;
-        Vec2 position;
+        Vec2 playerPos;
+        bool doOnce;
+        Bullet bullet;
 
-        public ShootingTale(Vec2 pPosition, string filename = "DebugPlayer.png", int cols = 1, int rows = 1) : base(filename, cols, rows)
+        public ShootingTale(Vec2 pPosition, string filename = "RatTail.png", int cols = 1, int rows = 1) : base(filename, cols, rows)
         {
-            SetOrigin(width/2, height/2);
-            position = pPosition;
+            SetOrigin(width - 117, height - 28);
+            playerPos = pPosition;
         }
 
-        protected override void Update()
+        private void Update()
         {
+            Shoot();
             FollowMouse();
         }
 
         private void FollowMouse()
         {
+            
             Vec2 mousePos = new Vec2(Input.mouseX, Input.mouseY);
-
-            Vec2 cPos = mousePos - (position - height/2);
-            Console.WriteLine(rotation);
-            float targetRotation = cPos.GetAngleDegrees() - rotation;
+            Vec2 cPos = mousePos - playerPos;
+            //onsole.WriteLine(rotation);
+            float targetRotation = cPos.GetAngleDegrees() + 45;
             float distance = (targetRotation - rotation + 540) % 360 - 180;
-            Console.WriteLine("distance: " + distance);
+
             if (distance > rotationSpeed)
             {
                 rotation += rotationSpeed;
@@ -43,7 +46,29 @@ namespace GXPEngine
             }
             else
             {
-                rotation += distance;
+                rotation = targetRotation;
+            }
+        }
+
+        private void Shoot()
+        {
+            if (Input.GetMouseButton(0) && !doOnce) //left click
+            {
+                Vec2 velocityDirection = new Vec2(143, -91);
+                Vec2 laserTip = new Vec2(width, -height);
+                Vec2 currentPos = new Vec2(x, y);
+                bullet = new Bullet(currentPos + laserTip.RotateDegrees(rotation), velocityDirection.RotateDegrees(rotation).Normalized() * 40);
+                game.AddChild(bullet);
+                doOnce = true;
+            }
+            else if (doOnce)
+            {
+                if(bullet.collisions >= bullet.maxCollisions)
+                {
+                    myGame.RemoveBall(bullet);
+                    bullet.LateDestroy();
+                    doOnce = false;
+                }
             }
         }
     }

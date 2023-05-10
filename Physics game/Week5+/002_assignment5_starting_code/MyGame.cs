@@ -109,6 +109,11 @@ public class MyGame : Game
         return null;
     }
 
+    public void RemoveBall(BallNew ball)
+    {
+        _balls.Remove(ball);
+    }
+
     public void AddAngle(AngledLine angle)
     {
         _angles.Add(angle);

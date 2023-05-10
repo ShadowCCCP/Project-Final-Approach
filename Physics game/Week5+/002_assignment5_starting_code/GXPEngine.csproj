@@ -54,7 +54,9 @@
     <Compile Include="Level.cs" />
     <Compile Include="MovingLine.cs" />
     <Compile Include="MyGame.cs" />
+    <Compile Include="Player.cs" />
     <Compile Include="ShootingBall.cs" />
+    <Compile Include="ShootingTale.cs" />
     <Compile Include="Square.cs" />
     <Compile Include="Vec2.cs" />
     <Compile Include="..\..\GXPEngine2023b\GXPEngine\AddOns\Gizmos.cs">

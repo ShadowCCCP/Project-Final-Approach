@@ -29,7 +29,7 @@ public class MyGame : Game
     List<BallNew> _balls;
     List<AngledLine> _angles;
 
-    /**
+    /**/
     public MyGame() : base(6144, 4096, false, false, 1536, 1024)
     {
         // Tiled loading
@@ -136,7 +136,7 @@ public class MyGame : Game
 
 
 
-    /**/
+    /**
     public MyGame() : base(800, 600, false, false)
     {
 
@@ -199,6 +199,10 @@ public class MyGame : Game
 
         //bouncy platform test
         AddBouncyPlatform(new Vec2(500,300),new Vec2(600,300));
+
+        //gates
+        AddGate(new Vec2(700, 350), new Vec2(700, 400), true);
+        AddGate(new Vec2(700, 400), new Vec2(700, 450), false);
 
         foreach (Ball b in _ballsOld)
         {
@@ -302,8 +306,15 @@ public class MyGame : Game
         _lines.Add(line);
     }
 
-	/****************************************************************************************/
-	void PrintInfo() {
+    void AddGate(Vec2 start, Vec2 end, bool trueIfTopGate)
+    {
+        Gate line = new Gate(start, end, trueIfTopGate, 0xff00ff00, 4);
+        AddChild(line);
+        _lines.Add(line);
+    }
+
+    /****************************************************************************************/
+    void PrintInfo() {
 		Console.WriteLine("Hold spacebar to slow down the frame rate.");
 		Console.WriteLine("Press S to toggle stepped mode.");
 		Console.WriteLine("Press P to toggle pause.");
@@ -332,7 +343,7 @@ public class MyGame : Game
 			LoadScene();
 		}
 	}
-    
+    /*
 	void StepThroughMovers() {
 		if (_stepped) { // move everything step-by-step: in one frame, only one mover moves
 			_stepIndex++;
@@ -364,6 +375,7 @@ public class MyGame : Game
 			StepThroughMovers ();
 		}
     }
+    */
     
 	static void Main() {
 		new MyGame().Start();

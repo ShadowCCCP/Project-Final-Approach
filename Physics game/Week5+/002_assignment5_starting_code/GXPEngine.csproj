@@ -50,6 +50,7 @@
     <Compile Include="CollisionInfo.cs" />
     <Compile Include="Components\Arrow.cs" />
     <Compile Include="Components\LineSegment.cs" />
+    <Compile Include="Gate.cs" />
     <Compile Include="Level.cs" />
     <Compile Include="MovingLine.cs" />
     <Compile Include="MyGame.cs" />

@@ -21,7 +21,8 @@ public class MyGame : Game
     public float boundaryLeft;
     public float boundaryRight;
 
-
+    public bool ButtonPressed=false;
+    public bool BouncyPlatformAnim=false;
 
 
     // Tiled loading
@@ -73,6 +74,11 @@ public class MyGame : Game
     public int NumberOfSquares()
     {
         return _squares.Count;
+    }
+
+    public void RemoveSquare(Square square)
+    {
+        _squares.Remove(square);
     }
 
     public Square GetSquare(int index)
@@ -198,11 +204,11 @@ public class MyGame : Game
 
 
         //bouncy platform test
-        AddBouncyPlatform(new Vec2(500,300),new Vec2(600,300));
+        //AddBouncyPlatform(new Vec2(500,300),new Vec2(600,300));
 
         //gates
-        AddGate(new Vec2(700, 350), new Vec2(700, 400), true);
-        AddGate(new Vec2(700, 400), new Vec2(700, 450), false);
+        //AddGate(new Vec2(700, 350), new Vec2(700, 400), true);
+        //AddGate(new Vec2(700, 400), new Vec2(700, 450), false);
 
         foreach (Ball b in _ballsOld)
         {
@@ -299,19 +305,19 @@ public class MyGame : Game
         _lines.Add(line);
     }
 
-    void AddBouncyPlatform(Vec2 start, Vec2 end)
+    /*void AddBouncyPlatform(Vec2 start, Vec2 end)
     {
         BouncyPlatform line = new BouncyPlatform(start, end, 0xff00ff00, 4);
         AddChild(line);
         _lines.Add(line);
-    }
+    }*/
 
-    void AddGate(Vec2 start, Vec2 end, bool trueIfTopGate)
+    /*void AddGate(Vec2 start, Vec2 end, bool trueIfTopGate)
     {
         Gate line = new Gate(start, end, trueIfTopGate, 0xff00ff00, 4);
         AddChild(line);
         _lines.Add(line);
-    }
+    }*/
 
     /****************************************************************************************/
     void PrintInfo() {
@@ -343,6 +349,9 @@ public class MyGame : Game
 			LoadScene();
 		}
 	}
+
+
+
     /*
 	void StepThroughMovers() {
 		if (_stepped) { // move everything step-by-step: in one frame, only one mover moves

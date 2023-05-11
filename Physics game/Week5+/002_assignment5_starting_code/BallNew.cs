@@ -18,6 +18,8 @@ namespace GXPEngine
         public Vec2 velocity;
         public Vec2 position;
 
+        string nextLevel;
+
         public float _density = 1;
         public float bounciness = 0.9f;
 
@@ -279,7 +281,7 @@ namespace GXPEngine
         {
             for (int i = 0; i < myGame.NumberOfSquares(); i++)
             {
-                if((myGame.GetSquare(i) is EBallThroughOnly && !IsBullet) /*|| (myGame.GetSquare(i) is BulletThroughOnly && IsBullet)*/)
+                if((myGame.GetSquare(i) is EBallThroughOnly && !IsBullet))
                 {
                     break;
                 }
@@ -386,13 +388,14 @@ namespace GXPEngine
             else
             {
                 myGame.ButtonPressed = false;
-                Console.WriteLine("Button off");
+               // Console.WriteLine("Button off");
             }
-            if (myGame.GetSquare(i) is EnergyReceptor)
+           /* if (myGame.GetSquare(i) is EnergyReceptor)
             {
                 //NEXT LEVEL
+                myGame.LoadLevel(nextLevel);
                 Console.WriteLine("Next level");
-            }
+            }*/
         }
 
         int time;

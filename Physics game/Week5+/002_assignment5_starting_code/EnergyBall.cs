@@ -28,6 +28,24 @@ namespace GXPEngine
             acceleration = new Vec2(0, gravity);
         }
 
+        public EnergyBall(Vec2 pPosition, int pGoalSide, float pBounciness, float pGravity, string pNextLevel, float velocityX, float velocityY, string filename = "DebugBall.png", int cols = 1, int rows = 1) : base(filename, cols, rows)
+        {
+            radius = 128;
+
+            goalSide = pGoalSide;
+            bounciness = pBounciness;
+            gravity = pGravity;
+            nextLevel = pNextLevel;
+
+            velocity = new Vec2(velocityX, velocityY);
+            
+            acceleration = new Vec2(0, gravity);
+
+            SetXY(pPosition.x, pPosition.y);
+
+            SetOrigin(width / 2, height / 2);
+        }
+
         protected override void BlockCollision()
         {
             for (int i = 0; i < myGame.NumberOfSquares(); i++)

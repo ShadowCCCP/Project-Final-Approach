@@ -54,13 +54,18 @@ namespace GXPEngine
 
         private void Shoot()
         {
+            Vec2 velocityDirection = new Vec2(143, -91);
+            Vec2 laserTip = new Vec2(width - 25, -height + 25);
+            Vec2 currentPos = new Vec2(x, y);
+
+            Vec2 spawnPosition = currentPos + laserTip.RotateDegrees(rotation);
+            Vec2 velocity = velocityDirection.RotateDegrees(rotation).Normalized() * 40;
+
+            Gizmos.DrawRay(spawnPosition.x, spawnPosition.y, velocity.x * 10, velocity.y * 10, null, 0xffff0000);
 
             if (Input.GetMouseButton(0) && !doOnce) //left click
             {
-                Vec2 velocityDirection = new Vec2(143, -91);
-                Vec2 laserTip = new Vec2(width, -height);
-                Vec2 currentPos = new Vec2(x, y);
-                bullet = new Bullet(currentPos + laserTip.RotateDegrees(rotation), velocityDirection.RotateDegrees(rotation).Normalized() * 40, maxCollisions);
+                bullet = new Bullet(spawnPosition, velocity, maxCollisions);
                 game.AddChild(bullet);
                 doOnce = true;
             }

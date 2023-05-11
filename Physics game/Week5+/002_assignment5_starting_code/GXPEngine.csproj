@@ -41,26 +41,21 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AngledLine.cs" />
-    <Compile Include="Ball.cs" />
     <Compile Include="BallNew.cs" />
-    <Compile Include="BallTarget.cs" />
-    <Compile Include="Block.cs" />
     <Compile Include="BouncyPlatform.cs" />
     <Compile Include="Bullet.cs" />
     <Compile Include="BulletThroughOnly.cs" />
     <Compile Include="ButtonPlatform.cs" />
     <Compile Include="CollisionInfo.cs" />
     <Compile Include="Components\Arrow.cs" />
-    <Compile Include="Components\LineSegment.cs" />
+    <Compile Include="EBallSpawner.cs" />
     <Compile Include="EBallThroughOnly.cs" />
     <Compile Include="EnergyBall.cs" />
     <Compile Include="EnergyReceptor.cs" />
     <Compile Include="Gate.cs" />
     <Compile Include="Level.cs" />
-    <Compile Include="MovingLine.cs" />
     <Compile Include="MyGame.cs" />
     <Compile Include="Player.cs" />
-    <Compile Include="ShootingBall.cs" />
     <Compile Include="ShootingTale.cs" />
     <Compile Include="Square.cs" />
     <Compile Include="Vec2.cs" />

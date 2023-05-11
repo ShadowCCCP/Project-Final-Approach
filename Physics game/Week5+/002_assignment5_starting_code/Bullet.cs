@@ -124,11 +124,6 @@ namespace GXPEngine
             }
         }
 
-        public void Disappear()
-        {
-
-        }
-
         private void UpdatePosition()
         {
             x = position.x;

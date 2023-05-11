@@ -18,6 +18,7 @@ namespace GXPEngine
 
             if (obj != null)
             {
+                bounciness = obj.GetFloatProperty("bounciness", 0.9f);
                 gravity = obj.GetFloatProperty("gravity", 0.5f);
                 nextLevel = obj.GetStringProperty("nextLevel", "Level1.tmx");
             }

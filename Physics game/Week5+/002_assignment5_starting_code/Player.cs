@@ -15,9 +15,16 @@ namespace GXPEngine
         Vec2 position2;
         int counter = 0;
         int frame = 0;
+        int maxCollisions;
+
         public Player(string filename = "", int cols = 1, int rows = 1, TiledObject obj = null) : base(filename, cols, rows, obj)
         {
             myGame = (MyGame)game;
+
+            if (obj != null)
+            {
+                maxCollisions = obj.GetIntProperty("maxCollisions", 6);
+            }
 
             isPlayer = true;
 
@@ -62,7 +69,7 @@ namespace GXPEngine
 
         private void CreateShootingTale()
         {
-            ShootingTale shootTale = new ShootingTale(position2);
+            ShootingTale shootTale = new ShootingTale(position2, maxCollisions);
             shootTale.SetXY(position2.x - width / 2 + 10, position2.y + height/4);
             myGame.AddChild(shootTale);
         }

@@ -11,17 +11,16 @@ namespace GXPEngine
     public class BallNew : AnimationSprite
     {
         public bool lineBall;
-        public bool IsBullet = false;
-
+        public bool IsBullet;
         bool timer = false;
-
+        public Vec2 acceleration;
         public Vec2 velocity;
         public Vec2 position;
 
         public float _density = 1;
+        public float bounciness = 0.9f;
 
         private float bouncyPlatformVelocity = 1.5f;
-        private Vec2 oldVelocity;
 
         public float Mass
         {
@@ -31,11 +30,12 @@ namespace GXPEngine
             }
         }
 
-        public readonly int radius;
+        public int radius;
         public readonly bool moving;
 
+        protected MyGame myGame;
+
         bool posFix;
-        MyGame myGame;
         Vec2 _oldPosition;
         Arrow _velocityIndicator;
 
@@ -53,12 +53,14 @@ namespace GXPEngine
 
         public BallNew(int pRadius, Vec2 pPosition, Vec2 pVelocity = new Vec2(), bool pLineBall = false, bool moving = true) : base("DebugBall.png", 1, 1, -1, false, false)
         {
+            radius = pRadius;
+            position = pPosition;
             myGame = (MyGame)game;
-            lineBall = true;
+            lineBall = pLineBall;
             myGame.AddBall(this);
         }
 
-        private CollisionInfo FindEarliestCollision()
+        protected CollisionInfo FindEarliestCollision()
         {
             collisions = new List<CollisionInfo>();
 
@@ -70,7 +72,7 @@ namespace GXPEngine
 
         }
 
-        public void Update()
+        protected virtual void Update()
         {
             PositionFix();
             _oldPosition = position;
@@ -83,7 +85,7 @@ namespace GXPEngine
             {
                 ResolveCollision(firstCollision);
             }
-
+            velocity += acceleration;
             timerBouncy();
             animationDestroy();
         }
@@ -93,7 +95,7 @@ namespace GXPEngine
         int frame = 0;
         void animationDestroy()
         {
-            if (ballDestroyed )
+            if (ballDestroyed)
             {
                 counter++;
 
@@ -111,7 +113,7 @@ namespace GXPEngine
             SetFrame(frame);
         }
 
-        private void ResolveCollision(CollisionInfo col)
+        protected virtual void ResolveCollision(CollisionInfo col)
         {
             position = _oldPosition + col.timeOfImpact * velocity;
             if (col.other != null)
@@ -119,21 +121,21 @@ namespace GXPEngine
                 BallNew other = col.other as BallNew;
                 if (other.lineBall)
                 {
-                    velocity.Reflect(col.normal);
+                    velocity.Reflect(col.normal, bounciness);
                 }
                 else
                 {
-                    velocity.Reflect(col.normal, col.velCOM);
-                    other.velocity.Reflect(col.normal, col.velCOM);
+                    velocity.Reflect(col.normal, col.velCOM, bounciness);
+                    other.velocity.Reflect(col.normal, col.velCOM, bounciness);
                 }
             }
             else
             {
-                velocity.Reflect(col.normal);
+                velocity.Reflect(col.normal, bounciness);
             }
         }
 
-        private void PositionFix()
+        protected void PositionFix()
         {
             if(!posFix)
             {
@@ -144,13 +146,13 @@ namespace GXPEngine
             }
         }
 
-        private void UpdateScreenPosition()
+        protected void UpdateScreenPosition()
         {
             x = position.x;
             y = position.y;
         }
 
-        private void BallCollision()
+        protected void BallCollision()
         {
             for (int i = 0; i < myGame.NumberOfBalls(); i++)
             {
@@ -189,7 +191,7 @@ namespace GXPEngine
             }
         }
 
-        private CollisionInfo EarliestCollision()
+        protected CollisionInfo EarliestCollision()
         {
             foreach (CollisionInfo col in collisions)
             {
@@ -213,7 +215,7 @@ namespace GXPEngine
             return null;
         }
 
-        private void LineSegmentCollision()
+        protected void LineSegmentCollision()
         {
             for (int i = 0; i < myGame.NumberOfAngles(); i++)
             {
@@ -226,7 +228,7 @@ namespace GXPEngine
             }
         }
 
-        private void LineSegmentTopOrBottom(bool bottom, Vec2 difference, int i)
+        protected void LineSegmentTopOrBottom(bool bottom, Vec2 difference, int i)
         {
             Vec2 bottomOrTop;
 
@@ -272,7 +274,7 @@ namespace GXPEngine
             }
         }
 
-        private void BlockCollision()
+        protected virtual void BlockCollision()
         {
             for (int i = 0; i < myGame.NumberOfSquares(); i++)
             {
@@ -316,7 +318,7 @@ namespace GXPEngine
                         Vec2 normal = (position - check).Normalized();
                         float overlap = radius - distance;
                         position += normal * overlap;
-                        velocity.Reflect(normal);
+                        velocity.Reflect(normal, bounciness);
                     }
                     else
                     {
@@ -328,7 +330,7 @@ namespace GXPEngine
                                 float impactY = myGame.GetSquare(i).y - (myGame.GetSquare(i).height / 2 + radius + 1);
 
                                 position.y = impactY;
-                                velocity.y *= -1;
+                                velocity.y *= -bounciness;
                             }
                             else
                             {
@@ -336,7 +338,7 @@ namespace GXPEngine
                                 float impactY = myGame.GetSquare(i).y + (myGame.GetSquare(i).height/2 + radius + 1);
 
                                 position.y = impactY;
-                                velocity.y *= -1;
+                                velocity.y *= -bounciness;
                             }
                         }
                         else
@@ -347,7 +349,7 @@ namespace GXPEngine
                                 float impactX = myGame.GetSquare(i).x - (myGame.GetSquare(i).width / 2 + radius + 1);
 
                                 position.x = impactX;
-                                velocity.x *= -1;
+                                velocity.x *= -bounciness;
                             }
                             else
                             {
@@ -355,7 +357,7 @@ namespace GXPEngine
                                 float impactX = myGame.GetSquare(i).x + (myGame.GetSquare(i).width / 2 + radius + 1);
 
                                 position.x = impactX;
-                                velocity.x *= -1;
+                                velocity.x *= -bounciness;
                             }
                         }
                         objectchecker(i);

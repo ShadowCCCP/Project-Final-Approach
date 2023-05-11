@@ -29,8 +29,6 @@ namespace GXPEngine
             {
                 variant = obj.GetIntProperty("variant", 1);
             }
-
-            Console.WriteLine(start + " " + end);
         }
 
         public void Update()

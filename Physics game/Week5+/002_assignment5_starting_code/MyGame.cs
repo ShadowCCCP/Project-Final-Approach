@@ -49,6 +49,9 @@ public class MyGame : Game
         {
             child.Destroy();
         }
+        _balls.Clear();
+        _squares.Clear();
+        _angles.Clear();
     }
 
     public void LoadLevel(string filename)
@@ -112,6 +115,11 @@ public class MyGame : Game
             return _balls[index];
         }
         return null;
+    }
+
+    public void RemoveBall(BallNew ball)
+    {
+        _balls.Remove(ball);
     }
 
     public void AddAngle(AngledLine angle)

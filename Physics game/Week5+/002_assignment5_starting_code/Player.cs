@@ -13,13 +13,13 @@ namespace GXPEngine
         MyGame myGame;
         bool posFix;
         Vec2 position2;
-
         int counter = 0;
         int frame = 0;
-
-        public Player(string filename = "", int cols = 1, int rows = 1, TiledObject obj = null) : base("Player.png", 4, 1, obj)
+        public Player(string filename = "", int cols = 1, int rows = 1, TiledObject obj = null) : base(filename, cols, rows, obj)
         {
             myGame = (MyGame)game;
+
+            isPlayer = true;
 
             myGame.AddSquare(this);
         }
@@ -63,8 +63,8 @@ namespace GXPEngine
         private void CreateShootingTale()
         {
             ShootingTale shootTale = new ShootingTale(position2);
-            Console.WriteLine(position2);
-            AddChild(shootTale);
+            shootTale.SetXY(position2.x - width / 2 + 10, position2.y + height/4);
+            myGame.AddChild(shootTale);
         }
     }
 }

@@ -9,7 +9,7 @@ namespace GXPEngine
 {
     class EBallThroughOnly : Square
     {
-        public EBallThroughOnly(string filename = "", int cols = 1, int rows = 1, TiledObject obj = null) : base("ButtonS.png", 4, 1)
+        public EBallThroughOnly(string filename = "", int cols = 1, int rows = 1, TiledObject obj = null) : base(filename, cols, rows)
         {
 
         }

@@ -10,7 +10,7 @@ namespace GXPEngine
     {
         public int maxCollisions = 8;
         public int collisions;
-
+        float bouncyPlatformVelocity = 1.5f;
         public Bullet(Vec2 pPosition, Vec2 pVelocity) : base("Bullet.png", 1, 1)
         {
             SetOrigin(width / 2, height / 2);
@@ -18,12 +18,17 @@ namespace GXPEngine
             velocity = pVelocity;
             UpdatePosition();
             radius = 126;
+            IsBullet = true;
         }
 
         protected override void BlockCollision()
         {
             for (int i = 0; i < myGame.NumberOfSquares(); i++)
             {
+                if (myGame.GetSquare(i) is BulletThroughOnly)
+                {
+                    break;
+                }
                 if (myGame.GetSquare(i).isPlayer == false)
                 {
                     Vec2 check = new Vec2(x, y);

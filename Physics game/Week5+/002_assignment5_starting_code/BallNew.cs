@@ -11,8 +11,9 @@ namespace GXPEngine
     public class BallNew : AnimationSprite
     {
         public bool lineBall;
-        public bool IsBullet;
+        public bool IsBullet =false;
         bool timer = false;
+        Vec2 oldVelocity = new Vec2();
         public Vec2 acceleration;
         public Vec2 velocity;
         public Vec2 position;
@@ -278,7 +279,7 @@ namespace GXPEngine
         {
             for (int i = 0; i < myGame.NumberOfSquares(); i++)
             {
-                if((myGame.GetSquare(i) is EBallThroughOnly && !IsBullet) || (myGame.GetSquare(i) is BulletThroughOnly && IsBullet))
+                if((myGame.GetSquare(i) is EBallThroughOnly && !IsBullet) /*|| (myGame.GetSquare(i) is BulletThroughOnly && IsBullet)*/)
                 {
                     break;
                 }

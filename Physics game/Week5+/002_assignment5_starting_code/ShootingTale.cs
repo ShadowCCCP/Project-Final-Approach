@@ -14,11 +14,13 @@ namespace GXPEngine
         Vec2 playerPos;
         bool doOnce;
         Bullet bullet;
+        int maxCollisions;
 
-        public ShootingTale(Vec2 pPosition, string filename = "RatTail.png", int cols = 1, int rows = 1) : base(filename, cols, rows)
+        public ShootingTale(Vec2 pPosition, int pMaxCollisions, string filename = "RatTail.png", int cols = 1, int rows = 1) : base(filename, cols, rows)
         {
             SetOrigin(width - 117, height - 28);
             playerPos = pPosition;
+            maxCollisions = pMaxCollisions;
         }
 
         private void Update()
@@ -52,12 +54,13 @@ namespace GXPEngine
 
         private void Shoot()
         {
+
             if (Input.GetMouseButton(0) && !doOnce) //left click
             {
                 Vec2 velocityDirection = new Vec2(143, -91);
                 Vec2 laserTip = new Vec2(width, -height);
                 Vec2 currentPos = new Vec2(x, y);
-                bullet = new Bullet(currentPos + laserTip.RotateDegrees(rotation), velocityDirection.RotateDegrees(rotation).Normalized() * 40);
+                bullet = new Bullet(currentPos + laserTip.RotateDegrees(rotation), velocityDirection.RotateDegrees(rotation).Normalized() * 40, maxCollisions);
                 game.AddChild(bullet);
                 doOnce = true;
             }

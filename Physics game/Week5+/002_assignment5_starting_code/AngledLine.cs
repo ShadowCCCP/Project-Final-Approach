@@ -60,8 +60,8 @@ namespace GXPEngine
                         }
                 }
 
-                startBall = new BallNew(50, new Vec2(start.x, start.y), default, true, moving: true);
-                endBall = new BallNew(50, new Vec2(end.x, end.y), default, true, moving: true);
+                startBall = new BallNew(0, new Vec2(start.x, start.y), default, true, moving: true);
+                endBall = new BallNew(0, new Vec2(end.x, end.y), default, true, moving: true);
                 myGame.AddBall(startBall);
                 myGame.AddBall(endBall);
                 myGame.AddAngle(this);

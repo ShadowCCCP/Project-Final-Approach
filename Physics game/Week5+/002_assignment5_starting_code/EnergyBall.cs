@@ -13,6 +13,8 @@ namespace GXPEngine
 
         public EnergyBall(string filename = "", int cols = 1, int rows = 1, TiledObject obj = null) : base(filename, cols, rows)
         {
+            radius = 128;
+
             if (obj != null)
             {
                 gravity = obj.GetFloatProperty("gravity", 0.5f);

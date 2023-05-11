@@ -8,16 +8,17 @@ namespace GXPEngine
 {
     public class Bullet : BallNew
     {
-        public int maxCollisions = 8;
+        public int maxCollisions;
         public int collisions;
 
-        public Bullet(Vec2 pPosition, Vec2 pVelocity) : base("Bullet.png", 1, 1)
+        public Bullet(Vec2 pPosition, Vec2 pVelocity, int pMaxCollisions) : base("Bullet.png", 1, 1)
         {
+            maxCollisions = pMaxCollisions;
             SetOrigin(width / 2, height / 2);
             position = pPosition;
             velocity = pVelocity;
             UpdatePosition();
-            radius = 126;
+            radius = 128;
         }
 
         protected override void BlockCollision()

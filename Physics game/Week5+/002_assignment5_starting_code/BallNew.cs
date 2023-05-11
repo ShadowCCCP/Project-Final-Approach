@@ -50,8 +50,6 @@ namespace GXPEngine
             myGame.AddBall(this);
 
             radius = 128;
-
-            velocity = new Vec2(-10, -10);
         }
 
         public BallNew(int pRadius, Vec2 pPosition, Vec2 pVelocity = new Vec2(), bool pLineBall = false, bool moving = true) : base("DebugBall.png", 1, 1, -1, false, false)

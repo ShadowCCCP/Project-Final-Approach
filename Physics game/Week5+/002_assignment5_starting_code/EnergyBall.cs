@@ -11,6 +11,7 @@ namespace GXPEngine
     {
         float gravity;
         string nextLevel;
+        int goalSide;
 
         public EnergyBall(string filename = "", int cols = 1, int rows = 1, TiledObject obj = null) : base(filename, cols, rows)
         {
@@ -18,6 +19,7 @@ namespace GXPEngine
 
             if (obj != null)
             {
+                goalSide = obj.GetIntProperty("goalSide", 1);
                 bounciness = obj.GetFloatProperty("bounciness", 0.9f);
                 gravity = obj.GetFloatProperty("gravity", 0.5f);
                 nextLevel = obj.GetStringProperty("nextLevel", "Level1.tmx");
@@ -79,6 +81,7 @@ namespace GXPEngine
                             if (y < myGame.GetSquare(i).y)
                             {
                                 //top
+                                checkGoalCollision(1, i);
                                 float impactY = myGame.GetSquare(i).y - (myGame.GetSquare(i).height / 2 + radius + 1);
 
                                 position.y = impactY;
@@ -87,6 +90,7 @@ namespace GXPEngine
                             else
                             {
                                 // bottom
+                                checkGoalCollision(3, i);
                                 float impactY = myGame.GetSquare(i).y + (myGame.GetSquare(i).height / 2 + radius + 1);
 
                                 position.y = impactY;
@@ -98,6 +102,7 @@ namespace GXPEngine
                             if (x < myGame.GetSquare(i).x)
                             {
                                 // left
+                                checkGoalCollision(4, i);
                                 float impactX = myGame.GetSquare(i).x - (myGame.GetSquare(i).width / 2 + radius + 1);
 
                                 position.x = impactX;
@@ -106,21 +111,27 @@ namespace GXPEngine
                             else
                             {
                                 // right
+                                checkGoalCollision(2, i);
                                 float impactX = myGame.GetSquare(i).x + (myGame.GetSquare(i).width / 2 + radius + 1);
 
                                 position.x = impactX;
                                 velocity.x *= -bounciness;
                             }
                         }
-                        if (myGame.GetSquare(i) is EnergyReceptor)
-                        {
-                            //NEXT LEVEL
-                            myGame.LoadLevel(nextLevel);
-                            Console.WriteLine("Next level");
-                        }
-
-
                     }
+                }
+            }
+        }
+
+        private void checkGoalCollision(int goal, int i)
+        {
+            if (myGame.GetSquare(i) is EnergyReceptor)
+            {
+                if (goal == goalSide)
+                {
+                    //NEXT LEVEL
+                    myGame.LoadLevel(nextLevel);
+                    Console.WriteLine("Next level");
                 }
             }
         }

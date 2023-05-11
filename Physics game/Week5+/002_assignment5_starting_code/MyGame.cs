@@ -102,6 +102,11 @@ public class MyGame : Game
     {
         return _balls.Count;
     }
+    public void RemoveBallNew(BallNew ball)
+    {
+        _balls.Remove(ball);
+    }
+
 
     public BallNew GetBall(int index)
     {

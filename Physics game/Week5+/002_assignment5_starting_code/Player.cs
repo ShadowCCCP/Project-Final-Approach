@@ -13,8 +13,9 @@ namespace GXPEngine
         MyGame myGame;
         bool posFix;
         Vec2 position2;
-
-        public Player(string filename = "", int cols = 4, int rows = 1, TiledObject obj = null) : base(filename, cols, rows, obj)
+        int counter = 0;
+        int frame = 0;
+        public Player(string filename = "", int cols = 1, int rows = 1, TiledObject obj = null) : base(filename, cols, rows, obj)
         {
             myGame = (MyGame)game;
 
@@ -26,6 +27,24 @@ namespace GXPEngine
         private void Update()
         {
             PositionFix();
+            animation();
+        }
+
+        void animation()
+        {
+            counter++;
+
+            if (counter > 10) // animation
+            {
+                 counter = 0;
+                 frame++;
+                 if (frame == 4)
+                 { 
+                      frame = 0;
+                 }
+            }
+            
+            SetFrame(frame);
         }
 
         protected void PositionFix()

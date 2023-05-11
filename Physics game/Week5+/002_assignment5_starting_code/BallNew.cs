@@ -11,16 +11,19 @@ namespace GXPEngine
     public class BallNew : AnimationSprite
     {
         public bool lineBall;
-        public bool IsBullet;
-
+        public bool IsBullet =false;
+        bool timer = false;
+        Vec2 oldVelocity = new Vec2();
         public Vec2 acceleration;
         public Vec2 velocity;
         public Vec2 position;
 
+        string nextLevel;
+
         public float _density = 1;
         public float bounciness = 0.9f;
 
-        protected float bouncyPlatformVelocity = 1.5f;
+        private float bouncyPlatformVelocity = 1.5f;
 
         public float Mass
         {
@@ -86,6 +89,31 @@ namespace GXPEngine
                 ResolveCollision(firstCollision);
             }
             velocity += acceleration;
+            timerBouncy();
+            animationDestroy();
+        }
+
+        bool ballDestroyed = false; //this should become true when the energy orb breaks
+        int counter = 0;
+        int frame = 0;
+        void animationDestroy()
+        {
+            if (ballDestroyed)
+            {
+                counter++;
+
+                if (counter > 10) // animation
+                {
+                    counter = 0;
+                    frame++;
+                    if (frame == 8)
+                    {
+                        frame = 0;
+                        myGame.RemoveBallNew(this);
+                    }
+                }
+            }
+            SetFrame(frame);
         }
 
         protected virtual void ResolveCollision(CollisionInfo col)
@@ -253,6 +281,11 @@ namespace GXPEngine
         {
             for (int i = 0; i < myGame.NumberOfSquares(); i++)
             {
+                if((myGame.GetSquare(i) is EBallThroughOnly && !IsBullet))
+                {
+                    break;
+                }
+
                 Vec2 check = new Vec2(x, y);
 
                 // left edge
@@ -330,23 +363,62 @@ namespace GXPEngine
                                 velocity.x *= -bounciness;
                             }
                         }
-                        if (myGame.GetSquare(i) is BouncyPlatform)
-                        {
-                            myGame.BouncyPlatformAnim = true;
-                            velocity = velocity * bouncyPlatformVelocity;
-                        }
-                        if (myGame.GetSquare(i) is ButtonPlatform)
-                        {
-                            myGame.ButtonPressed = true;
-                        }
-                        else
-                        {
-                            myGame.ButtonPressed = false;
-                        }
+                        objectchecker(i);
+                        
 
                     }
                 }
             }
+        }
+
+        void objectchecker(int i)
+        {
+            if (myGame.GetSquare(i) is BouncyPlatform)
+            {
+                myGame.BouncyPlatformAnim = true;
+                oldVelocity = velocity;
+                velocity = velocity * bouncyPlatformVelocity;
+                timer = true;
+            }
+            if (myGame.GetSquare(i) is ButtonPlatform)
+            {
+                myGame.ButtonPressed = true;
+                Console.WriteLine("Button pressed");
+            }
+            else
+            {
+                myGame.ButtonPressed = false;
+               // Console.WriteLine("Button off");
+            }
+           /* if (myGame.GetSquare(i) is EnergyReceptor)
+            {
+                //NEXT LEVEL
+                myGame.LoadLevel(nextLevel);
+                Console.WriteLine("Next level");
+            }*/
+        }
+
+        int time;
+        bool timerStarted = false;
+
+        void timerBouncy()
+        {
+             if (timerStarted == false)
+             {
+                 time = Time.time;
+             }
+             if (timer == true) //start timer
+             {
+                  timerStarted = true;
+
+                  if (Time.time - time > 1500) //timer ends
+                  {
+                        velocity = oldVelocity;
+                        timer = false;
+                        timerStarted = false;
+                  }
+             }
+            
         }
     }
 }

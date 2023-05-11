@@ -13,7 +13,7 @@ namespace GXPEngine
         bool animFinished = true;
         int counter = 0;
         int frame = 0;
-        public BouncyPlatform(string filename = "", int cols = 1, int rows = 1, TiledObject obj = null) : base("JumpyPlatformS.png", 4, 1)
+        public BouncyPlatform(string filename = "", int cols = 1, int rows = 1, TiledObject obj = null) : base("JumpyPlatformS.png", cols, rows)
         {
             
         }
@@ -32,14 +32,14 @@ namespace GXPEngine
             {
                 counter++;
 
-                if (counter > 10) // animation
+                if (counter > 5) // animation
                 {
                     counter = 0;
                     frame++;
-                    if (frame == 5)
+                    if (frame == _cols)
                     {
                         animFinished = true;
-
+                        myGame.BouncyPlatformAnim = false;
                         frame = 0;
                     }
                 }

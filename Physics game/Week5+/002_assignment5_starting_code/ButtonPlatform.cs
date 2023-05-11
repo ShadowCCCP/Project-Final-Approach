@@ -33,7 +33,7 @@ namespace GXPEngine
             {
                 counter++;
 
-                if (counter > 10) // animation
+                if (counter > 5) // animation
                 {
                     counter = 0;
                     frame++;

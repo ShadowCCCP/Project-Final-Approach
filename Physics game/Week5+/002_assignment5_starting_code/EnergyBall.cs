@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using TiledMapParser;
 
@@ -12,6 +13,11 @@ namespace GXPEngine
         float gravity;
         string nextLevel;
         int goalSide;
+
+        Vec2 oldVelocity;
+        bool timer;
+        int time;
+        bool timerStarted = false;
 
         public EnergyBall(string filename = "", int cols = 1, int rows = 1, TiledObject obj = null) : base(filename, cols, rows)
         {
@@ -152,6 +158,52 @@ namespace GXPEngine
                     Console.WriteLine("Next level");
                 }
             }
+
+            if (myGame.GetSquare(i) is BouncyPlatform)
+            {
+                myGame.BouncyPlatformAnim = true;
+                oldVelocity = velocity;
+                velocity = velocity * bouncyPlatformVelocity;
+                timer = true;
+            }
+            if (myGame.GetSquare(i) is ButtonPlatform)
+            {
+                myGame.ButtonPressed = true;
+                Console.WriteLine("Button pressed");
+            }
+            else
+            {
+                myGame.ButtonPressed = false;
+                // Console.WriteLine("Button off");
+            }
         }
+
+        void timerBouncy()
+        {
+            if (timerStarted == false)
+            {
+                time = Time.time;
+            }
+            if (timer == true) //start timer
+            {
+                timerStarted = true;
+
+                if (Time.time - time > 1500) //timer ends
+                {
+                    velocity = oldVelocity;
+                    timer = false;
+                    timerStarted = false;
+                }
+            }
+
+        }
+
+        protected override void Update()
+        {
+            base.Update();
+            timerBouncy();
+        }
+
+
     }
 }

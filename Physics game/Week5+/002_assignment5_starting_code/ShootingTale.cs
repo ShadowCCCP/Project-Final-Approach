@@ -66,6 +66,8 @@ namespace GXPEngine
             if (Input.GetMouseButton(0) && !doOnce) //left click
             {
                 bullet = new Bullet(spawnPosition, velocity, maxCollisions);
+                RayBall test = new RayBall(spawnPosition, velocity);
+                game.AddChild(test);
                 game.AddChild(bullet);
                 doOnce = true;
             }

@@ -26,6 +26,7 @@ namespace GXPEngine
         private void Update()
         {
             RestartLevelCheck();
+            SwitchNextLevel();
         }
 
         private void RestartLevelCheck()
@@ -35,6 +36,53 @@ namespace GXPEngine
                 MyGame myGame = (MyGame)game;
                 myGame.LoadLevel(currentLevelName);
             }
+        }
+
+        private void SwitchNextLevel()
+        {
+            // Go next
+            if(Input.GetKeyDown(Key.RIGHT) || Input.GetKeyDown(Key.LEFT))
+            {
+                string cLevel = currentLevelName;
+                cLevel = cLevel.Substring(cLevel.IndexOf(".") - 1);
+                cLevel = cLevel.Remove(cLevel.IndexOf("."));
+
+                int currentLevel = Convert.ToInt32(cLevel);
+                string loadLevel = "Level.tmx";
+
+                if (Input.GetKeyDown(Key.RIGHT))
+                {
+                    if(currentLevel < 7)
+                    {
+                        currentLevel++;
+                    }
+                    else
+                    {
+                        currentLevel = 1;
+                    }
+                    loadLevel = loadLevel.Insert(loadLevel.IndexOf("."), currentLevel.ToString());
+
+                    MyGame myGame = (MyGame)game;
+                    myGame.LoadLevel(loadLevel);
+                }
+                // Go back
+                else if (Input.GetKeyDown(Key.LEFT))
+                {
+                    if (currentLevel > 1)
+                    {
+                        currentLevel--;
+                    }
+                    else
+                    {
+                        currentLevel = 7;
+                    }
+                    loadLevel = loadLevel.Insert(loadLevel.IndexOf("."), currentLevel.ToString());
+
+                    MyGame myGame = (MyGame)game;
+                    myGame.LoadLevel(loadLevel);
+                }
+            }
+            
         }
 
         private void CreateLevel(bool includeImageLayer = true)

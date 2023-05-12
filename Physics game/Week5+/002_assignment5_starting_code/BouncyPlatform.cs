@@ -13,7 +13,7 @@ namespace GXPEngine
         bool animFinished = true;
         int counter = 0;
         int frame = 0;
-        public BouncyPlatform(string filename = "", int cols = 1, int rows = 1, TiledObject obj = null) : base("JumpyPlatformS.png", cols, rows)
+        public BouncyPlatform(string filename = "", int cols = 1, int rows = 1, TiledObject obj = null) : base("JumpyPlatformS.png", 5, 1)
         {
             
         }

@@ -9,7 +9,7 @@ namespace GXPEngine
 {
     class EnergyReceptor : Square
     {
-        public EnergyReceptor(string filename = "", int cols = 1, int rows = 1, TiledObject obj = null) : base("Basket.png")
+        public EnergyReceptor(string filename = "", int cols = 1, int rows = 1, TiledObject obj = null) : base(filename, cols, rows)
         {
 
         }

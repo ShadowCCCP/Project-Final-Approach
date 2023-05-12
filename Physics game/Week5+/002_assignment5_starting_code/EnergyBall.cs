@@ -34,7 +34,7 @@ namespace GXPEngine
             acceleration = new Vec2(0, gravity);
         }
 
-        public EnergyBall(Vec2 pPosition, int pGoalSide, float pBounciness, float pGravity, string pNextLevel, float velocityX, float velocityY, string filename = "DebugBall.png", int cols = 1, int rows = 1) : base(filename, cols, rows)
+        public EnergyBall(Vec2 pPosition, int pGoalSide, float pBounciness, float pGravity, string pNextLevel, float velocityX, float velocityY, string filename = "EnergyOrbS.png", int cols = 3, int rows = 3) : base(filename, cols, rows)
         {
             radius = 128;
 

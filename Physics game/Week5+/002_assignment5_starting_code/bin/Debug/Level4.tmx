@@ -81,7 +81,6 @@
   <object id="372" class="GXPEngine.Square" gid="4" x="4352" y="2304" width="256" height="256"/>
   <object id="373" class="GXPEngine.Square" gid="4" x="4352" y="2560" width="256" height="256"/>
   <object id="374" class="GXPEngine.Square" gid="4" x="4352" y="256" width="256" height="256"/>
-  <object id="375" class="GXPEngine.Square" gid="5" x="3072" y="3584" width="256" height="256"/>
   <object id="376" class="GXPEngine.Square" gid="5" x="3328" y="3584" width="256" height="256"/>
   <object id="377" class="GXPEngine.Square" gid="5" x="2560" y="3584" width="256" height="256"/>
   <object id="378" class="GXPEngine.Square" gid="5" x="2816" y="3584" width="256" height="256"/>
@@ -111,12 +110,12 @@
   <object id="402" class="GXPEngine.EBallThroughOnly" gid="1" x="3072" y="1792" width="256" height="256"/>
   <object id="403" class="GXPEngine.EBallThroughOnly" gid="1" x="3328" y="1792" width="256" height="256"/>
   <object id="404" class="GXPEngine.EnergyReceptor" gid="1" x="2816" y="512" width="512" height="512"/>
-  <object id="408" class="GXPEngine.EBallSpawner" gid="1" x="3072" y="3328" width="256" height="256">
+  <object id="408" class="GXPEngine.EBallSpawner" gid="1" x="3072" y="3584" width="256" height="256">
    <properties>
     <property name="goalSide" type="int" value="3"/>
     <property name="nextLevel" value="Level5.tmx"/>
     <property name="spawnSide" type="int" value="1"/>
-    <property name="velocityY" type="float" value="15"/>
+    <property name="velocityY" type="float" value="25"/>
    </properties>
   </object>
   <object id="411" class="GXPEngine.Player" gid="2147483657" x="2816" y="3328" width="256" height="256"/>

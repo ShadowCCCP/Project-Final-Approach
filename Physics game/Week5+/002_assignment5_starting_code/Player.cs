@@ -23,7 +23,7 @@ namespace GXPEngine
 
             if (obj != null)
             {
-                maxCollisions = obj.GetIntProperty("maxCollisions", 6);
+                maxCollisions = obj.GetIntProperty("maxCollisions", 3);
             }
 
             isPlayer = true;

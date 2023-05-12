@@ -62,3 +62,11 @@ C:\Users\andre\Desktop\GitHub Projects\Project-Final-Approach\Physics game\Week5
 C:\Users\andre\Desktop\GitHub Projects\Project-Final-Approach\Physics game\Week5+\002_assignment5_starting_code\obj\x86\Debug\GXPEngine.csproj.CoreCompileInputs.cache
 C:\Users\andre\Desktop\GitHub Projects\Project-Final-Approach\Physics game\Week5+\002_assignment5_starting_code\obj\x86\Debug\GXPEngine.exe
 C:\Users\andre\Desktop\GitHub Projects\Project-Final-Approach\Physics game\Week5+\002_assignment5_starting_code\obj\x86\Debug\GXPEngine.pdb
+C:\Users\wjdau\Desktop\GithubProjects\Project-Final-Approach\Physics game\Week5+\002_assignment5_starting_code\bin\Debug\GXPEngine.exe.config
+C:\Users\wjdau\Desktop\GithubProjects\Project-Final-Approach\Physics game\Week5+\002_assignment5_starting_code\bin\Debug\GXPEngine.exe
+C:\Users\wjdau\Desktop\GithubProjects\Project-Final-Approach\Physics game\Week5+\002_assignment5_starting_code\bin\Debug\GXPEngine.pdb
+C:\Users\wjdau\Desktop\GithubProjects\Project-Final-Approach\Physics game\Week5+\002_assignment5_starting_code\obj\x86\Debug\GXPEngine.csproj.AssemblyReference.cache
+C:\Users\wjdau\Desktop\GithubProjects\Project-Final-Approach\Physics game\Week5+\002_assignment5_starting_code\obj\x86\Debug\GXPEngine.csproj.SuggestedBindingRedirects.cache
+C:\Users\wjdau\Desktop\GithubProjects\Project-Final-Approach\Physics game\Week5+\002_assignment5_starting_code\obj\x86\Debug\GXPEngine.csproj.CoreCompileInputs.cache
+C:\Users\wjdau\Desktop\GithubProjects\Project-Final-Approach\Physics game\Week5+\002_assignment5_starting_code\obj\x86\Debug\GXPEngine.exe
+C:\Users\wjdau\Desktop\GithubProjects\Project-Final-Approach\Physics game\Week5+\002_assignment5_starting_code\obj\x86\Debug\GXPEngine.pdb

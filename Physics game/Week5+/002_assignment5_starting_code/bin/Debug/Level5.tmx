@@ -194,7 +194,6 @@
   <object id="560" class="GXPEngine.Square" gid="4" x="768" y="2816" width="256" height="256"/>
   <object id="561" class="GXPEngine.Square" gid="4" x="256" y="2304" width="256" height="256"/>
   <object id="562" class="GXPEngine.Square" gid="4" x="512" y="2304" width="256" height="256"/>
-  <object id="563" class="GXPEngine.Square" gid="4" x="768" y="2304" width="256" height="256"/>
   <object id="564" class="GXPEngine.Square" gid="4" x="2304" y="2048" width="256" height="256"/>
   <object id="565" class="GXPEngine.Square" gid="4" x="2304" y="2304" width="256" height="256"/>
   <object id="566" class="GXPEngine.Square" gid="4" x="2304" y="1792" width="256" height="256"/>
@@ -211,7 +210,6 @@
   <object id="577" class="GXPEngine.Square" gid="5" x="2560" y="2304" width="256" height="256"/>
   <object id="578" class="GXPEngine.Square" gid="5" x="2816" y="2304" width="256" height="256"/>
   <object id="579" class="GXPEngine.Square" gid="5" x="2304" y="2304" width="256" height="256"/>
-  <object id="580" class="GXPEngine.Square" gid="5" x="768" y="2048" width="256" height="256"/>
   <object id="581" class="GXPEngine.Square" gid="5" x="512" y="2048" width="256" height="256"/>
   <object id="582" class="GXPEngine.Square" gid="5" x="256" y="2048" width="256" height="256"/>
   <object id="583" class="GXPEngine.Square" gid="4" x="2304" y="1536" width="256" height="256"/>
@@ -220,7 +218,7 @@
    <properties>
     <property name="nextLevel" value="Level6.tmx"/>
     <property name="spawnSide" type="int" value="1"/>
-    <property name="velocityY" type="float" value="15"/>
+    <property name="velocityY" type="float" value="30"/>
    </properties>
   </object>
   <object id="586" class="GXPEngine.Player" gid="2147483657" x="768" y="1792" width="256" height="256"/>

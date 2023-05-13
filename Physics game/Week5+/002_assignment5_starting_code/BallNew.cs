@@ -47,7 +47,11 @@ namespace GXPEngine
         public BallNew(string filename = "", int cols = 1, int rows = 1, TiledObject obj = null) : base(filename, cols, rows, -1, false, false)
         {
             myGame = (MyGame)game;
-            myGame.AddBall(this);
+            
+            if(!(this is RayBall))
+            {
+                myGame.AddBall(this);
+            }
 
             radius = 128;
         }
@@ -153,7 +157,7 @@ namespace GXPEngine
             y = position.y;
         }
 
-        protected void BallCollision()
+        protected virtual void BallCollision()
         {
             for (int i = 0; i < myGame.NumberOfBalls(); i++)
             {

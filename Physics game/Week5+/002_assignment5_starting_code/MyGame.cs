@@ -15,6 +15,10 @@ public class MyGame : Game
     public bool ButtonPressed=false;
     public bool BouncyPlatformAnim=false;
 
+    public Vec2 mfirst;
+    public Vec2 msecond;
+
+    public Vec2 raySpawnPos;
 
     // Tiled loading
     List<Square> _squares;
@@ -30,6 +34,9 @@ public class MyGame : Game
         _balls = new List<BallNew>();
         _squares = new List<Square>();
         _angles = new List<AngledLine>();
+
+        mfirst = new Vec2(0, 0);
+        msecond = new Vec2(0, 0);
     }
     //*/
 
@@ -43,6 +50,18 @@ public class MyGame : Game
         _balls.Clear();
         _squares.Clear();
         _angles.Clear();
+    }
+
+    private void Update()
+    {
+        if (!mfirst.Approximate(new Vec2(0, 0)))
+        {
+            Gizmos.DrawLine(raySpawnPos.x, raySpawnPos.y, mfirst.x, mfirst.y, null, 0xffff0000);
+        }
+        if (!msecond.Approximate(new Vec2(0, 0)))
+        {
+            Gizmos.DrawLine(mfirst.x, mfirst.y, msecond.x, msecond.y, null, 0xffff0000);
+        }
     }
 
     public void LoadLevel(string filename)

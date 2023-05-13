@@ -59,25 +59,34 @@ namespace GXPEngine
             Vec2 currentPos = new Vec2(x, y);
 
             Vec2 spawnPosition = currentPos + laserTip.RotateDegrees(rotation);
+            myGame.raySpawnPos = spawnPosition;
             Vec2 velocity = velocityDirection.RotateDegrees(rotation).Normalized() * 40;
 
-            Gizmos.DrawRay(spawnPosition.x, spawnPosition.y, velocity.x * 10, velocity.y * 10, null, 0xffff0000);
+            Vec2 rayVelocity = velocityDirection.RotateDegrees(rotation).Normalized() * 100;
+
+            RayBall test = new RayBall(spawnPosition, rayVelocity, 2);
+            game.AddChild(test);
 
             if (Input.GetMouseButton(0) && !doOnce) //left click
             {
                 bullet = new Bullet(spawnPosition, velocity, maxCollisions);
-                RayBall test = new RayBall(spawnPosition, velocity);
-                game.AddChild(test);
                 game.AddChild(bullet);
                 doOnce = true;
             }
             else if (doOnce)
             {
-                if(bullet.collisions >= bullet.maxCollisions)
+                if (bullet.collisionCount >= bullet.maxCollisions)
                 {
                     myGame.RemoveBall(bullet);
                     bullet.LateDestroy();
                     doOnce = false;
+                }
+                else if (Input.GetMouseButtonDown(0))
+                {
+                    myGame.RemoveBall(bullet);
+                    bullet.LateDestroy();
+                    bullet = new Bullet(spawnPosition, velocity, maxCollisions);
+                    game.AddChild(bullet);
                 }
             }
         }

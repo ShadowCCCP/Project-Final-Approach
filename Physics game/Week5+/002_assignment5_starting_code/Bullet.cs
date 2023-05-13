@@ -9,7 +9,9 @@ namespace GXPEngine
     public class Bullet : BallNew
     {
         public int maxCollisions;
-        public int collisions;
+        public int collisionCount;
+        public Vec2 first;
+        public Vec2 second;
 
         public Bullet(Vec2 pPosition, Vec2 pVelocity, int pMaxCollisions) : base("Bullet.png", 1, 1)
         {
@@ -55,6 +57,7 @@ namespace GXPEngine
                     float distance = dist.Length();
                     if (distance <= radius)
                     {
+                        collisionCount++;
                         // Check whether the calculated point is on a corner or not
                         if (check.Approximate(myGame.GetSquare(i).topLeftCorner) || check.Approximate(myGame.GetSquare(i).topRightCorner) ||
                             check.Approximate(myGame.GetSquare(i).bottomLeftCorner) || check.Approximate(myGame.GetSquare(i).bottomRightCorner))
@@ -63,6 +66,7 @@ namespace GXPEngine
                             float overlap = radius - distance;
                             position += normal * overlap;
                             velocity.Reflect(normal);
+                            test(position);
                         }
                         else
                         {
@@ -75,6 +79,7 @@ namespace GXPEngine
 
                                     position.y = impactY;
                                     velocity.y *= -1;
+                                    test(position);
                                 }
                                 else
                                 {
@@ -83,6 +88,7 @@ namespace GXPEngine
 
                                     position.y = impactY;
                                     velocity.y *= -1;
+                                    test(position);
                                 }
                             }
                             else
@@ -94,6 +100,7 @@ namespace GXPEngine
 
                                     position.x = impactX;
                                     velocity.x *= -1;
+                                    test(position);
                                 }
                                 else
                                 {
@@ -102,6 +109,7 @@ namespace GXPEngine
 
                                     position.x = impactX;
                                     velocity.x *= -1;
+                                    test(position);
                                 }
                             }
                             if (myGame.GetSquare(i) is BouncyPlatform)
@@ -117,10 +125,26 @@ namespace GXPEngine
                             {
                                 myGame.ButtonPressed = false;
                             }
-                            collisions++;
                         }
                     }
                 }
+            }
+        }
+
+        public void test(Vec2 pos)
+        {
+            switch (collisionCount)
+            {
+                case 1:
+                    {
+                        //myGame.mfirst = pos;
+                        break;
+                    }
+                case 2:
+                    {
+                        //myGame.msecond = pos;
+                        break;
+                    }
             }
         }
 
@@ -133,7 +157,7 @@ namespace GXPEngine
         protected override void ResolveCollision(CollisionInfo col)
         {
             base.ResolveCollision(col);
-            collisions++;
+            collisionCount++;
         }
     }
 }

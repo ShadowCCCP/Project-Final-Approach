@@ -376,7 +376,7 @@ namespace GXPEngine
 
         void objectchecker(int i)
         {
-            if (myGame.GetSquare(i) is BouncyPlatform)
+           /* if (myGame.GetSquare(i) is BouncyPlatform)
             {
                 myGame.BouncyPlatformAnim = true;
                 oldVelocity = velocity;

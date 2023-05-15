@@ -114,19 +114,7 @@ namespace GXPEngine
                                     test(position);
                                 }
                             }
-                            if (myGame.GetSquare(i) is BouncyPlatform)
-                            {
-                                myGame.BouncyPlatformAnim = true;
-                                velocity = velocity * bouncyPlatformVelocity;
-                            }
-                            if (myGame.GetSquare(i) is ButtonPlatform)
-                            {
-                                myGame.ButtonPressed = true;
-                            }
-                            else
-                            {
-                                myGame.ButtonPressed = false;
-                            }
+
                         }
                     }
                 }

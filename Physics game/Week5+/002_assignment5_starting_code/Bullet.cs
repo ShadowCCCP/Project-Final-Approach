@@ -28,6 +28,11 @@ namespace GXPEngine
         {
             for (int i = 0; i < myGame.NumberOfSquares(); i++)
             {
+                if ((myGame.GetSquare(i) is BulletThroughOnly))
+                {
+                    break;
+                }
+
                 if (myGame.GetSquare(i).isPlayer == false)
                 {
                     Vec2 check = new Vec2(x, y);

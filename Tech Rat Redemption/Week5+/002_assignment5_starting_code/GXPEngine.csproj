@@ -61,6 +61,7 @@
     <Compile Include="ShootingTale.cs" />
     <Compile Include="SoundCollection.cs" />
     <Compile Include="Square.cs" />
+    <Compile Include="UIButton.cs" />
     <Compile Include="Vec2.cs" />
     <Compile Include="..\..\GXPEngine2023b\GXPEngine\AddOns\Gizmos.cs">
       <Link>GXPEngine\AddOns\Gizmos.cs</Link>

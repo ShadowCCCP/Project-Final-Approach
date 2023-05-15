@@ -38,9 +38,65 @@ namespace GXPEngine
             }
         }
 
-
-
         private void SwitchNextLevel()
+        {
+            int maxLevel = 12;
+
+            // Go next
+            if (Input.GetKeyDown(Key.RIGHT) || Input.GetKeyDown(Key.LEFT))
+            {
+                string cLevel = currentLevelName;
+                if (cLevel.Length == 10)
+                {
+                    cLevel = cLevel.Substring(cLevel.IndexOf(".") - 1);
+                }
+                else
+                {
+                    cLevel = cLevel.Substring(cLevel.IndexOf(".") - 2);
+                }
+                cLevel = cLevel.Remove(cLevel.IndexOf("."));
+
+                int currentLevel = Convert.ToInt32(cLevel);
+                string loadLevel = "Level.tmx";
+
+                if (Input.GetKeyDown(Key.RIGHT))
+                {
+                    if (currentLevel < maxLevel)
+                    {
+                        currentLevel++;
+                    }
+                    else
+                    {
+                        currentLevel = 1;
+                    }
+                    loadLevel = loadLevel.Insert(loadLevel.IndexOf("."), currentLevel.ToString());
+
+                    MyGame myGame = (MyGame)game;
+                    myGame.LoadLevel(loadLevel);
+                }
+                // Go back
+                else if (Input.GetKeyDown(Key.LEFT))
+                {
+                    if (currentLevel > 1)
+                    {
+                        currentLevel--;
+                    }
+                    else
+                    {
+                        currentLevel = maxLevel;
+                    }
+                    loadLevel = loadLevel.Insert(loadLevel.IndexOf("."), currentLevel.ToString());
+
+                    MyGame myGame = (MyGame)game;
+                    myGame.LoadLevel(loadLevel);
+                }
+
+            }
+
+
+        }
+
+        /*private void SwitchNextLevel()
         {
             // Go next
             if(Input.GetKeyDown(Key.RIGHT) || Input.GetKeyDown(Key.LEFT))
@@ -97,7 +153,7 @@ namespace GXPEngine
             }
             
 
-        }
+        }*/
 
         private void CreateLevel(bool includeImageLayer = true)
         {

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="24" height="16" tilewidth="256" tileheight="256" infinite="0" nextlayerid="4" nextobjectid="368">
+<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="24" height="16" tilewidth="256" tileheight="256" infinite="0" nextlayerid="4" nextobjectid="379">
  <tileset firstgid="1" name="DebugSquare" tilewidth="256" tileheight="256" tilecount="1" columns="1">
   <image source="../../../../../Assets/DebugSquare.png" width="256" height="256"/>
  </tileset>
@@ -162,8 +162,12 @@
   <object id="359" class="GXPEngine.BouncyPlatform" gid="1" x="3840" y="1024" width="512" height="256" rotation="90"/>
   <object id="363" class="GXPEngine.Square" gid="4" x="3328" y="1024" width="256" height="256"/>
   <object id="364" class="GXPEngine.Square" gid="4" x="3328" y="1280" width="256" height="256"/>
-  <object id="365" class="GXPEngine.Square" gid="4" x="3584" y="1792" width="256" height="256"/>
-  <object id="366" class="GXPEngine.Square" gid="4" x="3584" y="2048" width="256" height="256"/>
   <object id="367" class="GXPEngine.Square" gid="4" x="1024" y="2304" width="256" height="256"/>
+  <object id="373" class="GXPEngine.Square" gid="4" x="2816" y="2304" width="256" height="256"/>
+  <object id="374" class="GXPEngine.Square" gid="4" x="2816" y="2560" width="256" height="256"/>
+  <object id="375" class="GXPEngine.Square" gid="4" x="2816" y="1536" width="256" height="256"/>
+  <object id="376" class="GXPEngine.Square" gid="4" x="2816" y="1792" width="256" height="256"/>
+  <object id="377" class="GXPEngine.Square" gid="4" x="2816" y="2048" width="256" height="256"/>
+  <object id="378" class="GXPEngine.Square" gid="4" x="2816" y="1280" width="256" height="256"/>
  </objectgroup>
 </map>

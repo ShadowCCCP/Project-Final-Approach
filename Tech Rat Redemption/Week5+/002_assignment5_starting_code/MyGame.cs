@@ -53,7 +53,7 @@ public class MyGame : Game
         }
         if (!msecond.Approximate(new Vec2(0, 0)))
         {
-            Gizmos.DrawLine(mfirst.x, mfirst.y, msecond.x, msecond.y, null, 0xffff0000);
+            //DrawLine(mfirst.x, mfirst.y, msecond.x, msecond.y, null, 0xffff0000);
         }
     }
 

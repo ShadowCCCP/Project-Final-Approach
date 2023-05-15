@@ -62,7 +62,7 @@ namespace GXPEngine
             myGame.raySpawnPos = spawnPosition;
             Vec2 velocity = velocityDirection.RotateDegrees(rotation).Normalized() * 80;
 
-            Vec2 rayVelocity = velocityDirection.RotateDegrees(rotation).Normalized() * 80;
+            Vec2 rayVelocity = velocityDirection.RotateDegrees(rotation).Normalized() * 120;
 
             RayBall test = new RayBall(spawnPosition, rayVelocity, 2);
             game.AddChild(test);

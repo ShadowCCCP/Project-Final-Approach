@@ -23,7 +23,7 @@ namespace GXPEngine
         public float _density = 1;
         public float bounciness = 0.9f;
 
-        protected float bouncyPlatformVelocity = 1.5f;
+        protected float bouncyPlatformVelocity = 3f;
 
         public float Mass
         {

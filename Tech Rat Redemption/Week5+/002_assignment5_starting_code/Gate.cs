@@ -16,7 +16,7 @@ namespace GXPEngine
         bool soundPlayed;
 
         MyGame myGame;
-        public Gate(string filename = "", int cols =1 ,int rows =1, TiledObject obj = null) : base("gate.png",6,1)
+        public Gate(string filename = "", int cols =1 ,int rows =1, TiledObject obj = null) : base("gate.png",7,1)
         {
            
         }
@@ -34,7 +34,7 @@ namespace GXPEngine
                 }
             }
 
-            if (!animFinished && myGame.ButtonPressed)
+            if (!animFinished )
             {
                 counter++;
                 
@@ -42,7 +42,7 @@ namespace GXPEngine
                 {
                     counter = 0;
                     frame++;
-                    if (frame == 5)
+                    if (frame == 6)
                     {
                         animFinished = true;
                         soundPlayed=false;

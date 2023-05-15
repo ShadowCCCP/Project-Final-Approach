@@ -38,13 +38,16 @@ namespace GXPEngine
             }
         }
 
+
+
         private void SwitchNextLevel()
         {
             // Go next
             if(Input.GetKeyDown(Key.RIGHT) || Input.GetKeyDown(Key.LEFT))
             {
+                int i = 1;
                 string cLevel = currentLevelName;
-                cLevel = cLevel.Substring(cLevel.IndexOf(".") - 1);
+                cLevel = cLevel.Substring(cLevel.IndexOf(".") - i);
                 cLevel = cLevel.Remove(cLevel.IndexOf("."));
 
                 int currentLevel = Convert.ToInt32(cLevel);
@@ -52,18 +55,25 @@ namespace GXPEngine
 
                 if (Input.GetKeyDown(Key.RIGHT))
                 {
-                    if(currentLevel < 8)
+                    if(currentLevel < 20)
                     {
                         currentLevel++;
+                        if (currentLevel > 10)
+                        {
+                            loadLevel = "Level1.tmx";
+                            i = 2;
+                        }
                     }
                     else
                     {
                         currentLevel = 1;
                     }
                     loadLevel = loadLevel.Insert(loadLevel.IndexOf("."), currentLevel.ToString());
+                    Console.WriteLine(loadLevel);
 
                     MyGame myGame = (MyGame)game;
                     myGame.LoadLevel(loadLevel);
+                    
                 }
                 // Go back
                 else if (Input.GetKeyDown(Key.LEFT))
@@ -74,12 +84,14 @@ namespace GXPEngine
                     }
                     else
                     {
-                        currentLevel = 8;
+                        currentLevel = 20;
                     }
                     loadLevel = loadLevel.Insert(loadLevel.IndexOf("."), currentLevel.ToString());
 
                     MyGame myGame = (MyGame)game;
                     myGame.LoadLevel(loadLevel);
+
+
                 }
                 
             }

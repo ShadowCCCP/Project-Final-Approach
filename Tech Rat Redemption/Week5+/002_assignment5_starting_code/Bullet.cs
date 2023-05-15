@@ -10,9 +10,11 @@ namespace GXPEngine
     {
         public int maxCollisions;
         public int collisionCount;
+        int startTimer;
 
         public Bullet(Vec2 pPosition, Vec2 pVelocity, int pMaxCollisions) : base("Bullet.png", 1, 1)
         {
+            startTimer = Time.now;
             maxCollisions = pMaxCollisions;
             SetOrigin(width / 2, height / 2);
             position = pPosition;
@@ -24,106 +26,109 @@ namespace GXPEngine
 
         protected override void BlockCollision()
         {
-            for (int i = 0; i < myGame.NumberOfSquares(); i++)
+            int cTime = Time.now;
+            if(cTime - startTimer > 45)
             {
-                if(myGame.GetSquare(i) is BulletThroughOnly)
+                for (int i = 0; i < myGame.NumberOfSquares(); i++)
                 {
-                    break;
-                }
-                if (myGame.GetSquare(i).isPlayer == false)
-                {
-                    Vec2 check = new Vec2(x, y);
+                    if (myGame.GetSquare(i) is BulletThroughOnly)
+                    {
+                        break;
+                    }
+                    if (myGame.GetSquare(i).isPlayer == false)
+                    {
+                        Vec2 check = new Vec2(x, y);
 
-                    // left edge
-                    if (x < myGame.GetSquare(i).x - myGame.GetSquare(i).width / 2)
-                    {
-                        check.x = myGame.GetSquare(i).x - myGame.GetSquare(i).width / 2;
-                    }
-                    // right edge
-                    else if (x > myGame.GetSquare(i).x + myGame.GetSquare(i).width / 2)
-                    {
-                        check.x = myGame.GetSquare(i).x + myGame.GetSquare(i).width / 2;
-                    }
-
-                    // top edge
-                    if (y < myGame.GetSquare(i).y - myGame.GetSquare(i).height / 2)
-                    {
-                        check.y = myGame.GetSquare(i).y - myGame.GetSquare(i).height / 2;
-                    }
-                    // bottom edge
-                    else if (y > myGame.GetSquare(i).y + myGame.GetSquare(i).height / 2)
-                    {
-                        check.y = myGame.GetSquare(i).y + myGame.GetSquare(i).height / 2;
-                    }
-
-                    Vec2 dist = new Vec2(position.x - check.x, position.y - check.y);
-                    float distance = dist.Length();
-                    if (distance <= radius)
-                    {
-                        Console.WriteLine("test");
-                        collisionCount++;
-                        // Check whether the calculated point is on a corner or not
-                        if (check.Approximate(myGame.GetSquare(i).topLeftCorner) || check.Approximate(myGame.GetSquare(i).topRightCorner) ||
-                            check.Approximate(myGame.GetSquare(i).bottomLeftCorner) || check.Approximate(myGame.GetSquare(i).bottomRightCorner))
+                        // left edge
+                        if (x < myGame.GetSquare(i).x - myGame.GetSquare(i).width / 2)
                         {
-                            Vec2 normal = (position - check).Normalized();
-                            float overlap = radius - distance;
-                            position += normal * overlap;
-                            velocity.Reflect(normal);
+                            check.x = myGame.GetSquare(i).x - myGame.GetSquare(i).width / 2;
                         }
-                        else
+                        // right edge
+                        else if (x > myGame.GetSquare(i).x + myGame.GetSquare(i).width / 2)
                         {
-                            if (Math.Abs(dist.x) < Math.Abs(dist.y))
+                            check.x = myGame.GetSquare(i).x + myGame.GetSquare(i).width / 2;
+                        }
+
+                        // top edge
+                        if (y < myGame.GetSquare(i).y - myGame.GetSquare(i).height / 2)
+                        {
+                            check.y = myGame.GetSquare(i).y - myGame.GetSquare(i).height / 2;
+                        }
+                        // bottom edge
+                        else if (y > myGame.GetSquare(i).y + myGame.GetSquare(i).height / 2)
+                        {
+                            check.y = myGame.GetSquare(i).y + myGame.GetSquare(i).height / 2;
+                        }
+
+                        Vec2 dist = new Vec2(position.x - check.x, position.y - check.y);
+                        float distance = dist.Length();
+                        if (distance <= radius)
+                        {
+                            collisionCount++;
+                            // Check whether the calculated point is on a corner or not
+                            if (check.Approximate(myGame.GetSquare(i).topLeftCorner) || check.Approximate(myGame.GetSquare(i).topRightCorner) ||
+                                check.Approximate(myGame.GetSquare(i).bottomLeftCorner) || check.Approximate(myGame.GetSquare(i).bottomRightCorner))
                             {
-                                if (y < myGame.GetSquare(i).y)
-                                {
-                                    //top
-                                    float impactY = myGame.GetSquare(i).y - (myGame.GetSquare(i).height / 2 + radius + 1);
-
-                                    position.y = impactY;
-                                    velocity.y *= -1;
-                                }
-                                else
-                                {
-                                    // bottom
-                                    float impactY = myGame.GetSquare(i).y + (myGame.GetSquare(i).height / 2 + radius + 1);
-
-                                    position.y = impactY;
-                                    velocity.y *= -1;
-                                }
+                                Vec2 normal = (position - check).Normalized();
+                                float overlap = radius - distance;
+                                position += normal * overlap;
+                                velocity.Reflect(normal);
                             }
                             else
                             {
-                                if (x < myGame.GetSquare(i).x)
+                                if (Math.Abs(dist.x) < Math.Abs(dist.y))
                                 {
-                                    // left
-                                    float impactX = myGame.GetSquare(i).x - (myGame.GetSquare(i).width / 2 + radius + 1);
+                                    if (y < myGame.GetSquare(i).y)
+                                    {
+                                        //top
+                                        float impactY = myGame.GetSquare(i).y - (myGame.GetSquare(i).height / 2 + radius + 1);
 
-                                    position.x = impactX;
-                                    velocity.x *= -1;
+                                        position.y = impactY;
+                                        velocity.y *= -1;
+                                    }
+                                    else
+                                    {
+                                        // bottom
+                                        float impactY = myGame.GetSquare(i).y + (myGame.GetSquare(i).height / 2 + radius + 1);
+
+                                        position.y = impactY;
+                                        velocity.y *= -1;
+                                    }
                                 }
                                 else
                                 {
-                                    // right
-                                    float impactX = myGame.GetSquare(i).x + (myGame.GetSquare(i).width / 2 + radius + 1);
+                                    if (x < myGame.GetSquare(i).x)
+                                    {
+                                        // left
+                                        float impactX = myGame.GetSquare(i).x - (myGame.GetSquare(i).width / 2 + radius + 1);
 
-                                    position.x = impactX;
-                                    velocity.x *= -1;
+                                        position.x = impactX;
+                                        velocity.x *= -1;
+                                    }
+                                    else
+                                    {
+                                        // right
+                                        float impactX = myGame.GetSquare(i).x + (myGame.GetSquare(i).width / 2 + radius + 1);
+
+                                        position.x = impactX;
+                                        velocity.x *= -1;
+                                    }
                                 }
+                                if (myGame.GetSquare(i) is BouncyPlatform)
+                                {
+                                    myGame.BouncyPlatformAnim = true;
+                                    velocity = velocity * bouncyPlatformVelocity;
+                                }
+                                /*if (myGame.GetSquare(i) is ButtonPlatform)
+                                {
+                                    myGame.ButtonPressed = true;
+                                }
+                                else
+                                {
+                                    myGame.ButtonPressed = false;
+                                }*/
                             }
-                            if (myGame.GetSquare(i) is BouncyPlatform)
-                            {
-                                myGame.BouncyPlatformAnim = true;
-                                velocity = velocity * bouncyPlatformVelocity;
-                            }
-                            /*if (myGame.GetSquare(i) is ButtonPlatform)
-                            {
-                                myGame.ButtonPressed = true;
-                            }
-                            else
-                            {
-                                myGame.ButtonPressed = false;
-                            }*/
                         }
                     }
                 }

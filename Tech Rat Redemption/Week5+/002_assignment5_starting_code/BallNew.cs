@@ -39,7 +39,7 @@ namespace GXPEngine
         protected MyGame myGame;
 
         bool posFix;
-        Vec2 _oldPosition;
+        protected Vec2 _oldPosition;
         Arrow _velocityIndicator;
 
         protected List<CollisionInfo> collisions;
@@ -234,7 +234,7 @@ namespace GXPEngine
             }
         }
 
-        protected void LineSegmentTopOrBottom(bool bottom, Vec2 difference, int i)
+        protected virtual void LineSegmentTopOrBottom(bool bottom, Vec2 difference, int i)
         {
             Vec2 bottomOrTop;
 

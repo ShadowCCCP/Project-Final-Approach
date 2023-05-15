@@ -20,6 +20,7 @@ namespace GXPEngine
         bool timerStarted = false;
         bool ballDestroyed;
 
+
         public EnergyBall(string filename = "", int cols = 1, int rows = 1, TiledObject obj = null) : base(filename, 3, 3)
         {
             radius = 128;
@@ -28,7 +29,7 @@ namespace GXPEngine
             {
                 goalSide = obj.GetIntProperty("goalSide", 1);
                 bounciness = obj.GetFloatProperty("bounciness", 0.9f);
-                gravity = obj.GetFloatProperty("gravity", 0.5f);
+                gravity = obj.GetFloatProperty("gravity", 0);
                 nextLevel = obj.GetStringProperty("nextLevel", "Level1.tmx");
             }
 
@@ -107,20 +108,20 @@ namespace GXPEngine
                             if (y < myGame.GetSquare(i).y)
                             {
                                 //top
-                                checkGoalCollision(1, i);
                                 float impactY = myGame.GetSquare(i).y - (myGame.GetSquare(i).height / 2 + radius + 1);
 
                                 position.y = impactY;
                                 velocity.y *= -bounciness;
+                                checkGoalCollision(1, i);
                             }
                             else
                             {
                                 // bottom
-                                checkGoalCollision(3, i);
                                 float impactY = myGame.GetSquare(i).y + (myGame.GetSquare(i).height / 2 + radius + 1);
 
                                 position.y = impactY;
                                 velocity.y *= -bounciness;
+                                checkGoalCollision(3, i);
                             }
                         }
                         else
@@ -128,20 +129,20 @@ namespace GXPEngine
                             if (x < myGame.GetSquare(i).x)
                             {
                                 // left
-                                checkGoalCollision(4, i);
                                 float impactX = myGame.GetSquare(i).x - (myGame.GetSquare(i).width / 2 + radius + 1);
 
                                 position.x = impactX;
                                 velocity.x *= -bounciness;
+                                checkGoalCollision(4, i);
                             }
                             else
                             {
                                 // right
-                                checkGoalCollision(2, i);
                                 float impactX = myGame.GetSquare(i).x + (myGame.GetSquare(i).width / 2 + radius + 1);
 
                                 position.x = impactX;
                                 velocity.x *= -bounciness;
+                                checkGoalCollision(2, i);
                             }
                         }
                     }
@@ -167,8 +168,8 @@ namespace GXPEngine
 
                 if (myGame.GetSquare(i) is BouncyPlatform)
                 {
+                    bouncyPlatformVelocity = 8;
                     myGame.BouncyPlatformAnim = true;
-                    oldVelocity = velocity;
                     velocity = velocity * bouncyPlatformVelocity;
                     timer = true;
                     break;
@@ -201,7 +202,6 @@ namespace GXPEngine
 
                 if (Time.time - time > 1500) //timer ends
                 {
-                    velocity = oldVelocity;
                     timer = false;
                     timerStarted = false;
                 }
@@ -239,7 +239,7 @@ namespace GXPEngine
             timerBouncy();
 
             destroyAnim();
-;
+
         }
 
 

@@ -40,11 +40,20 @@ namespace GXPEngine
 
         private void SwitchNextLevel()
         {
+            int maxLevel = 8;
+
             // Go next
-            if(Input.GetKeyDown(Key.RIGHT) || Input.GetKeyDown(Key.LEFT))
+            if (Input.GetKeyDown(Key.RIGHT) || Input.GetKeyDown(Key.LEFT))
             {
                 string cLevel = currentLevelName;
-                cLevel = cLevel.Substring(cLevel.IndexOf(".") - 1);
+                if(cLevel.Length == 10)
+                {
+                    cLevel = cLevel.Substring(cLevel.IndexOf(".") - 1);
+                }
+                else
+                {
+                    cLevel = cLevel.Substring(cLevel.IndexOf(".") - 2);
+                }
                 cLevel = cLevel.Remove(cLevel.IndexOf("."));
 
                 int currentLevel = Convert.ToInt32(cLevel);
@@ -52,7 +61,7 @@ namespace GXPEngine
 
                 if (Input.GetKeyDown(Key.RIGHT))
                 {
-                    if(currentLevel < 8)
+                    if(currentLevel < maxLevel)
                     {
                         currentLevel++;
                     }

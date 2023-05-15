@@ -21,6 +21,7 @@ namespace GXPEngine
             velocity = pVelocity;
             UpdatePosition();
             radius = 128;
+            _density = 0.140625f; // Wilhelms value
         }
 
         protected override void BlockCollision()

@@ -175,6 +175,7 @@ namespace GXPEngine
         protected override void ResolveCollision(CollisionInfo col)
         {
             base.ResolveCollision(col);
+            test(position);
             collisionCount++;
         }
     }

@@ -25,8 +25,8 @@ namespace GXPEngine
             {
                 spawnSide = obj.GetIntProperty("spawnSide", 1);
                 goalSide = obj.GetIntProperty("goalSide", 1);
-                bounciness = obj.GetFloatProperty("bounciness", 0.9f);
-                gravity = obj.GetFloatProperty("gravity", 0.5f);
+                bounciness = obj.GetFloatProperty("bounciness", 0.3f);
+                gravity = obj.GetFloatProperty("gravity", 0);
                 nextLevel = obj.GetStringProperty("nextLevel", "Level1.tmx");
                 velocityX = obj.GetFloatProperty("velocityX", 0);
                 velocityY = obj.GetFloatProperty("velocityY", 0);

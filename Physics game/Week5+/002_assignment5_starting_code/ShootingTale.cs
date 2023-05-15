@@ -60,9 +60,9 @@ namespace GXPEngine
 
             Vec2 spawnPosition = currentPos + laserTip.RotateDegrees(rotation);
             myGame.raySpawnPos = spawnPosition;
-            Vec2 velocity = velocityDirection.RotateDegrees(rotation).Normalized() * 40;
+            Vec2 velocity = velocityDirection.RotateDegrees(rotation).Normalized() * 80;
 
-            Vec2 rayVelocity = velocityDirection.RotateDegrees(rotation).Normalized() * 100;
+            Vec2 rayVelocity = velocityDirection.RotateDegrees(rotation).Normalized() * 80;
 
             RayBall test = new RayBall(spawnPosition, rayVelocity, 2);
             game.AddChild(test);

@@ -11,7 +11,7 @@ namespace GXPEngine
     {
         public RocketAnim(string filename = "", int cols = 1, int rows = 1, TiledObject obj = null) : base("FinalAnimation.png", 6, 4)
         {
-                
+            SetFrame(0);
         }
 
         void Update()
@@ -20,7 +20,7 @@ namespace GXPEngine
             if (currentFrame < 21)
             {
 
-                Animate(0.1f);
+                Animate(0.08f);
             }
 
         }

@@ -58,6 +58,7 @@
     <Compile Include="MyGame.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="RayBall.cs" />
+    <Compile Include="RocketAnim.cs" />
     <Compile Include="ShootingTale.cs" />
     <Compile Include="SoundCollection.cs" />
     <Compile Include="Square.cs" />

@@ -1,234 +1,140 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="24" height="16" tilewidth="256" tileheight="256" infinite="0" nextlayerid="4" nextobjectid="867">
- <tileset firstgid="1" name="DebugSquare" tilewidth="256" tileheight="256" tilecount="1" columns="1">
-  <image source="../../../../../Assets/DebugSquare.png" width="256" height="256"/>
- </tileset>
- <tileset firstgid="2" name="DebugBall" tilewidth="256" tileheight="256" tilecount="1" columns="1">
-  <image source="../../../../../Assets/DebugBall.png" width="256" height="256"/>
- </tileset>
- <tileset firstgid="3" name="background" tilewidth="256" tileheight="256" tilecount="1" columns="1">
-  <image source="background.png" width="256" height="256"/>
- </tileset>
- <tileset firstgid="4" name="Normal_wall_tile" tilewidth="256" tileheight="256" tilecount="1" columns="1">
+<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="24" height="16" tilewidth="256" tileheight="256" infinite="0" nextlayerid="4" nextobjectid="72">
+ <tileset firstgid="1" name="Normal_wall_tile" tilewidth="256" tileheight="256" tilecount="1" columns="1">
   <image source="Normal_wall_tile.png" width="256" height="256"/>
  </tileset>
- <tileset firstgid="5" name="Floor_tile" tilewidth="256" tileheight="256" tilecount="1" columns="1">
+ <tileset firstgid="2" name="Floor_tile" tilewidth="256" tileheight="256" tilecount="1" columns="1">
   <image source="Floor_tile.png" width="256" height="256"/>
  </tileset>
- <tileset firstgid="6" name="DebugAngledLine1" tilewidth="256" tileheight="256" tilecount="1" columns="1">
-  <image source="DebugAngledLine1.png" width="256" height="256"/>
+ <tileset firstgid="3" name="AngledLineTopRight" tilewidth="256" tileheight="256" tilecount="1" columns="1">
+  <image source="AngledLineTopRight.png" width="256" height="256"/>
  </tileset>
- <tileset firstgid="7" name="DebugAngledLine2" tilewidth="256" tileheight="256" tilecount="1" columns="1">
-  <image source="DebugAngledLine2.png" width="256" height="256"/>
+ <tileset firstgid="4" name="DebugSquare" tilewidth="256" tileheight="256" tilecount="1" columns="1">
+  <image source="../../../../../Assets/DebugSquare.png" width="256" height="256"/>
  </tileset>
- <tileset firstgid="8" name="DebugPlayer" tilewidth="256" tileheight="512" tilecount="1" columns="1">
-  <image source="DebugPlayer.png" width="256" height="512"/>
+ <tileset firstgid="5" name="AngledLineBottomRight" tilewidth="256" tileheight="256" tilecount="1" columns="1">
+  <image source="AngledLineBottomRight.png" width="256" height="256"/>
  </tileset>
- <tileset firstgid="9" name="Rat" tilewidth="256" tileheight="256" tilecount="4" columns="4">
+ <tileset firstgid="6" name="Rat" tilewidth="256" tileheight="256" tilecount="4" columns="4">
   <image source="Rat.png" width="1024" height="256"/>
  </tileset>
- <tileset firstgid="13" name="CoolBackground" tilewidth="1569" tileheight="883" tilecount="1" columns="1">
+ <tileset firstgid="10" name="CoolBackground" tilewidth="1569" tileheight="883" tilecount="1" columns="1">
   <image source="GoodBackground.png" width="1569" height="883"/>
  </tileset>
- <layer id="1" name="Kachelebene 1" width="24" height="16">
+ <layer id="1" name="Tile Layer 1" width="24" height="16">
   <data encoding="csv">
-3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,
-3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,
-3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,
-3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,
-3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,
-3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,
-3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,
-3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,
-3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,
-3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,
-3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,
-3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,
-3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,
-3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,
-3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,
-3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <objectgroup id="3" name="Background" visible="0">
-  <object id="864" gid="13" x="0" y="4096" width="6144" height="4096"/>
+ <objectgroup id="3" name="bg">
+  <object id="71" gid="10" x="0" y="4096" width="6144" height="4096"/>
  </objectgroup>
- <objectgroup id="2" name="Obstacles">
-  <object id="707" class="GXPEngine.Square" gid="4" x="0" y="2816" width="256" height="256"/>
-  <object id="708" class="GXPEngine.Square" gid="4" x="0" y="3072" width="256" height="256"/>
-  <object id="709" class="GXPEngine.Square" gid="4" x="0" y="3328" width="256" height="256"/>
-  <object id="710" class="GXPEngine.Square" gid="4" x="0" y="3584" width="256" height="256"/>
-  <object id="711" class="GXPEngine.Square" gid="4" x="0" y="256" width="256" height="256"/>
-  <object id="712" class="GXPEngine.Square" gid="4" x="256" y="256" width="256" height="256"/>
-  <object id="713" class="GXPEngine.Square" gid="4" x="512" y="256" width="256" height="256"/>
-  <object id="714" class="GXPEngine.Square" gid="4" x="768" y="256" width="256" height="256"/>
-  <object id="715" class="GXPEngine.Square" gid="4" x="1024" y="256" width="256" height="256"/>
-  <object id="716" class="GXPEngine.Square" gid="4" x="1280" y="256" width="256" height="256"/>
-  <object id="717" class="GXPEngine.Square" gid="4" x="1536" y="256" width="256" height="256"/>
-  <object id="718" class="GXPEngine.Square" gid="4" x="1792" y="256" width="256" height="256"/>
-  <object id="719" class="GXPEngine.Square" gid="4" x="2048" y="256" width="256" height="256"/>
-  <object id="720" class="GXPEngine.Square" gid="4" x="2304" y="256" width="256" height="256"/>
-  <object id="721" class="GXPEngine.Square" gid="4" x="2560" y="256" width="256" height="256"/>
-  <object id="722" class="GXPEngine.Square" gid="5" x="512" y="4096" width="256" height="256"/>
-  <object id="723" class="GXPEngine.Square" gid="5" x="768" y="4096" width="256" height="256"/>
-  <object id="724" class="GXPEngine.Square" gid="5" x="1024" y="4096" width="256" height="256"/>
-  <object id="725" class="GXPEngine.Square" gid="5" x="1280" y="4096" width="256" height="256"/>
-  <object id="726" class="GXPEngine.Square" gid="5" x="1536" y="4096" width="256" height="256"/>
-  <object id="727" class="GXPEngine.Square" gid="5" x="1792" y="4096" width="256" height="256"/>
-  <object id="728" class="GXPEngine.Square" gid="5" x="2048" y="4096" width="256" height="256"/>
-  <object id="729" class="GXPEngine.Square" gid="5" x="2304" y="4096" width="256" height="256"/>
-  <object id="731" class="GXPEngine.Square" gid="4" x="0" y="2048" width="256" height="256"/>
-  <object id="732" class="GXPEngine.Square" gid="4" x="0" y="2304" width="256" height="256"/>
-  <object id="733" class="GXPEngine.Square" gid="4" x="0" y="2560" width="256" height="256"/>
-  <object id="734" class="GXPEngine.Square" gid="4" x="5888" y="2816" width="256" height="256"/>
-  <object id="735" class="GXPEngine.Square" gid="4" x="5888" y="3072" width="256" height="256"/>
-  <object id="736" class="GXPEngine.Square" gid="4" x="5888" y="3328" width="256" height="256"/>
-  <object id="737" class="GXPEngine.Square" gid="4" x="5888" y="3584" width="256" height="256"/>
-  <object id="738" class="GXPEngine.Square" gid="4" x="5888" y="2304" width="256" height="256"/>
-  <object id="739" class="GXPEngine.Square" gid="4" x="5888" y="2560" width="256" height="256"/>
-  <object id="740" class="GXPEngine.Square" gid="4" x="2816" y="256" width="256" height="256"/>
-  <object id="741" class="GXPEngine.Square" gid="5" x="2816" y="4096" width="256" height="256"/>
-  <object id="742" class="GXPEngine.Square" gid="5" x="256" y="4096" width="256" height="256"/>
-  <object id="743" class="GXPEngine.Square" gid="5" x="0" y="4096" width="256" height="256"/>
-  <object id="744" class="GXPEngine.Square" gid="4" x="0" y="1536" width="256" height="256"/>
-  <object id="745" class="GXPEngine.Square" gid="4" x="0" y="1792" width="256" height="256"/>
-  <object id="746" class="GXPEngine.Square" gid="4" x="0" y="768" width="256" height="256"/>
-  <object id="747" class="GXPEngine.Square" gid="4" x="0" y="1024" width="256" height="256"/>
-  <object id="748" class="GXPEngine.Square" gid="4" x="0" y="1280" width="256" height="256"/>
-  <object id="749" class="GXPEngine.Square" gid="4" x="5888" y="1536" width="256" height="256"/>
-  <object id="750" class="GXPEngine.Square" gid="4" x="5888" y="1792" width="256" height="256"/>
-  <object id="751" class="GXPEngine.Square" gid="4" x="5888" y="768" width="256" height="256"/>
-  <object id="752" class="GXPEngine.Square" gid="4" x="5888" y="1024" width="256" height="256"/>
-  <object id="753" class="GXPEngine.Square" gid="4" x="5888" y="1280" width="256" height="256"/>
-  <object id="754" class="GXPEngine.Square" gid="4" x="5888" y="2048" width="256" height="256"/>
-  <object id="755" class="GXPEngine.Square" gid="4" x="0" y="3840" width="256" height="256"/>
-  <object id="756" class="GXPEngine.Square" gid="4" x="5888" y="3840" width="256" height="256"/>
-  <object id="757" class="GXPEngine.Square" gid="4" x="5888" y="512" width="256" height="256"/>
-  <object id="758" class="GXPEngine.Square" gid="4" x="0" y="512" width="256" height="256"/>
-  <object id="759" class="GXPEngine.Square" gid="5" x="3584" y="4096" width="256" height="256"/>
-  <object id="760" class="GXPEngine.Square" gid="5" x="3840" y="4096" width="256" height="256"/>
-  <object id="761" class="GXPEngine.Square" gid="5" x="4096" y="4096" width="256" height="256"/>
-  <object id="762" class="GXPEngine.Square" gid="5" x="4352" y="4096" width="256" height="256"/>
-  <object id="763" class="GXPEngine.Square" gid="5" x="4608" y="4096" width="256" height="256"/>
-  <object id="764" class="GXPEngine.Square" gid="5" x="4864" y="4096" width="256" height="256"/>
-  <object id="765" class="GXPEngine.Square" gid="5" x="5120" y="4096" width="256" height="256"/>
-  <object id="766" class="GXPEngine.Square" gid="5" x="5376" y="4096" width="256" height="256"/>
-  <object id="767" class="GXPEngine.Square" gid="5" x="5632" y="4096" width="256" height="256"/>
-  <object id="768" class="GXPEngine.Square" gid="5" x="5888" y="4096" width="256" height="256"/>
-  <object id="769" class="GXPEngine.Square" gid="5" x="3328" y="4096" width="256" height="256"/>
-  <object id="770" class="GXPEngine.Square" gid="5" x="3072" y="4096" width="256" height="256"/>
-  <object id="771" class="GXPEngine.Square" gid="4" x="3072" y="256" width="256" height="256"/>
-  <object id="772" class="GXPEngine.Square" gid="4" x="3328" y="256" width="256" height="256"/>
-  <object id="773" class="GXPEngine.Square" gid="4" x="3584" y="256" width="256" height="256"/>
-  <object id="774" class="GXPEngine.Square" gid="4" x="3840" y="256" width="256" height="256"/>
-  <object id="775" class="GXPEngine.Square" gid="4" x="4096" y="256" width="256" height="256"/>
-  <object id="776" class="GXPEngine.Square" gid="4" x="4352" y="256" width="256" height="256"/>
-  <object id="777" class="GXPEngine.Square" gid="4" x="4608" y="256" width="256" height="256"/>
-  <object id="778" class="GXPEngine.Square" gid="4" x="4864" y="256" width="256" height="256"/>
-  <object id="779" class="GXPEngine.Square" gid="4" x="5120" y="256" width="256" height="256"/>
-  <object id="780" class="GXPEngine.Square" gid="4" x="5376" y="256" width="256" height="256"/>
-  <object id="781" class="GXPEngine.Square" gid="4" x="5632" y="256" width="256" height="256"/>
-  <object id="782" class="GXPEngine.Square" gid="4" x="5888" y="256" width="256" height="256"/>
-  <object id="783" class="GXPEngine.Square" gid="4" x="3072" y="2304" width="256" height="256"/>
-  <object id="784" class="GXPEngine.Square" gid="4" x="2816" y="2304" width="256" height="256"/>
-  <object id="785" class="GXPEngine.Square" gid="4" x="2560" y="2304" width="256" height="256"/>
-  <object id="786" class="GXPEngine.Square" gid="4" x="2304" y="2304" width="256" height="256"/>
-  <object id="787" class="GXPEngine.Square" gid="4" x="3072" y="2048" width="256" height="256"/>
-  <object id="788" class="GXPEngine.Square" gid="4" x="2816" y="2048" width="256" height="256"/>
-  <object id="789" class="GXPEngine.Square" gid="4" x="2560" y="2048" width="256" height="256"/>
-  <object id="790" class="GXPEngine.Square" gid="4" x="2304" y="2048" width="256" height="256"/>
-  <object id="791" class="GXPEngine.Square" gid="4" x="4864" y="2304" width="256" height="256"/>
-  <object id="792" class="GXPEngine.Square" gid="4" x="5120" y="2304" width="256" height="256"/>
-  <object id="793" class="GXPEngine.Square" gid="4" x="4864" y="2560" width="256" height="256"/>
-  <object id="794" class="GXPEngine.Square" gid="4" x="5120" y="2560" width="256" height="256"/>
-  <object id="795" class="GXPEngine.Square" gid="4" x="4864" y="2816" width="256" height="256"/>
-  <object id="796" class="GXPEngine.Square" gid="4" x="5120" y="2816" width="256" height="256"/>
-  <object id="797" class="GXPEngine.Square" gid="4" x="512" y="1536" width="256" height="256"/>
-  <object id="798" class="GXPEngine.Square" gid="4" x="256" y="1536" width="256" height="256"/>
-  <object id="799" class="GXPEngine.Square" gid="4" x="1024" y="1024" width="256" height="256"/>
-  <object id="800" class="GXPEngine.Square" gid="4" x="1024" y="1024" width="256" height="256"/>
-  <object id="801" class="GXPEngine.Square" gid="4" x="1024" y="768" width="256" height="256"/>
-  <object id="802" class="GXPEngine.Square" gid="4" x="1024" y="512" width="256" height="256"/>
-  <object id="803" class="GXPEngine.Square" gid="4" x="768" y="1024" width="256" height="256"/>
-  <object id="804" class="GXPEngine.Square" gid="4" x="768" y="1024" width="256" height="256"/>
-  <object id="805" class="GXPEngine.Square" gid="4" x="768" y="768" width="256" height="256"/>
-  <object id="806" class="GXPEngine.Square" gid="4" x="768" y="512" width="256" height="256"/>
-  <object id="807" class="GXPEngine.Square" gid="4" x="512" y="1024" width="256" height="256"/>
-  <object id="808" class="GXPEngine.Square" gid="4" x="512" y="1024" width="256" height="256"/>
-  <object id="809" class="GXPEngine.Square" gid="4" x="512" y="768" width="256" height="256"/>
-  <object id="810" class="GXPEngine.Square" gid="4" x="512" y="512" width="256" height="256"/>
-  <object id="811" class="GXPEngine.Square" gid="4" x="256" y="1024" width="256" height="256"/>
-  <object id="812" class="GXPEngine.Square" gid="4" x="256" y="1024" width="256" height="256"/>
-  <object id="813" class="GXPEngine.Square" gid="4" x="256" y="768" width="256" height="256"/>
-  <object id="814" class="GXPEngine.Square" gid="4" x="256" y="512" width="256" height="256"/>
-  <object id="815" class="GXPEngine.Square" gid="4" x="256" y="1280" width="256" height="256"/>
-  <object id="816" class="GXPEngine.Square" gid="4" x="512" y="1280" width="256" height="256"/>
-  <object id="817" class="GXPEngine.Square" gid="4" x="768" y="1280" width="256" height="256"/>
-  <object id="818" class="GXPEngine.AngledLine" gid="6" x="768" y="1536" width="256" height="256">
-   <properties>
-    <property name="variant" type="int" value="1"/>
-   </properties>
-  </object>
-  <object id="819" class="GXPEngine.AngledLine" gid="6" x="3840" y="3328" width="256" height="256">
-   <properties>
-    <property name="variant" type="int" value="1"/>
-   </properties>
-  </object>
-  <object id="820" class="GXPEngine.AngledLine" gid="6" x="3584" y="3584" width="256" height="256">
-   <properties>
-    <property name="variant" type="int" value="1"/>
-   </properties>
-  </object>
-  <object id="821" class="GXPEngine.AngledLine" gid="6" x="1024" y="1280" width="256" height="256">
-   <properties>
-    <property name="variant" type="int" value="1"/>
-   </properties>
-  </object>
-  <object id="822" class="GXPEngine.AngledLine" gid="7" x="3840" y="768" width="256" height="256">
+ <objectgroup id="2" name="Object Layer 1">
+  <object id="1" class="GXPEngine.Square" gid="1" x="768" y="1024" width="256" height="256"/>
+  <object id="2" class="GXPEngine.Square" gid="1" x="1024" y="1024" width="256" height="256"/>
+  <object id="3" class="GXPEngine.Square" gid="1" x="1280" y="1024" width="256" height="256"/>
+  <object id="4" class="GXPEngine.Square" gid="1" x="1536" y="1024" width="256" height="256"/>
+  <object id="5" class="GXPEngine.Square" gid="1" x="1792" y="1024" width="256" height="256"/>
+  <object id="6" class="GXPEngine.Square" gid="1" x="2048" y="1024" width="256" height="256"/>
+  <object id="7" class="GXPEngine.Square" gid="1" x="2304" y="1024" width="256" height="256"/>
+  <object id="8" class="GXPEngine.Square" gid="1" x="2560" y="1024" width="256" height="256"/>
+  <object id="9" class="GXPEngine.Square" gid="1" x="512" y="1280" width="256" height="256"/>
+  <object id="10" class="GXPEngine.Square" gid="1" x="512" y="1536" width="256" height="256"/>
+  <object id="11" class="GXPEngine.Square" gid="1" x="512" y="1792" width="256" height="256"/>
+  <object id="12" class="GXPEngine.Square" gid="1" x="512" y="2048" width="256" height="256"/>
+  <object id="13" class="GXPEngine.Square" gid="1" x="512" y="2304" width="256" height="256"/>
+  <object id="14" class="GXPEngine.Square" gid="1" x="512" y="2560" width="256" height="256"/>
+  <object id="15" class="GXPEngine.Square" gid="1" x="512" y="2816" width="256" height="256"/>
+  <object id="16" class="GXPEngine.Square" gid="1" x="512" y="3072" width="256" height="256"/>
+  <object id="25" class="GXPEngine.Square" gid="2" x="768" y="3328" width="256" height="256"/>
+  <object id="26" class="GXPEngine.Square" gid="2" x="1024" y="3328" width="256" height="256"/>
+  <object id="27" class="GXPEngine.Square" gid="2" x="1280" y="3328" width="256" height="256"/>
+  <object id="28" class="GXPEngine.Square" gid="2" x="1536" y="3584" width="256" height="256"/>
+  <object id="29" class="GXPEngine.Square" gid="2" x="1792" y="3328" width="256" height="256"/>
+  <object id="30" class="GXPEngine.Square" gid="2" x="2048" y="3328" width="256" height="256"/>
+  <object id="31" class="GXPEngine.Square" gid="2" x="2304" y="3328" width="256" height="256"/>
+  <object id="32" class="GXPEngine.Square" gid="2" x="2560" y="3328" width="256" height="256"/>
+  <object id="33" class="GXPEngine.Square" gid="2" x="2816" y="3328" width="256" height="256"/>
+  <object id="34" class="GXPEngine.Square" gid="2" x="3072" y="3328" width="256" height="256"/>
+  <object id="35" class="GXPEngine.Square" gid="2" x="3328" y="3328" width="256" height="256"/>
+  <object id="36" class="GXPEngine.Square" gid="2" x="3584" y="3328" width="256" height="256"/>
+  <object id="37" class="GXPEngine.Square" gid="1" x="2816" y="1024" width="256" height="256"/>
+  <object id="38" class="GXPEngine.Square" gid="1" x="3072" y="1024" width="256" height="256"/>
+  <object id="39" class="GXPEngine.AngledLine" gid="3" x="3328" y="1280" width="256" height="256">
    <properties>
     <property name="variant" type="int" value="2"/>
    </properties>
   </object>
-  <object id="823" class="GXPEngine.AngledLine" gid="7" x="3584" y="512" width="256" height="256">
+  <object id="40" class="GXPEngine.AngledLine" gid="3" x="3584" y="1536" width="256" height="256">
    <properties>
     <property name="variant" type="int" value="2"/>
    </properties>
   </object>
-  <object id="824" class="GXPEngine.Square" gid="4" x="3840" y="3584" width="256" height="256"/>
-  <object id="825" class="GXPEngine.Square" gid="4" x="3840" y="512" width="256" height="256"/>
-  <object id="827" class="GXPEngine.Gate" gid="1" x="4352" y="2816" width="256" height="2048"/>
-  <object id="837" class="GXPEngine.Square" gid="4" x="4096" y="768" width="256" height="256"/>
-  <object id="838" class="GXPEngine.Square" gid="4" x="4096" y="512" width="256" height="256"/>
-  <object id="839" class="GXPEngine.Square" gid="4" x="4352" y="768" width="256" height="256"/>
-  <object id="840" class="GXPEngine.Square" gid="4" x="4352" y="512" width="256" height="256"/>
-  <object id="841" class="GXPEngine.Square" gid="4" x="4352" y="3584" width="256" height="256"/>
-  <object id="842" class="GXPEngine.Square" gid="4" x="4352" y="3328" width="256" height="256"/>
-  <object id="843" class="GXPEngine.Square" gid="4" x="4096" y="3584" width="256" height="256"/>
-  <object id="844" class="GXPEngine.Square" gid="4" x="4096" y="3328" width="256" height="256"/>
-  <object id="845" class="GXPEngine.BulletThroughOnly" gid="1" x="2304" y="1792" width="256" height="1560"/>
-  <object id="851" class="GXPEngine.Player" gid="2147483657" x="1280" y="3584" width="256" height="256"/>
-  <object id="852" class="GXPEngine.EnergyReceptor" gid="1" x="5888" y="1280" width="512" height="512" rotation="270">
+  <object id="41" class="GXPEngine.Square" gid="1" x="3840" y="1536" width="256" height="256"/>
+  <object id="42" class="GXPEngine.Square" gid="1" x="3840" y="1280" width="256" height="256"/>
+  <object id="43" class="GXPEngine.Square" gid="1" x="3840" y="1024" width="256" height="256"/>
+  <object id="44" class="GXPEngine.EnergyReceptor" gid="4" x="4096" y="1024" width="512" height="512" rotation="90"/>
+  <object id="45" class="GXPEngine.Square" gid="1" x="4096" y="1024" width="256" height="256"/>
+  <object id="46" class="GXPEngine.Square" gid="1" x="4352" y="1024" width="256" height="256"/>
+  <object id="47" class="GXPEngine.Square" gid="1" x="4608" y="1024" width="256" height="256"/>
+  <object id="48" class="GXPEngine.AngledLine" gid="3" x="4864" y="1280" width="256" height="256">
    <properties>
-    <property name="goalSide" type="int" value="4"/>
-    <property name="nextLevel" value="Level1.tmx"/>
+    <property name="variant" type="int" value="2"/>
    </properties>
   </object>
-  <object id="853" class="GXPEngine.ButtonPlatform" gid="1" x="2816" y="1792" width="256" height="256"/>
-  <object id="854" class="GXPEngine.EBallSpawner" gid="1" x="2560" y="4096" width="256" height="256">
+  <object id="49" class="GXPEngine.AngledLine" gid="3" x="5120" y="1536" width="256" height="256">
    <properties>
-    <property name="nextLevel" value="Level1.tmx"/>
+    <property name="variant" type="int" value="2"/>
+   </properties>
+  </object>
+  <object id="50" class="GXPEngine.Square" gid="1" x="5376" y="1792" width="256" height="256"/>
+  <object id="51" class="GXPEngine.Square" gid="1" x="5376" y="2048" width="256" height="256"/>
+  <object id="52" class="GXPEngine.Square" gid="1" x="5376" y="2304" width="256" height="256"/>
+  <object id="53" class="GXPEngine.Square" gid="1" x="5376" y="2560" width="256" height="256"/>
+  <object id="55" class="GXPEngine.Square" gid="1" x="2560" y="2048" width="256" height="256"/>
+  <object id="56" class="GXPEngine.Square" gid="1" x="2304" y="2048" width="256" height="256"/>
+  <object id="57" class="GXPEngine.Square" gid="1" x="768" y="2304" width="256" height="256"/>
+  <object id="59" class="GXPEngine.Square" gid="1" x="1024" y="2304" width="256" height="256"/>
+  <object id="60" class="GXPEngine.Square" gid="1" x="3840" y="1792" width="256" height="256"/>
+  <object id="61" class="GXPEngine.Square" gid="1" x="3840" y="2048" width="256" height="256"/>
+  <object id="62" class="GXPEngine.AngledLine" gid="5" x="5120" y="2816" width="256" height="256">
+   <properties>
+    <property name="variant" type="int" value="1"/>
+   </properties>
+  </object>
+  <object id="63" class="GXPEngine.AngledLine" gid="5" x="4864" y="3072" width="256" height="256">
+   <properties>
+    <property name="variant" type="int" value="1"/>
+   </properties>
+  </object>
+  <object id="64" class="GXPEngine.Square" gid="2" x="3840" y="3328" width="256" height="256"/>
+  <object id="65" class="GXPEngine.Square" gid="2" x="4096" y="3328" width="256" height="256"/>
+  <object id="66" class="GXPEngine.Square" gid="2" x="4352" y="3328" width="256" height="256"/>
+  <object id="67" class="GXPEngine.Square" gid="2" x="4608" y="3328" width="256" height="256"/>
+  <object id="68" class="GXPEngine.Player" gid="2147483654" x="1024" y="2048" width="256" height="256"/>
+  <object id="69" class="GXPEngine.EBallSpawner" gid="4" x="1536" y="3328" width="256" height="256">
+   <properties>
+    <property name="goalSide" type="int" value="2"/>
+    <property name="nextLevel" value="Level4.tmx"/>
     <property name="spawnSide" type="int" value="1"/>
-    <property name="velocityY" type="float" value="10"/>
+    <property name="velocityY" type="float" value="30"/>
    </properties>
   </object>
-  <object id="855" class="GXPEngine.Square" gid="5" x="1024" y="3840" width="256" height="256"/>
-  <object id="858" class="GXPEngine.Square" gid="5" x="768" y="3840" width="256" height="256"/>
-  <object id="859" class="GXPEngine.Square" gid="4" x="3840" y="3840" width="256" height="256"/>
-  <object id="860" class="GXPEngine.Square" gid="4" x="4352" y="3840" width="256" height="256"/>
-  <object id="861" class="GXPEngine.Square" gid="4" x="4096" y="3840" width="256" height="256"/>
-  <object id="862" class="GXPEngine.Square" gid="4" x="3584" y="3840" width="256" height="256"/>
-  <object id="863" class="GXPEngine.Square" gid="4" x="4352" y="3072" width="256" height="256"/>
-  <object id="865" class="GXPEngine.Square" gid="4" x="4096" y="3072" width="256" height="256"/>
-  <object id="866" class="GXPEngine.Square" gid="5" x="1280" y="3840" width="256" height="256"/>
+  <object id="70" class="GXPEngine.BulletThroughOnly" gid="4" x="2304" y="3072" width="256" height="1024"/>
  </objectgroup>
 </map>

@@ -13,6 +13,7 @@ namespace GXPEngine
         TiledLoader loader;
         string currentLevelName;
 
+        bool doOnce;
         // Use this to load level:
         // ((MyGame) game).LoadLevel("MainMenu.tmx");
 
@@ -40,7 +41,7 @@ namespace GXPEngine
 
         private void SwitchNextLevel()
         {
-            int maxLevel = 8;
+            int maxLevel = 11;
 
             // Go next
             if (Input.GetKeyDown(Key.RIGHT) || Input.GetKeyDown(Key.LEFT))
@@ -92,9 +93,43 @@ namespace GXPEngine
                 }
                 
             }
-            
+
+            if (Input.GetMouseButton(0))
+            {
+                string cLevel = currentLevelName;
+                if (cLevel.Length == 10)
+                {
+                    cLevel = cLevel.Substring(cLevel.IndexOf(".") - 1);
+                }
+                else
+                {
+                    cLevel = cLevel.Substring(cLevel.IndexOf(".") - 2);
+                }
+                cLevel = cLevel.Remove(cLevel.IndexOf("."));
+
+                int currentLevel = Convert.ToInt32(cLevel);
+                string loadLevel = "Level.tmx";
+                
+
+                if ((currentLevel>1 && currentLevel<6) || (currentLevel>8 && currentLevel < 11))
+                {
+                    if (currentLevel < maxLevel && doOnce)
+                    {
+                        currentLevel++;
+                    }
+                    loadLevel = loadLevel.Insert(loadLevel.IndexOf("."), currentLevel.ToString());
+
+                    MyGame myGame = (MyGame)game;
+                    myGame.LoadLevel(loadLevel);
+                }
+            }
+            else
+            {
+                doOnce = true;
+            }
 
         }
+        
 
         private void CreateLevel(bool includeImageLayer = true)
         {

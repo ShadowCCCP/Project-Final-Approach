@@ -108,6 +108,7 @@ namespace GXPEngine
                             if (y < myGame.GetSquare(i).y)
                             {
                                 //top
+                                checkGoalCollision(1, i);
                                 float impactY = myGame.GetSquare(i).y - (myGame.GetSquare(i).height / 2 + radius + 1);
 
                                 position.y = impactY;
@@ -117,6 +118,7 @@ namespace GXPEngine
                             else
                             {
                                 // bottom
+                                checkGoalCollision(3, i);
                                 float impactY = myGame.GetSquare(i).y + (myGame.GetSquare(i).height / 2 + radius + 1);
 
                                 position.y = impactY;
@@ -129,6 +131,7 @@ namespace GXPEngine
                             if (x < myGame.GetSquare(i).x)
                             {
                                 // left
+                                checkGoalCollision(4, i);
                                 float impactX = myGame.GetSquare(i).x - (myGame.GetSquare(i).width / 2 + radius + 1);
 
                                 position.x = impactX;
@@ -138,6 +141,7 @@ namespace GXPEngine
                             else
                             {
                                 // right
+                                checkGoalCollision(2, i);
                                 float impactX = myGame.GetSquare(i).x + (myGame.GetSquare(i).width / 2 + radius + 1);
 
                                 position.x = impactX;
@@ -170,6 +174,7 @@ namespace GXPEngine
                 {
                     bouncyPlatformVelocity = 8;
                     myGame.BouncyPlatformAnim = true;
+                    oldVelocity = velocity;
                     velocity = velocity * bouncyPlatformVelocity;
                     timer = true;
                     break;
@@ -202,6 +207,7 @@ namespace GXPEngine
 
                 if (Time.time - time > 1500) //timer ends
                 {
+                    velocity = oldVelocity;
                     timer = false;
                     timerStarted = false;
                 }

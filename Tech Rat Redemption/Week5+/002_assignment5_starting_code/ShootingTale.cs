@@ -18,6 +18,7 @@ namespace GXPEngine
 
         public ShootingTale(Vec2 pPosition, int pMaxCollisions, string filename = "RatTail.png", int cols = 1, int rows = 1) : base(filename, cols, rows)
         {
+            myGame.playerLaser = true;
             SetOrigin(width - 117, height - 28);
             playerPos = pPosition;
             maxCollisions = pMaxCollisions;

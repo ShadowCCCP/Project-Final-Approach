@@ -14,6 +14,7 @@ public class MyGame : Game
 
     public bool ButtonPressed=false;
     public bool BouncyPlatformAnim=false;
+    public bool playerLaser;
 
 
     // Tiled loading
@@ -49,7 +50,10 @@ public class MyGame : Game
     {
         if (!mfirst.Approximate(new Vec2(0, 0)))
         {
-            Gizmos.DrawLine(raySpawnPos.x, raySpawnPos.y, mfirst.x, mfirst.y, null, 0xffff0000);
+            if(playerLaser)
+            {
+                Gizmos.DrawLine(raySpawnPos.x, raySpawnPos.y, mfirst.x, mfirst.y, null, 0xffff0000);
+            }
         }
         if (!msecond.Approximate(new Vec2(0, 0)))
         {
@@ -71,6 +75,7 @@ public class MyGame : Game
 
     public void LoadLevel(string filename)
     {
+        playerLaser = false;
         nextLevel = filename;
         musicChanger(filename);
     }

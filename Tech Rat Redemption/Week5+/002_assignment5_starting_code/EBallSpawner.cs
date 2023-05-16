@@ -19,7 +19,7 @@ namespace GXPEngine
         float velocityX;
         float velocityY;
 
-        public EBallSpawner(string filename = "", int cols = 1, int rows = 1, TiledObject obj = null) : base(filename, cols, rows)
+        public EBallSpawner(string filename = "", int cols = 1, int rows = 1, TiledObject obj = null) : base("OrbSpawner.png", cols, rows)
         {
             if (obj != null)
             {

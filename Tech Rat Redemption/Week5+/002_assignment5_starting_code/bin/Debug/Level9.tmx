@@ -27,8 +27,8 @@
  <tileset firstgid="9" name="Rat" tilewidth="256" tileheight="256" tilecount="4" columns="4">
   <image source="Rat.png" width="1024" height="256"/>
  </tileset>
- <tileset firstgid="13" name="Slide1AG" tilewidth="750" tileheight="423" tilecount="1" columns="1">
-  <image source="Slide1AG.png" width="750" height="423"/>
+ <tileset firstgid="13" name="Slide2AG" tilewidth="742" tileheight="426" tilecount="1" columns="1">
+  <image source="Slide2AG.png" width="742" height="426"/>
  </tileset>
  <layer id="1" name="Kachelebene 1" width="24" height="16">
   <data encoding="csv">
@@ -51,6 +51,6 @@
 </data>
  </layer>
  <objectgroup id="2" name="Obstacles">
-  <object id="856" gid="13" x="0" y="3792" width="6140.07" height="3463"/>
+  <object id="856" gid="13" x="0" y="3840" width="6142" height="3526.27"/>
  </objectgroup>
 </map>

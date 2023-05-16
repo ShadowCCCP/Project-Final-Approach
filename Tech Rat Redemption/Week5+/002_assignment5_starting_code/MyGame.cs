@@ -83,25 +83,63 @@ public class MyGame : Game
     void musicChanger(string cLevel)
     {
         soundCollection.StopMusic();
-        cLevel = cLevel.Substring(cLevel.IndexOf(".") - 1);
+        if(cLevel.Length == 10)
+                {
+                    cLevel = cLevel.Substring(cLevel.IndexOf(".") - 1);
+                }
+                else
+                {
+                    cLevel = cLevel.Substring(cLevel.IndexOf(".") - 2);
+                }
         cLevel = cLevel.Remove(cLevel.IndexOf("."));
 
         int currentLevel = Convert.ToInt32(cLevel);
+        Console.Write(currentLevel);
         switch (currentLevel)
         {
             case 1:
                 {
-                    soundCollection.PlayMusic(13);
+                    soundCollection.PlayMusic(34);
                     break;
                 }
             case 2:
                 {
-                    soundCollection.PlayMusic(14);
+                    soundCollection.PlayNarration(26);
                     break;
                 }
             case 3:
                 {
-                    soundCollection.PlayMusic(15);
+                    soundCollection.PlayNarration(27);
+                    break;
+                }
+            case 4:
+                {
+                    soundCollection.PlayNarration(28);
+                    break;
+                }
+            case 5:
+                {
+                    soundCollection.PlayNarration(29);
+                    break;
+                }
+            case 6:
+                {
+                    soundCollection.PlayNarration(30);
+                    break;
+                }
+            case 7:
+                {
+                    soundCollection.PlayMusic(13);
+                    break;
+                }
+            case 8:
+                {
+                    soundCollection.PlayMusic(14, true);
+                    break;
+                }
+            case 10:
+                {
+                    soundCollection.PlayNarration(31);
                     break;
                 }
 

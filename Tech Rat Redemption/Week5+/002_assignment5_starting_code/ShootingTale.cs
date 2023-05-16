@@ -15,6 +15,7 @@ namespace GXPEngine
         bool doOnce;
         Bullet bullet;
         int maxCollisions;
+        SoundCollection sounds = new SoundCollection();
 
         public ShootingTale(Vec2 pPosition, int pMaxCollisions, string filename = "RatTail.png", int cols = 1, int rows = 1) : base(filename, cols, rows)
         {
@@ -70,6 +71,7 @@ namespace GXPEngine
 
             if (Input.GetMouseButton(0) && !doOnce) //left click
             {
+                shootSound();
                 bullet = new Bullet(spawnPosition, velocity, maxCollisions);
                 game.AddChild(bullet);
                 doOnce = true;
@@ -84,11 +86,45 @@ namespace GXPEngine
                 }
                 else if (Input.GetMouseButtonDown(0))
                 {
+                    shootSound();
                     myGame.RemoveBall(bullet);
                     bullet.LateDestroy();
                     bullet = new Bullet(spawnPosition, velocity, maxCollisions);
                     game.AddChild(bullet);
                 }
+            }
+        }
+
+        private void shootSound()
+        {
+            Random rdm = new Random();
+            switch (rdm.Next(5))
+            {
+                case 0:
+                    {
+                        sounds.PlaySound(4);
+                        break;
+                    }
+                case 1:
+                    {
+                        sounds.PlaySound(15);
+                        break;
+                    }
+                case 2:
+                    {
+                        sounds.PlaySound(16);
+                        break;
+                    }
+                case 3: 
+                    {
+                        sounds.PlaySound(17);
+                        break;
+                    }
+                case 4:
+                    {
+                        sounds.PlaySound(18);
+                        break;
+                    }
             }
         }
     }

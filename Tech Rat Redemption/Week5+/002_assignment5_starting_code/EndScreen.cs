@@ -11,7 +11,8 @@ namespace GXPEngine
     {
         public EndScreen(string filename = "", int cols = 1, int rows = 1, TiledObject obj = null) : base("sketchbackgroundENDS.png", 7, 2)
         {
-
+            MyGame myGame = (MyGame)game;
+            myGame.soundCollection.PlayNarration(33);
         }
 
         void Update()

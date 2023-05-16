@@ -60,6 +60,6 @@
   <object id="286" gid="14" x="-560" y="4096" width="7296.36" height="4100.77"/>
  </objectgroup>
  <objectgroup id="7" name="Click">
-  <object id="292" gid="15" x="2304" y="4096" width="1300" height="1800"/>
+  <object id="292" gid="15" x="2304" y="4352" width="1300" height="1800"/>
  </objectgroup>
 </map>

@@ -89,12 +89,12 @@ public class MyGame : Game
         int currentLevel = Convert.ToInt32(cLevel);
         switch (currentLevel)
         {
-            case 1:
+            case 6:
                 {
                     soundCollection.PlayMusic(13);
                     break;
                 }
-            case 2:
+            case 7:
                 {
                     soundCollection.PlayMusic(14, true);
                     break;

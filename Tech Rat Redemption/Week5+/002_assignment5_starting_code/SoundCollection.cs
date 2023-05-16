@@ -30,6 +30,7 @@ namespace GXPEngine
             AddSound("Orb_hits_wall_5.wav"); //12
             AddSound("GameplayMusicLevelOne.wav"); //13
             AddSound("GameplayMusicLevelTwo.wav"); //14
+            AddSound(""); //15
         }
         public void PlaySound(int index, bool loop = false, bool stream = false)
         {

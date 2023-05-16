@@ -172,7 +172,6 @@ namespace GXPEngine
                     {
                         if (b < 0)
                         {
-                            Console.WriteLine("test");
                             Vec2 velCOM = (Mass * velocity + mover.Mass * mover.velocity) / (Mass + mover.Mass);
                             collisions.Add(new CollisionInfo(u.Normalized(), mover, 0, velCOM));
                         }
@@ -187,7 +186,6 @@ namespace GXPEngine
                             float toi = (-b - Mathf.Sqrt(D)) / (2 * a);
                             if (0 <= toi && toi < 1)
                             {
-                                Console.WriteLine("test");
                                 Vec2 velCOM = (Mass * velocity + mover.Mass * mover.velocity) / (Mass + mover.Mass);
                                 collisions.Add(new CollisionInfo(u.Normalized(), mover, toi, velCOM));
                             }

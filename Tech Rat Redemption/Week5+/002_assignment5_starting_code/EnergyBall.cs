@@ -20,6 +20,8 @@ namespace GXPEngine
         bool timerStarted = false;
         bool ballDestroyed;
 
+        int cooldown = Time.now;
+
 
         public EnergyBall(string filename = "", int cols = 1, int rows = 1, TiledObject obj = null) : base(filename, 3, 3)
         {
@@ -53,6 +55,65 @@ namespace GXPEngine
             SetXY(pPosition.x, pPosition.y);
 
             SetOrigin(width / 2, height / 2);
+        }
+
+        protected virtual void LineSegmentTopOrBottom(bool bottom, Vec2 difference, int i)
+        {
+            Vec2 bottomOrTop;
+
+            if (bottom)
+            {
+                bottomOrTop = myGame.GetAngle(i).end - myGame.GetAngle(i).start;
+            }
+            else
+            {
+                bottomOrTop = myGame.GetAngle(i).start - myGame.GetAngle(i).end;
+            }
+
+            float toi = 2;
+            float a = difference.Dot(bottomOrTop.Normal()) - radius;
+            float b = (_oldPosition - position).Dot(bottomOrTop.Normal());
+
+            if (b > 0 && a >= 0)
+            {
+                toi = a / b;
+            }
+            else if (b > 0 && a >= -radius)
+            {
+                toi = 0;
+            }
+
+            if (toi >= 0 && toi <= 1)
+            {
+                Vec2 poi = _oldPosition + velocity * toi;
+                Vec2 poiDifference;
+                if (bottom)
+                {
+                    poiDifference = poi - myGame.GetAngle(i).start;
+                }
+                else
+                {
+                    poiDifference = poi - myGame.GetAngle(i).end;
+                }
+                float lineDistance = poiDifference.Dot(bottomOrTop.Normalized());
+                if (lineDistance >= 0 && lineDistance <= bottomOrTop.Length())
+                {
+                    collisions.Add(new CollisionInfo(bottomOrTop.Normal(), null, toi));
+                }
+            }
+        }
+
+        protected override void ResolveCollision(CollisionInfo col)
+        {
+            base.ResolveCollision(col);
+            int cTime = Time.now;
+            Console.WriteLine("huhu");
+            if (cTime - cooldown > 300)
+            {
+                Console.WriteLine("non");
+                myGame.soundCollection.PlaySound(8);
+                cooldown = Time.now;
+            }
         }
 
         protected override void BlockCollision()
@@ -108,7 +169,6 @@ namespace GXPEngine
                             if (y < myGame.GetSquare(i).y)
                             {
                                 //top
-                                checkGoalCollision(1, i);
                                 float impactY = myGame.GetSquare(i).y - (myGame.GetSquare(i).height / 2 + radius + 1);
 
                                 position.y = impactY;
@@ -118,7 +178,6 @@ namespace GXPEngine
                             else
                             {
                                 // bottom
-                                checkGoalCollision(3, i);
                                 float impactY = myGame.GetSquare(i).y + (myGame.GetSquare(i).height / 2 + radius + 1);
 
                                 position.y = impactY;
@@ -131,7 +190,6 @@ namespace GXPEngine
                             if (x < myGame.GetSquare(i).x)
                             {
                                 // left
-                                checkGoalCollision(4, i);
                                 float impactX = myGame.GetSquare(i).x - (myGame.GetSquare(i).width / 2 + radius + 1);
 
                                 position.x = impactX;
@@ -141,7 +199,6 @@ namespace GXPEngine
                             else
                             {
                                 // right
-                                checkGoalCollision(2, i);
                                 float impactX = myGame.GetSquare(i).x + (myGame.GetSquare(i).width / 2 + radius + 1);
 
                                 position.x = impactX;
@@ -185,9 +242,14 @@ namespace GXPEngine
                     Console.WriteLine("Button pressed");
                     break;
                 }
-                if (myGame.GetSquare(i) is Square && goal !=1)
+                if (myGame.GetSquare(i) is Square)
                 {
-                    myGame.soundCollection.PlaySound(8);
+                    int cTime = Time.now;
+                    if(cTime - cooldown > 300)
+                    {
+                        myGame.soundCollection.PlaySound(8);
+                        cooldown = Time.now;
+                    }
                 }
             } while (false);
 

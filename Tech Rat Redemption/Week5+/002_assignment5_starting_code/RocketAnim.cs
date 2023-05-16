@@ -9,18 +9,18 @@ namespace GXPEngine
 {
     class RocketAnim : AnimationSprite
     {
-        public RocketAnim(string filename = "", int cols = 1, int rows = 1, TiledObject obj = null) : base("sketchbackgroundENDS.png", 7, 2)
+        public RocketAnim(string filename = "", int cols = 1, int rows = 1, TiledObject obj = null) : base("FinalAnimation.png", 6, 4)
         {
                 
         }
 
         void Update()
         {
-            SetCycle(0, 13);
-            if (currentFrame < 12)
+            SetCycle(0, 22);
+            if (currentFrame < 21)
             {
 
-                Animate(0.05f);
+                Animate(0.1f);
             }
 
         }

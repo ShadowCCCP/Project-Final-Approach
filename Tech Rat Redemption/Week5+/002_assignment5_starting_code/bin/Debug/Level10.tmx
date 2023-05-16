@@ -54,6 +54,6 @@
 </data>
  </layer>
  <objectgroup id="2" name="Obstacles">
-  <object id="858" gid="1" x="0" y="4096" width="6144" height="4096"/>
+  <object id="858" type="GXPEngine.RocketAnim" gid="1" x="0" y="4096" width="6144" height="4096"/>
  </objectgroup>
 </map>

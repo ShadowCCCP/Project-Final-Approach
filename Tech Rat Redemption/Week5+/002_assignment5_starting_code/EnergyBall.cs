@@ -227,7 +227,7 @@ namespace GXPEngine
 
                 if (myGame.GetSquare(i) is BouncyPlatform)
                 {
-                    bouncyPlatformVelocity = 2;
+                    bouncyPlatformVelocity = 2.5f;
                     myGame.BouncyPlatformAnim = true;
                     velocity = velocity * bouncyPlatformVelocity;
                     timer = true;

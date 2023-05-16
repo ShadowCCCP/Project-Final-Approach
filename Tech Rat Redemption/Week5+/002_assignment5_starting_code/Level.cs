@@ -41,7 +41,7 @@ namespace GXPEngine
 
         private void SwitchNextLevel()
         {
-            int maxLevel = 11;
+            int maxLevel = 12;
 
             // Go next
             if (Input.GetKeyDown(Key.RIGHT) || Input.GetKeyDown(Key.LEFT))

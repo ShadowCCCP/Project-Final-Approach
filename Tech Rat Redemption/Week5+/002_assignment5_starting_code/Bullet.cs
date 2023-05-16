@@ -122,11 +122,6 @@ namespace GXPEngine
                                     velocity.x *= -1;
                                 }
                             }
-                            if (myGame.GetSquare(i) is BouncyPlatform)
-                            {
-                                myGame.BouncyPlatformAnim = true;
-                                velocity = velocity * bouncyPlatformVelocity;
-                            }
                         }
                     }
                 }
@@ -147,27 +142,27 @@ namespace GXPEngine
                     {
                         case 0:
                             {
-                                myGame.soundCollection.PlaySound(8);
+                                myGame.soundCollection.PlaySound(19);
                                 break;
                             }
                         case 1:
                             {
-                                myGame.soundCollection.PlaySound(8);
+                                myGame.soundCollection.PlaySound(20);
                                 break;
                             }
                         case 2:
                             {
-                                myGame.soundCollection.PlaySound(8);
+                                myGame.soundCollection.PlaySound(21);
                                 break;
                             }
                         case 3:
                             {
-                                myGame.soundCollection.PlaySound(8);
+                                myGame.soundCollection.PlaySound(22);
                                 break;
                             }
                         case 4:
                             {
-                                myGame.soundCollection.PlaySound(8);
+                                myGame.soundCollection.PlaySound(23);
                                 break;
                             }
                     }

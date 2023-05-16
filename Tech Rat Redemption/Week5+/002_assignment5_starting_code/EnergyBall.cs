@@ -107,10 +107,8 @@ namespace GXPEngine
         {
             base.ResolveCollision(col);
             int cTime = Time.now;
-            Console.WriteLine("huhu");
             if (cTime - cooldown > 300)
             {
-                Console.WriteLine("non");
                 myGame.soundCollection.PlaySound(8);
                 cooldown = Time.now;
             }
@@ -231,7 +229,6 @@ namespace GXPEngine
                 {
                     bouncyPlatformVelocity = 8;
                     myGame.BouncyPlatformAnim = true;
-                    oldVelocity = velocity;
                     velocity = velocity * bouncyPlatformVelocity;
                     timer = true;
                     break;
@@ -267,7 +264,6 @@ namespace GXPEngine
 
                 if (Time.time - time > 1500) //timer ends
                 {
-                    velocity = oldVelocity;
                     timer = false;
                     timerStarted = false;
                 }

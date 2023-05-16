@@ -27,10 +27,13 @@
  <tileset firstgid="9" name="Rat" tilewidth="256" tileheight="256" tilecount="4" columns="4">
   <image source="Rat.png" width="1024" height="256"/>
  </tileset>
- <tileset firstgid="13" name="MenuBG" tilewidth="2560" tileheight="1440" tilecount="1" columns="1">
-  <image source="MenuBG.png" width="2560" height="1440"/>
+ <tileset firstgid="13" name="Slide1AG" tilewidth="750" tileheight="423" tilecount="1" columns="1">
+  <image source="Slide1AG.png" width="1064" height="598"/>
  </tileset>
- <tileset firstgid="14" name="continue" tilewidth="2480" tileheight="3508" tilecount="1" columns="1">
+ <tileset firstgid="14" name="Slide1AG" tilewidth="1064" tileheight="598" tilecount="1" columns="1">
+  <image source="Slide1AG.png" width="1064" height="598"/>
+ </tileset>
+ <tileset firstgid="15" name="continue" tilewidth="2480" tileheight="3508" tilecount="1" columns="1">
   <image source="continue.png" width="2480" height="3508"/>
  </tileset>
  <layer id="1" name="Kachelebene 1" width="24" height="16">
@@ -54,6 +57,7 @@
 </data>
  </layer>
  <objectgroup id="2" name="Obstacles">
-  <object id="858" type="GXPEngine.RocketAnim" gid="1" x="0" y="4096" width="6144" height="4096"/>
+  <object id="857" gid="14" x="-626.301" y="4096" width="7398.18" height="4158"/>
+  <object id="859" gid="15" x="2304" y="4096" width="1300" height="1800"/>
  </objectgroup>
 </map>

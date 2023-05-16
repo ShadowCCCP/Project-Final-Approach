@@ -11,6 +11,8 @@ namespace GXPEngine
     {
         public RocketAnim(string filename = "", int cols = 1, int rows = 1, TiledObject obj = null) : base("FinalAnimation.png", 6, 4)
         {
+            MyGame myGame = (MyGame)game;
+            myGame.soundCollection.PlayNarration(32);
             SetFrame(0);
         }
 

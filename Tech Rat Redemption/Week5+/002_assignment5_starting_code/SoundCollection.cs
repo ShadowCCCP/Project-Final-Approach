@@ -41,9 +41,19 @@ namespace GXPEngine
             AddSound("Orb_hits_wall_5.wav"); //23
             AddSound("Bullet hits orb.wav"); //24
             AddSound("Button_UI.wav"); //25
+            AddSound("Slide 1.wav"); //26
+            AddSound("Slide 2.wav"); //27
+            AddSound("Slide 3.wav"); //28
+            AddSound("Slide 4.wav"); //29
+            AddSound("Slide 5.wav"); //30
+            AddSound("Slide 6 (after gameplay).wav"); //31
+            AddSound("Countdown.wav"); //32
+            AddSound("Special 3.wav"); //33
+            AddSound("Menu Music.wav"); //34
         }
         public void PlaySound(int index, bool loop = false, bool stream = false)
         {
+            
             Sound soundEffect = new Sound(soundFiles[index].ToString(), loop, stream);
             soundEffect.Play();
         }
@@ -64,11 +74,22 @@ namespace GXPEngine
             channel = music.Play();
         }
 
+        public void PlayNarration(int index, bool loop = false, bool stream = false)
+        {
+            Console.WriteLine("narration");
+            Console.WriteLine(channel != null);
+            if (channel != null)
+            {
+                channel.Stop();
+            }
+            Sound music = new Sound(soundFiles[index].ToString(), loop, stream);
+            channel = music.Play();
+        }
+
         public void StopMusic()
         {
             if (channel != null)
             {
-                Console.WriteLine(noStop);
                 if(!noStop)
                 {
                     channel.Stop();

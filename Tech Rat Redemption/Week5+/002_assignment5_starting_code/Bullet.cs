@@ -139,7 +139,7 @@ namespace GXPEngine
                 int cTime = Time.now;
                 if (cTime - soundCooldown > 300)
                 {
-                    switch (rdm.Next(5))
+                    switch (rdm.Next(4))
                     {
                         case 0:
                             {
@@ -161,11 +161,11 @@ namespace GXPEngine
                                 myGame.soundCollection.PlaySound(22);
                                 break;
                             }
-                        case 4:
+                       /* case 4:
                             {
                                 myGame.soundCollection.PlaySound(23);
                                 break;
-                            }
+                            }*/
                     }
 
                 }

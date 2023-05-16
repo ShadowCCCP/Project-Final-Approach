@@ -6,23 +6,23 @@
  <tileset firstgid="2" name="Normal_wall_tile" tilewidth="256" tileheight="256" tilecount="1" columns="1">
   <image source="Normal_wall_tile.png" width="256" height="256"/>
  </tileset>
- <tileset firstgid="3" name="AngledLineBottomLeft" tilewidth="256" tileheight="256" tilecount="1" columns="1">
-  <image source="AngledLineBottomLeft.png" width="256" height="256"/>
+ <tileset firstgid="3" name="AngledLineBottomLeft" tilewidth="256" tileheight="256" tilecount="4" columns="2">
+  <image source="AngledLineBottomLeft.png" width="512" height="512"/>
  </tileset>
- <tileset firstgid="4" name="DebugSquare" tilewidth="256" tileheight="256" tilecount="1" columns="1">
+ <tileset firstgid="7" name="DebugSquare" tilewidth="256" tileheight="256" tilecount="1" columns="1">
   <image source="../../../../../Assets/DebugSquare.png" width="256" height="256"/>
  </tileset>
- <tileset firstgid="5" name="AngledLineTopRight" tilewidth="256" tileheight="256" tilecount="1" columns="1">
-  <image source="AngledLineTopRight.png" width="256" height="256"/>
+ <tileset firstgid="8" name="AngledLineTopRight" tilewidth="256" tileheight="256" tilecount="4" columns="2">
+  <image source="AngledLineTopRight.png" width="512" height="512"/>
  </tileset>
- <tileset firstgid="6" name="Rat" tilewidth="256" tileheight="256" tilecount="4" columns="4">
+ <tileset firstgid="12" name="Rat" tilewidth="256" tileheight="256" tilecount="4" columns="4">
   <image source="Rat.png" width="1024" height="256"/>
  </tileset>
- <tileset firstgid="10" name="CoolBackground" tilewidth="1569" tileheight="883" tilecount="1" columns="1">
+ <tileset firstgid="16" name="CoolBackground" tilewidth="1569" tileheight="883" tilecount="1" columns="1">
   <image source="GoodBackground.png" width="1569" height="883"/>
  </tileset>
  <objectgroup id="4" name="TiledBG">
-  <object id="58" gid="10" x="0" y="4096" width="6144" height="4096"/>
+  <object id="58" gid="16" x="0" y="4096" width="6144" height="4096"/>
  </objectgroup>
  <objectgroup id="2" name="Level">
   <object id="1" type="GXPEngine.Square" gid="2" x="1024" y="1024" width="256" height="256"/>
@@ -37,19 +37,19 @@
   <object id="10" type="GXPEngine.Square" gid="2" x="3328" y="1024" width="256" height="256"/>
   <object id="11" type="GXPEngine.Square" gid="2" x="3584" y="1024" width="256" height="256"/>
   <object id="12" type="GXPEngine.Square" gid="2" x="3840" y="1024" width="256" height="256"/>
-  <object id="13" type="GXPEngine.EnergyReceptor" gid="4" x="4352" y="1536" width="512" height="512" rotation="270"/>
+  <object id="13" type="GXPEngine.EnergyReceptor" gid="7" x="4352" y="1536" width="512" height="512" rotation="270"/>
   <object id="14" type="GXPEngine.Square" gid="2" x="3840" y="1792" width="256" height="256"/>
-  <object id="15" type="GXPEngine.AngledLine" gid="5" x="3840" y="2048" width="256" height="256">
+  <object id="15" type="GXPEngine.AngledLine" gid="8" x="3840" y="2048" width="256" height="256">
    <properties>
     <property name="variant" type="int" value="2"/>
    </properties>
   </object>
-  <object id="16" type="GXPEngine.AngledLine" gid="5" x="4096" y="2304" width="256" height="256">
+  <object id="16" type="GXPEngine.AngledLine" gid="8" x="4096" y="2304" width="256" height="256">
    <properties>
     <property name="variant" type="int" value="2"/>
    </properties>
   </object>
-  <object id="17" type="GXPEngine.AngledLine" gid="5" x="4352" y="2560" width="256" height="256">
+  <object id="17" type="GXPEngine.AngledLine" gid="8" x="4352" y="2560" width="256" height="256">
    <properties>
     <property name="variant" type="int" value="2"/>
    </properties>
@@ -58,11 +58,11 @@
   <object id="19" type="GXPEngine.Square" gid="2" x="4608" y="3072" width="256" height="256"/>
   <object id="20" type="GXPEngine.Square" gid="2" x="4608" y="3328" width="256" height="256"/>
   <object id="21" type="GXPEngine.Square" gid="2" x="4608" y="3584" width="256" height="256"/>
-  <object id="22" type="GXPEngine.BouncyPlatform" gid="4" x="4096" y="3840" width="512" height="256"/>
-  <object id="23" type="GXPEngine.BouncyPlatform" gid="4" x="3584" y="3840" width="512" height="256"/>
+  <object id="22" type="GXPEngine.BouncyPlatform" gid="7" x="4096" y="3840" width="512" height="256"/>
+  <object id="23" type="GXPEngine.BouncyPlatform" gid="7" x="3584" y="3840" width="512" height="256"/>
   <object id="24" type="GXPEngine.Square" gid="2" x="1024" y="1280" width="256" height="256"/>
   <object id="25" type="GXPEngine.Square" gid="2" x="1024" y="1536" width="256" height="256"/>
-  <object id="26" type="GXPEngine.BouncyPlatform" gid="4" x="1024" y="768" width="512" height="256" rotation="180"/>
+  <object id="26" type="GXPEngine.BouncyPlatform" gid="7" x="1024" y="768" width="512" height="256" rotation="180"/>
   <object id="27" type="GXPEngine.Square" gid="2" x="256" y="1280" width="256" height="256"/>
   <object id="28" type="GXPEngine.Square" gid="2" x="256" y="1536" width="256" height="256"/>
   <object id="29" type="GXPEngine.Square" gid="2" x="256" y="1792" width="256" height="256"/>
@@ -97,13 +97,13 @@
   <object id="50" type="GXPEngine.Square" gid="1" x="2048" y="3072" width="256" height="256"/>
   <object id="51" type="GXPEngine.Square" gid="1" x="2304" y="3072" width="256" height="256"/>
   <object id="52" type="GXPEngine.Square" gid="1" x="2560" y="3072" width="256" height="256"/>
-  <object id="53" type="GXPEngine.BulletThroughOnly" gid="4" x="2816" y="1792" width="256" height="768"/>
-  <object id="54" type="GXPEngine.BulletThroughOnly" gid="4" x="2816" y="2816" width="256" height="768"/>
-  <object id="55" type="GXPEngine.Player" gid="2147483654" x="1536" y="2816" width="256" height="256"/>
-  <object id="57" type="GXPEngine.EBallSpawner" gid="4" x="3072" y="2048" width="256" height="256" rotation="270">
+  <object id="53" type="GXPEngine.BulletThroughOnly" gid="7" x="2816" y="1792" width="256" height="768"/>
+  <object id="54" type="GXPEngine.BulletThroughOnly" gid="7" x="2816" y="2816" width="256" height="768"/>
+  <object id="55" type="GXPEngine.Player" gid="2147483660" x="1536" y="2816" width="256" height="256"/>
+  <object id="57" type="GXPEngine.EBallSpawner" gid="7" x="3072" y="2048" width="256" height="256" rotation="270">
    <properties>
     <property name="goalSide" type="int" value="4"/>
-    <property name="nextLevel" value="Level4.tmx"/>
+    <property name="nextLevel" value="Level8.tmx"/>
     <property name="spawnSide" type="int" value="4"/>
     <property name="velocityX" type="float" value="60"/>
    </properties>

@@ -34,10 +34,10 @@ namespace GXPEngine
             AddSound("Gunshot 3.wav"); //16
             AddSound("Gunshot 4.wav"); //17
             AddSound("Gunshot 5.wav"); //18
-            AddSound("Orb_hits_wall_1.wav"); //19
-            AddSound("Orb_hits_wall_2.wav"); //20
-            AddSound("Orb_hits_wall_3.wav"); //21
-            AddSound("Orb_hits_wall_4.wav"); //22
+            AddSound("Bullet_hits_wall_1.wav"); //19
+            AddSound("Bullet_hits_wall_2.wav"); //20
+            AddSound("Bullet_hits_wall_3.wav"); //21
+            AddSound("Bullet_hits_wall_4.wav"); //22
             AddSound("Orb_hits_wall_5.wav"); //23
             AddSound("Bullet hits orb.wav"); //24
             AddSound("Button_UI.wav"); //25
@@ -50,6 +50,7 @@ namespace GXPEngine
             AddSound("Countdown.wav"); //32
             AddSound("Special 3.wav"); //33
             AddSound("Menu Music.wav"); //34
+
         }
         public void PlaySound(int index, bool loop = false, bool stream = false)
         {

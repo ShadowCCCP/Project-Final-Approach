@@ -9,26 +9,26 @@
  <tileset firstgid="3" name="Rat" tilewidth="256" tileheight="256" tilecount="4" columns="4">
   <image source="Rat.png" width="1024" height="256"/>
  </tileset>
- <tileset firstgid="7" name="AngledLineTopRight" tilewidth="256" tileheight="256" tilecount="1" columns="1">
-  <image source="AngledLineTopRight.png" width="256" height="256"/>
+ <tileset firstgid="7" name="AngledLineTopRight" tilewidth="256" tileheight="256" tilecount="4" columns="2">
+  <image source="AngledLineTopRight.png" width="512" height="512"/>
  </tileset>
- <tileset firstgid="8" name="AngledLineBottomLeft" tilewidth="256" tileheight="256" tilecount="1" columns="1">
-  <image source="AngledLineBottomLeft.png" width="256" height="256"/>
+ <tileset firstgid="11" name="AngledLineBottomLeft" tilewidth="256" tileheight="256" tilecount="4" columns="2">
+  <image source="AngledLineBottomLeft.png" width="512" height="512"/>
  </tileset>
- <tileset firstgid="9" name="AngledLineBottomRight" tilewidth="256" tileheight="256" tilecount="1" columns="1">
-  <image source="AngledLineBottomRight.png" width="256" height="256"/>
+ <tileset firstgid="15" name="AngledLineBottomRight" tilewidth="256" tileheight="256" tilecount="4" columns="2">
+  <image source="AngledLineBottomRight.png" width="512" height="512"/>
  </tileset>
- <tileset firstgid="10" name="AngledLineTopLeft" tilewidth="256" tileheight="256" tilecount="1" columns="1">
-  <image source="AngledLineTopLeft.png" width="256" height="256"/>
+ <tileset firstgid="19" name="AngledLineTopLeft" tilewidth="256" tileheight="256" tilecount="4" columns="2">
+  <image source="AngledLineTopLeft.png" width="512" height="512"/>
  </tileset>
- <tileset firstgid="11" name="Floor_tile" tilewidth="256" tileheight="256" tilecount="1" columns="1">
+ <tileset firstgid="23" name="Floor_tile" tilewidth="256" tileheight="256" tilecount="1" columns="1">
   <image source="Floor_tile.png" width="256" height="256"/>
  </tileset>
- <tileset firstgid="12" name="CoolBackground" tilewidth="1569" tileheight="883" tilecount="1" columns="1">
+ <tileset firstgid="24" name="CoolBackground" tilewidth="1569" tileheight="883" tilecount="1" columns="1">
   <image source="GoodBackground.png" width="1569" height="883"/>
  </tileset>
  <objectgroup id="5" name="Background">
-  <object id="107" gid="12" x="0" y="4096" width="6144" height="4096"/>
+  <object id="107" gid="24" x="0" y="4096" width="6144" height="4096"/>
  </objectgroup>
  <objectgroup id="3" name="Obstacles">
   <object id="1" type="GXPEngine.Player" gid="2147483651" x="1024" y="1536" width="256" height="256"/>
@@ -55,7 +55,7 @@
   <object id="10" type="GXPEngine.EBallSpawner" gid="2" x="1792" y="512" width="256" height="256" rotation="180">
    <properties>
     <property name="goalSide" type="int" value="4"/>
-    <property name="nextLevel" value="Level2.tmx"/>
+    <property name="nextLevel" value="Level10.tmx"/>
     <property name="spawnSide" type="int" value="3"/>
     <property name="velocityY" type="float" value="10"/>
    </properties>
@@ -90,74 +90,74 @@
     <property name="variant" type="int" value="2"/>
    </properties>
   </object>
-  <object id="45" type="GXPEngine.AngledLine" gid="9" x="4096" y="3584" width="256" height="256">
+  <object id="45" type="GXPEngine.AngledLine" gid="15" x="4096" y="3584" width="256" height="256">
    <properties>
     <property name="variant" type="int" value="1"/>
    </properties>
   </object>
-  <object id="65" type="GXPEngine.AngledLine" gid="9" x="3584" y="2560" width="256" height="256">
+  <object id="65" type="GXPEngine.AngledLine" gid="15" x="3584" y="2560" width="256" height="256">
    <properties>
     <property name="variant" type="int" value="1"/>
    </properties>
   </object>
-  <object id="69" type="GXPEngine.AngledLine" gid="9" x="4608" y="2048" width="256" height="256">
+  <object id="69" type="GXPEngine.AngledLine" gid="15" x="4608" y="2048" width="256" height="256">
    <properties>
     <property name="variant" type="int" value="1"/>
    </properties>
   </object>
-  <object id="68" type="GXPEngine.AngledLine" gid="9" x="3328" y="2816" width="256" height="256">
+  <object id="68" type="GXPEngine.AngledLine" gid="15" x="3328" y="2816" width="256" height="256">
    <properties>
     <property name="variant" type="int" value="1"/>
    </properties>
   </object>
   <object id="46" type="GXPEngine.EnergyReceptor" gid="2" x="5376" y="1792" width="512" height="512" rotation="270"/>
-  <object id="62" type="GXPEngine.AngledLine" gid="8" x="1280" y="2560" width="256" height="256">
+  <object id="62" type="GXPEngine.AngledLine" gid="11" x="1280" y="2560" width="256" height="256">
    <properties>
     <property name="variant" type="int" value="2"/>
    </properties>
   </object>
-  <object id="63" type="GXPEngine.AngledLine" gid="8" x="2816" y="3584" width="256" height="256">
+  <object id="63" type="GXPEngine.AngledLine" gid="11" x="2816" y="3584" width="256" height="256">
    <properties>
     <property name="variant" type="int" value="2"/>
    </properties>
   </object>
-  <object id="64" type="GXPEngine.AngledLine" gid="8" x="2560" y="3328" width="256" height="256">
+  <object id="64" type="GXPEngine.AngledLine" gid="11" x="2560" y="3328" width="256" height="256">
    <properties>
     <property name="variant" type="int" value="2"/>
    </properties>
   </object>
-  <object id="70" type="GXPEngine.AngledLine" gid="10" x="3584" y="1280" width="256" height="256">
+  <object id="70" type="GXPEngine.AngledLine" gid="19" x="3584" y="1280" width="256" height="256">
    <properties>
     <property name="variant" type="int" value="1"/>
    </properties>
   </object>
-  <object id="81" type="GXPEngine.AngledLine" gid="10" x="768" y="1024" width="256" height="256">
+  <object id="81" type="GXPEngine.AngledLine" gid="19" x="768" y="1024" width="256" height="256">
    <properties>
     <property name="variant" type="int" value="1"/>
    </properties>
   </object>
-  <object id="82" type="GXPEngine.AngledLine" gid="10" x="1024" y="768" width="256" height="256">
+  <object id="82" type="GXPEngine.AngledLine" gid="19" x="1024" y="768" width="256" height="256">
    <properties>
     <property name="variant" type="int" value="1"/>
    </properties>
   </object>
-  <object id="71" type="GXPEngine.AngledLine" gid="10" x="3328" y="1536" width="256" height="256">
+  <object id="71" type="GXPEngine.AngledLine" gid="19" x="3328" y="1536" width="256" height="256">
    <properties>
     <property name="variant" type="int" value="1"/>
    </properties>
   </object>
-  <object id="88" type="GXPEngine.Square" gid="11" x="2048" y="2816" width="256" height="256"/>
-  <object id="89" type="GXPEngine.Square" gid="11" x="2304" y="2816" width="256" height="256"/>
-  <object id="90" type="GXPEngine.Square" gid="11" x="1792" y="2816" width="256" height="256"/>
-  <object id="91" type="GXPEngine.Square" gid="11" x="1536" y="2816" width="256" height="256"/>
-  <object id="92" type="GXPEngine.Square" gid="11" x="1024" y="1792" width="256" height="256"/>
-  <object id="93" type="GXPEngine.Square" gid="11" x="768" y="1792" width="256" height="256"/>
-  <object id="94" type="GXPEngine.Square" gid="11" x="3072" y="3840" width="256" height="256"/>
-  <object id="95" type="GXPEngine.Square" gid="11" x="3584" y="3840" width="256" height="256"/>
-  <object id="96" type="GXPEngine.Square" gid="11" x="3840" y="3840" width="256" height="256"/>
-  <object id="97" type="GXPEngine.Square" gid="11" x="4352" y="2304" width="256" height="256"/>
-  <object id="100" type="GXPEngine.Square" gid="11" x="3584" y="2816" width="256" height="256"/>
-  <object id="101" type="GXPEngine.Square" gid="11" x="3328" y="3072" width="256" height="256"/>
+  <object id="88" type="GXPEngine.Square" gid="23" x="2048" y="2816" width="256" height="256"/>
+  <object id="89" type="GXPEngine.Square" gid="23" x="2304" y="2816" width="256" height="256"/>
+  <object id="90" type="GXPEngine.Square" gid="23" x="1792" y="2816" width="256" height="256"/>
+  <object id="91" type="GXPEngine.Square" gid="23" x="1536" y="2816" width="256" height="256"/>
+  <object id="92" type="GXPEngine.Square" gid="23" x="1024" y="1792" width="256" height="256"/>
+  <object id="93" type="GXPEngine.Square" gid="23" x="768" y="1792" width="256" height="256"/>
+  <object id="94" type="GXPEngine.Square" gid="23" x="3072" y="3840" width="256" height="256"/>
+  <object id="95" type="GXPEngine.Square" gid="23" x="3584" y="3840" width="256" height="256"/>
+  <object id="96" type="GXPEngine.Square" gid="23" x="3840" y="3840" width="256" height="256"/>
+  <object id="97" type="GXPEngine.Square" gid="23" x="4352" y="2304" width="256" height="256"/>
+  <object id="100" type="GXPEngine.Square" gid="23" x="3584" y="2816" width="256" height="256"/>
+  <object id="101" type="GXPEngine.Square" gid="23" x="3328" y="3072" width="256" height="256"/>
  </objectgroup>
  <objectgroup id="7" name="tiles">
   <object id="354" gid="1" x="3328" y="1280" width="256" height="256"/>
@@ -408,13 +408,13 @@
 1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,
 1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,
 1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,
-1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,11,1,1,1,1,1,
+1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,23,1,1,1,1,1,
 1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,
-1,1,1,1,1,11,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,
+1,1,1,1,1,23,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,
 1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,
 1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,
-1,1,1,1,1,1,1,1,1,1,11,0,0,0,0,0,0,1,1,1,1,1,1,1,
-1,1,1,1,1,1,1,1,1,1,1,11,0,11,0,0,11,1,1,1,1,1,1,1,
+1,1,1,1,1,1,1,1,1,1,23,0,0,0,0,0,0,1,1,1,1,1,1,1,
+1,1,1,1,1,1,1,1,1,1,1,23,0,23,0,0,23,1,1,1,1,1,1,1,
 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
 </data>
  </layer>

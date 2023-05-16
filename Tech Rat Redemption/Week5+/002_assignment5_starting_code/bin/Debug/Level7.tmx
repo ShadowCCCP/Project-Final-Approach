@@ -342,7 +342,7 @@
   <object id="69" type="GXPEngine.EBallSpawner" gid="7" x="1536" y="3328" width="256" height="256">
    <properties>
     <property name="goalSide" type="int" value="2"/>
-    <property name="nextLevel" value="Level9.tmx"/>
+    <property name="nextLevel" value="Level8.tmx"/>
     <property name="spawnSide" type="int" value="1"/>
     <property name="velocityY" type="float" value="30"/>
    </properties>

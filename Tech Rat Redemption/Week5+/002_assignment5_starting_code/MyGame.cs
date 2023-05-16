@@ -96,12 +96,7 @@ public class MyGame : Game
                 }
             case 2:
                 {
-                    soundCollection.PlayMusic(14);
-                    break;
-                }
-            case 3:
-                {
-                    soundCollection.PlayMusic(15);
+                    soundCollection.PlayMusic(14, true);
                     break;
                 }
 

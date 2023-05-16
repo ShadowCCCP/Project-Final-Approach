@@ -12,6 +12,7 @@ namespace GXPEngine
     {
         private ArrayList soundFiles = new ArrayList();
         SoundChannel channel;
+        bool noStop;
         public SoundCollection()
         {
             AddSound("Orb_goes_in_basket.wav"); //0
@@ -29,10 +30,6 @@ namespace GXPEngine
             AddSound("Orb_hits_wall_5.wav"); //12
             AddSound("GameplayMusicLevelOne.wav"); //13
             AddSound("GameplayMusicLevelTwo.wav"); //14
-            AddSound(""/*"GameplayMusicLevelThree.wav"*/); //15
-            //AddSound(""); //16
-            
-
         }
         public void PlaySound(int index, bool loop = false, bool stream = false)
         {
@@ -45,8 +42,13 @@ namespace GXPEngine
             soundFiles.Add(soundFile);
         }
 
-        public void PlayMusic(int index, bool loop = true, bool stream = false)
+        public void PlayMusic(int index, bool pNoStop = false, bool loop = true, bool stream = false)
         {
+            if(channel != null)
+            {
+                channel.Stop();
+            }
+            noStop = pNoStop;
             Sound music = new Sound(soundFiles[index].ToString(),loop, stream);
             channel = music.Play();
         }
@@ -55,7 +57,11 @@ namespace GXPEngine
         {
             if (channel != null)
             {
-                channel.Stop();
+                Console.WriteLine(noStop);
+                if(!noStop)
+                {
+                    channel.Stop();
+                }
             }
         }
 

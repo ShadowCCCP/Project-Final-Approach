@@ -111,7 +111,7 @@ namespace GXPEngine
                 string loadLevel = "Level.tmx";
                 
 
-                if ((currentLevel>1 && currentLevel<6) || (currentLevel>8 && currentLevel < 11))
+                if ((currentLevel>1 && currentLevel<7) || (currentLevel>9 && currentLevel < 12))
                 {
                     if (currentLevel < maxLevel && doOnce)
                     {

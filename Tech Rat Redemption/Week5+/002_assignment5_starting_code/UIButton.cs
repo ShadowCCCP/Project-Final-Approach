@@ -10,6 +10,7 @@ namespace GXPEngine
     class UIButton : Square
     {
         bool doOnce;
+
         public UIButton(string filename = "", int cols = 1, int rows = 1, TiledObject obj = null) : base("PlayButtonS.png", 2, 1)
         {
 
@@ -25,7 +26,7 @@ namespace GXPEngine
                 
                 if(Input.GetMouseButton(0) && !doOnce)
                 {
-                    MyGame myGame = (MyGame)game;
+                    myGame.soundCollection.PlaySound(25);
                     myGame.LoadLevel("Level2.tmx");
                     doOnce = true;  
                 }

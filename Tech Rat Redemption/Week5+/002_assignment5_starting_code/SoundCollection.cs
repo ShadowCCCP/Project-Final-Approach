@@ -19,7 +19,7 @@ namespace GXPEngine
             AddSound("Launchpad_Jump.wav"); //1
             AddSound("Button_hit.wav"); //2
             AddSound("Gate.wav"); //3
-            AddSound("Gunshot_1.wav"); //4
+            AddSound("Gunshot 1.wav"); //4
             AddSound("Orb_spawns.wav"); //5
             AddSound("Orb_spawns_2.wav"); //6
             AddSound("Orb_spawns_3.wav"); //7
@@ -30,7 +30,17 @@ namespace GXPEngine
             AddSound("Orb_hits_wall_5.wav"); //12
             AddSound("GameplayMusicLevelOne.wav"); //13
             AddSound("GameplayMusicLevelTwo.wav"); //14
-            AddSound(""); //15
+            AddSound("Gunshot 2.wav"); //15
+            AddSound("Gunshot 3.wav"); //16
+            AddSound("Gunshot 4.wav"); //17
+            AddSound("Gunshot 5.wav"); //18
+            AddSound("Orb_hits_wall_1.wav"); //19
+            AddSound("Orb_hits_wall_2.wav"); //20
+            AddSound("Orb_hits_wall_3.wav"); //21
+            AddSound("Orb_hits_wall_4.wav"); //22
+            AddSound("Orb_hits_wall_5.wav"); //23
+            AddSound("Bullet hits orb.wav"); //24
+            AddSound("Button_UI.wav"); //25
         }
         public void PlaySound(int index, bool loop = false, bool stream = false)
         {

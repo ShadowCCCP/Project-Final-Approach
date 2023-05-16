@@ -247,13 +247,11 @@ namespace GXPEngine
                     int cTime = Time.now;
                     if(cTime - cooldown > 300)
                     {
-                        myGame.soundCollection.PlaySound(8);
+                        PlaySound();
                         cooldown = Time.now;
                     }
                 }
             } while (false);
-
-           
 
         }
 
@@ -298,6 +296,39 @@ namespace GXPEngine
                 }
             }
             SetFrame(frame);
+        }
+
+        private void PlaySound()
+        {
+            Random rdm = new Random();
+            switch (rdm.Next(5))
+            {
+                case 0:
+                    {
+                        myGame.soundCollection.PlaySound(8);
+                        break;
+                    }
+                case 1:
+                    {
+                        myGame.soundCollection.PlaySound(9);
+                        break;
+                    }
+                case 2:
+                    {
+                        myGame.soundCollection.PlaySound(10);
+                        break;
+                    }
+                case 3:
+                    {
+                        myGame.soundCollection.PlaySound(11);
+                        break;
+                    }
+                case 4:
+                    {
+                        myGame.soundCollection.PlaySound(12);
+                        break;
+                    }
+            }
         }
 
         protected override void Update()

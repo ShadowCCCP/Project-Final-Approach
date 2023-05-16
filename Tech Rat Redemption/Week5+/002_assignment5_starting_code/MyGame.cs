@@ -30,7 +30,7 @@ public class MyGame : Game
     public Vec2 raySpawnPos;
 
     /**/
-    public MyGame() : base(6144, 4096, false, false, 1536, 1024)
+    public MyGame() : base(6144, 4096, true, false, 1536, 1024)
     {
         soundCollection = new SoundCollection();
 
